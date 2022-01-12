@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <FrameLayout
+        android:id="@+id/layout_fullscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.xuexiang.xui.widget.actionbar.TitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:backgroundTint="@color/colorPrimary"/>
+
+        <FrameLayout
+            android:id="@+id/layout_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/h_margin"
+            android:layout_marginEnd="@dimen/h_margin"
+            android:layout_marginTop="@dimen/v_margin"
+            android:layout_marginBottom="@dimen/v_margin"
+            android:layout_weight="1"
+            android:background="@drawable/bg_container" />
+
+        <LinearLayout
+            android:id="@+id/layout_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/h_margin"
+            android:layout_marginEnd="@dimen/h_margin"
+            android:layout_marginBottom="@dimen/v_margin"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                android:id="@+id/btn_failure"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/btn_height"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:text="失败"
+                android:textColor="@color/xui_config_color_white"
+                android:textSize="@dimen/text_big"
+                app:sCornersRadius="3dp"
+                app:sSolidColor="@color/xui_config_color_red" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                android:id="@+id/btn_success"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:text="成功"
+                android:textColor="@color/xui_config_color_white"
+                android:textSize="@dimen/text_big"
+                app:sCornersRadius="3dp"
+                app:sSolidColor="@color/xui_btn_green_select_color" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

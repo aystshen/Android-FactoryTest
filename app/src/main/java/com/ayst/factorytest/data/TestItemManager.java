@@ -1,8 +1,11 @@
 package com.ayst.factorytest.data;
 
+import android.app.Activity;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.ayst.factorytest.MainActivity;
+import com.ayst.factorytest.items.InfoTestActivity;
 import com.ayst.factorytest.model.TestItem;
 
 import org.json.JSONArray;
@@ -12,48 +15,26 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class TestItemManager {
     private static final String TAG = "TestItemManager";
 
     private static final String CONFIG_PATH = "/vendor/factory_test_config.json";
-    private static final String[] ITEMS_DEFAULT = {
-            "信息",
-            "WiFi",
-            "蓝牙",
-            "以太网",
-            "移动网络",
-            "显示",
-            "触摸",
-            "喇叭",
-            "麦克风",
-            "按键",
-            "摄像头",
-            "人体感应",
-            "背光",
-            "电池",
-            "光感",
-            "温湿度",
-            "G-Sensor",
-            "麦克风阵列",
-            "GPS",
-            "USB",
-            "sdcard",
-            "串口",
-            "定时开关机",
-            "看门狗",
-            "GPIO",
-            "韦根"
-    };
+
     private static TestItemManager sInstance = null;
     private ArrayList<TestItem> mTestItems = new ArrayList<>();
+    private LinkedHashMap<String, Class<? extends Activity>> mItemTargets = new LinkedHashMap<>();
 
     private TestItemManager() {
+        bindTargets();
         loadConfig();
         if (mTestItems.isEmpty()) {
             Log.i(TAG, "config does not exist, use default");
-            for (String name : ITEMS_DEFAULT) {
-                mTestItems.add(new TestItem(name, "", TestItem.STATE_UNKNOWN));
+            for (Map.Entry<String, Class<? extends Activity>> entry : mItemTargets.entrySet()) {
+                mTestItems.add(new TestItem(entry.getKey(), "",
+                        entry.getValue(), TestItem.STATE_UNKNOWN));
             }
         }
     }
@@ -67,6 +48,35 @@ public class TestItemManager {
 
     public ArrayList<TestItem> getTestItems() {
         return mTestItems;
+    }
+
+    private void bindTargets() {
+        mItemTargets.put("信息", InfoTestActivity.class);
+        mItemTargets.put("WiFi", MainActivity.class);
+        mItemTargets.put("蓝牙", MainActivity.class);
+        mItemTargets.put("以太网", MainActivity.class);
+        mItemTargets.put("移动网络", MainActivity.class);
+        mItemTargets.put("显示", MainActivity.class);
+        mItemTargets.put("触摸", MainActivity.class);
+        mItemTargets.put("喇叭", MainActivity.class);
+        mItemTargets.put("麦克风", MainActivity.class);
+        mItemTargets.put("按键", MainActivity.class);
+        mItemTargets.put("摄像头", MainActivity.class);
+        mItemTargets.put("人体感应", MainActivity.class);
+        mItemTargets.put("背光", MainActivity.class);
+        mItemTargets.put("电池", MainActivity.class);
+        mItemTargets.put("光感", MainActivity.class);
+        mItemTargets.put("温湿度", MainActivity.class);
+        mItemTargets.put("G-Sensor", MainActivity.class);
+        mItemTargets.put("麦克风阵列", MainActivity.class);
+        mItemTargets.put("GPS", MainActivity.class);
+        mItemTargets.put("USB", MainActivity.class);
+        mItemTargets.put("sdcard", MainActivity.class);
+        mItemTargets.put("串口", MainActivity.class);
+        mItemTargets.put("定时开关机", MainActivity.class);
+        mItemTargets.put("看门狗", MainActivity.class);
+        mItemTargets.put("GPIO", MainActivity.class);
+        mItemTargets.put("韦根", MainActivity.class);
     }
 
     private void loadConfig() {
@@ -101,7 +111,10 @@ public class TestItemManager {
                     JSONObject obj = jsonArray.getJSONObject(i);
                     String name = obj.getString("name");
                     String param = obj.getString("param");
-                    mTestItems.add(new TestItem(name, param, TestItem.STATE_UNKNOWN));
+                    if (mItemTargets.get(name) != null) {
+                        mTestItems.add(new TestItem(name, param, mItemTargets.get(name),
+                                TestItem.STATE_UNKNOWN));
+                    }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

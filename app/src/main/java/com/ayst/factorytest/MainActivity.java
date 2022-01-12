@@ -3,12 +3,15 @@ package com.ayst.factorytest;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.ayst.factorytest.adapter.TestItemAdapter;
 import com.ayst.factorytest.base.BaseActivity;
 import com.ayst.factorytest.data.TestItemManager;
+import com.ayst.factorytest.model.TestItem;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
@@ -49,8 +52,10 @@ public class MainActivity extends BaseActivity {
         mTestItemAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-//                mFlowTest = false;
-//                handleTestTask(((RomItem) adapter.getData().get(position)));
+                Intent intent = new Intent(MainActivity.this,
+                        ((TestItem) adapter.getData().get(position)).getActivity());
+                intent.putExtra("item", (TestItem) adapter.getData().get(position));
+                startActivity(intent);
             }
         });
     }

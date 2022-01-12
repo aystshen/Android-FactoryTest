@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#102026</color>
     <color name="colorAccent">#396490</color>
 
+    <color name="bg">#ffebedee</color>
+
     <color name="transparent">#00000000</color>
     <color name="yellow">#ffc6e578</color>
     <color name="green">#ff0bbb10</color>

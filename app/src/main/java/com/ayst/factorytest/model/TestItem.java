@@ -1,18 +1,24 @@
 package com.ayst.factorytest.model;
 
-public class TestItem {
+import android.app.Activity;
+
+import java.io.Serializable;
+
+public class TestItem implements Serializable {
     public static final int STATE_UNKNOWN = 0;
     public static final int STATE_FAIL = 1;
     public static final int STATE_SUCCESS = 2;
 
     private String name;
     private String param;
+    private Class<? extends Activity> activity;
     private int state = STATE_UNKNOWN;
 
-    public TestItem(String name, String param, int state) {
+    public TestItem(String name, String param, Class<? extends Activity> activity, int state) {
         this.name = name;
-        this.state = state;
         this.param = param;
+        this.activity = activity;
+        this.state = state;
     }
 
     public String getName() {
@@ -29,6 +35,14 @@ public class TestItem {
 
     public void setParam(String param) {
         this.param = param;
+    }
+
+    public Class<? extends Activity> getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Class<? extends Activity> activity) {
+        this.activity = activity;
     }
 
     public int getState() {
