@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Factory Test</string>
+
+<!--    WiFiTestActivity-->
+    <string name="wifi_test_connected">Connected</string>
+    <string name="wifi_test_connecting">Connecting</string>
+    <string name="wifi_test_authenticating">Authenticating</string>
+    <string name="wifi_test_disconnected">Disconnected</string>
+    <string name="wifi_test_obtaining_ipaddr">Obtaining ip</string>
+    <string name="wifi_test_opening">OPENING</string>
+    <string name="wifi_test_closing">CLOSING</string>
+    <string name="wifi_test_closed">CLOSED</string>
 </resources>
