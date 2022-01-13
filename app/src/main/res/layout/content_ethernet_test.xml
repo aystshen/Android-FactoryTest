@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".items.EthernetTestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="MAC："
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_mac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00:00:00:00"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="IP："
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0.0.0"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="子网掩码："
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_netmask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0.0.0"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="网关："
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_gateway"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0.0.0"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="DNS1："
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_dns1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0.0.0"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="DNS2："
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_dns2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0.0.0"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="模式："
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DHCP"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+</LinearLayout>
