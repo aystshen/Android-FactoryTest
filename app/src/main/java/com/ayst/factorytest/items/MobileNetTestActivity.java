@@ -22,8 +22,8 @@ import com.ayst.factorytest.utils.AppUtils;
 
 import butterknife.BindView;
 
-public class ModemTestActivity extends ChildTestActivity {
-    private static final String TAG = "ModemTestActivity";
+public class MobileNetTestActivity extends ChildTestActivity {
+    private static final String TAG = "MobileNetTestActivity";
 
     private static final String NET_DISCONNECT = "Disconnect";
     private static final String NET_WIFI = "WiFi";
@@ -124,9 +124,9 @@ public class ModemTestActivity extends ChildTestActivity {
             public void run() {
                 if (isConnected) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        mTypeTv.setText(getNetworkType(ModemTestActivity.this, capabilities));
+                        mTypeTv.setText(getNetworkType(MobileNetTestActivity.this, capabilities));
                     } else {
-                        mTypeTv.setText(getNetworkType(ModemTestActivity.this));
+                        mTypeTv.setText(getNetworkType(MobileNetTestActivity.this));
                     }
                 } else {
                     mTypeTv.setText(NET_DISCONNECT);
