@@ -5,6 +5,7 @@
     android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission
         android:name="android.permission.LOCAL_MAC_ADDRESS"
         tools:ignore="ProtectedPermissions" />
@@ -18,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FactoryTest">
-        <activity android:name=".items.WifiTestActivity"></activity>
+        <activity android:name=".items.BluetoothTestActivity"></activity>
+        <activity android:name=".items.WifiTestActivity" />
         <activity android:name=".items.InfoTestActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

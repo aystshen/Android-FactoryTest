@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Factory Test</string>
 
-<!--    WiFiTestActivity-->
+    <!--    WiFiTestActivity-->
     <string name="wifi_test_connected">Connected</string>
     <string name="wifi_test_connecting">Connecting</string>
     <string name="wifi_test_authenticating">Authenticating</string>

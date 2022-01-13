@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.ayst.factorytest.MainActivity;
+import com.ayst.factorytest.items.BluetoothTestActivity;
 import com.ayst.factorytest.items.InfoTestActivity;
 import com.ayst.factorytest.items.WifiTestActivity;
 import com.ayst.factorytest.model.TestItem;
@@ -54,7 +55,7 @@ public class TestItemManager {
     private void bindTargets() {
         mItemTargets.put("信息", InfoTestActivity.class);
         mItemTargets.put("WiFi", WifiTestActivity.class);
-        mItemTargets.put("蓝牙", MainActivity.class);
+        mItemTargets.put("蓝牙", BluetoothTestActivity.class);
         mItemTargets.put("以太网", MainActivity.class);
         mItemTargets.put("移动网络", MainActivity.class);
         mItemTargets.put("显示", MainActivity.class);
