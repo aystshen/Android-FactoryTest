@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class TestItem implements Serializable {
     public static final int STATE_UNKNOWN = 0;
-    public static final int STATE_FAIL = 1;
+    public static final int STATE_FAILURE = 1;
     public static final int STATE_SUCCESS = 2;
 
     private String name;
@@ -51,5 +51,15 @@ public class TestItem implements Serializable {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "TestItem{" +
+                "name='" + name + '\'' +
+                ", param='" + param + '\'' +
+                ", activity=" + activity +
+                ", state=" + state +
+                '}';
     }
 }

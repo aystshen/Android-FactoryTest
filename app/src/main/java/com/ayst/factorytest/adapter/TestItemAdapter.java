@@ -20,7 +20,7 @@ public class TestItemAdapter extends BaseQuickAdapter<TestItem, BaseViewHolder> 
     protected void convert(@NonNull BaseViewHolder baseViewHolder, TestItem romItem) {
         baseViewHolder.setText(R.id.tv_name, romItem.getName());
         switch (romItem.getState()) {
-            case TestItem.STATE_FAIL:
+            case TestItem.STATE_FAILURE:
                 baseViewHolder.setBackgroundColor(R.id.tv_name, getContext().getColor(R.color.red));
                 baseViewHolder.setTextColor(R.id.tv_name, getContext().getColor(R.color.white));
                 break;

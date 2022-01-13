@@ -30,6 +30,7 @@
             android:layout_marginTop="@dimen/v_margin"
             android:layout_marginBottom="@dimen/v_margin"
             android:layout_weight="1"
+            android:padding="20dp"
             android:background="@drawable/bg_container" />
 
         <LinearLayout

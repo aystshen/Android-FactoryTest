@@ -18,6 +18,7 @@ package com.ayst.factorytest.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -32,6 +33,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -60,24 +62,28 @@ public class AppUtils {
     private final static String TAG = "AppUtils";
 
     // version
-    private static String mVersionName = "";
-    private static int mVersionCode = -1;
+    private static String sVersionName = "";
+    private static int sVersionCode = -1;
 
     // MAC
-    private static String mEth0Mac = "";
-    private static String mWifiMac = "";
-    private static String mMac = "";
-    private static String mMacNoColon = "";
+    private static String sEth0Mac = "";
+    private static String sWifiMac = "";
+    private static String sMac = "";
+    private static String sMacNoColon = "";
+    private static String sBtMac = "";
 
     // Screen
-    private static int mScreenWidth = -1;
-    private static int mScreenHeight = -1;
+    private static int sScreenWidth = -1;
+    private static int sScreenHeight = -1;
 
     // Storage
     private static String sRootDir = "";
 
     // Device id
     private static String sDeviceId = "";
+
+    // IMEI
+    private static String sImei = "";
 
     // Audio Manager
     private static AudioManager sAudioManager;
@@ -92,17 +98,17 @@ public class AppUtils {
      * @return version name
      */
     public static String getVersionName(Context context) {
-        if (TextUtils.isEmpty(mVersionName)) {
+        if (TextUtils.isEmpty(sVersionName)) {
             try {
                 PackageInfo info = context.getPackageManager().getPackageInfo(
                         context.getPackageName(), 0);
-                mVersionName = info.versionName;
-                mVersionCode = info.versionCode;
+                sVersionName = info.versionName;
+                sVersionCode = info.versionCode;
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
         }
-        return mVersionName;
+        return sVersionName;
     }
 
     /**
@@ -112,17 +118,17 @@ public class AppUtils {
      * @return version code
      */
     public static int getVersionCode(Context context) {
-        if (-1 == mVersionCode) {
+        if (-1 == sVersionCode) {
             try {
                 PackageInfo info = context.getPackageManager().getPackageInfo(
                         context.getPackageName(), 0);
-                mVersionName = info.versionName;
-                mVersionCode = info.versionCode;
+                sVersionName = info.versionName;
+                sVersionCode = info.versionCode;
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
         }
-        return mVersionCode;
+        return sVersionCode;
     }
 
     /**
@@ -174,6 +180,29 @@ public class AppUtils {
         }
 
         return cpuAddress;
+    }
+
+    /**
+     * Get the IMEI
+     *
+     * @param context Context
+     * @return IMEI
+     */
+    public static String getIMEI(Context context) {
+        if (TextUtils.isEmpty(sImei)) {
+            try {
+                TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                    sImei = tm.getDeviceId();
+                } else {
+                    Method method = tm.getClass().getMethod("getImei");
+                    sImei = (String) method.invoke(tm);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return sImei;
     }
 
     /**
@@ -240,7 +269,7 @@ public class AppUtils {
      * @return Mac
      */
     public static String getEth0Mac(Context context) {
-        if (TextUtils.isEmpty(mEth0Mac)) {
+        if (TextUtils.isEmpty(sEth0Mac)) {
             try {
                 int numRead = 0;
                 char[] buf = new char[1024];
@@ -251,13 +280,13 @@ public class AppUtils {
                     String readData = String.valueOf(buf, 0, numRead);
                     strBuf.append(readData);
                 }
-                mEth0Mac = strBuf.toString().replaceAll("\r|\n", "");
+                sEth0Mac = strBuf.toString().replaceAll("\r|\n", "");
                 reader.close();
             } catch (IOException ex) {
                 Log.w(TAG, "eth0 mac not exist");
             }
         }
-        return mEth0Mac;
+        return sEth0Mac;
     }
 
     /**
@@ -268,13 +297,13 @@ public class AppUtils {
      */
     @SuppressLint({"HardwareIds", "MissingPermission"})
     public static String getWifiMac(Context context) {
-        if (TextUtils.isEmpty(mWifiMac)) {
+        if (TextUtils.isEmpty(sWifiMac)) {
             WifiManager wifiManager = (WifiManager) context.getApplicationContext()
                     .getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            mWifiMac = wifiInfo.getMacAddress();
+            sWifiMac = wifiInfo.getMacAddress();
         }
-        return mWifiMac;
+        return sWifiMac;
     }
 
     /**
@@ -285,13 +314,13 @@ public class AppUtils {
      * @return Mac
      */
     public static String getMac(Context context) {
-        if (TextUtils.isEmpty(mMac)) {
-            mMac = getEth0Mac(context);
-            if (TextUtils.isEmpty(mMac)) {
-                mMac = getWifiMac(context);
+        if (TextUtils.isEmpty(sMac)) {
+            sMac = getEth0Mac(context);
+            if (TextUtils.isEmpty(sMac)) {
+                sMac = getWifiMac(context);
             }
         }
-        return mMac;
+        return sMac;
     }
 
     /**
@@ -301,13 +330,29 @@ public class AppUtils {
      * @return Mac
      */
     public static String getMacNoColon(Context context) {
-        if (TextUtils.isEmpty(mMacNoColon)) {
+        if (TextUtils.isEmpty(sMacNoColon)) {
             String mac = getMac(context);
             if (!TextUtils.isEmpty(mac)) {
-                mMacNoColon = mac.replace(":", "");
+                sMacNoColon = mac.replace(":", "");
             }
         }
-        return mMacNoColon;
+        return sMacNoColon;
+    }
+
+    /**
+     * Get the Bluetooth MAC
+     *
+     * @param context Context
+     * @return Mac
+     */
+    public static String getBtMac(Context context) {
+        if (TextUtils.isEmpty(sBtMac)) {
+            BluetoothAdapter ba = BluetoothAdapter.getDefaultAdapter();
+            if (ba != null) {
+                sBtMac = ba.getAddress();
+            }
+        }
+        return sBtMac;
     }
 
     /**
@@ -317,11 +362,11 @@ public class AppUtils {
      * @return screen width
      */
     public static int getScreenWidth(Activity context) {
-        if (-1 == mScreenWidth) {
-            mScreenWidth = context.getWindowManager().
+        if (-1 == sScreenWidth) {
+            sScreenWidth = context.getWindowManager().
                     getDefaultDisplay().getWidth();
         }
-        return mScreenWidth;
+        return sScreenWidth;
     }
 
     /**
@@ -331,11 +376,11 @@ public class AppUtils {
      * @return screen height
      */
     public static int getScreenHeight(Activity context) {
-        if (-1 == mScreenHeight) {
-            mScreenHeight = context.getWindowManager().
+        if (-1 == sScreenHeight) {
+            sScreenHeight = context.getWindowManager().
                     getDefaultDisplay().getHeight();
         }
-        return mScreenHeight;
+        return sScreenHeight;
     }
 
     /**

@@ -10,8 +10,13 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.ayst.factorytest.R;
+import com.ayst.factorytest.model.ResultEvent;
 import com.ayst.factorytest.model.TestItem;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
+
+import org.greenrobot.eventbus.EventBus;
+
+import butterknife.ButterKnife;
 
 /**
  * 测试子模块基类
@@ -45,7 +50,8 @@ public abstract class ChildTestActivity extends BaseActivity {
         mSuccessBtn = findViewById(R.id.btn_success);
         mFailureBtn = findViewById(R.id.btn_failure);
 
-        LayoutInflater.from(this).inflate(getContentLayout(), mContainerLayout, true);
+        View view = LayoutInflater.from(this).inflate(getContentLayout(), mContainerLayout, true);
+        ButterKnife.bind(this, view);
 
         mTitleBar.setTitle(mTestItem.getName());
         mTitleBar.getLeftText().setFocusable(false);
@@ -59,7 +65,8 @@ public abstract class ChildTestActivity extends BaseActivity {
         mSuccessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBtnClickSuccess();
+                mTestItem.setState(TestItem.STATE_SUCCESS);
+                EventBus.getDefault().post(new ResultEvent(mTestItem));
                 finish();
             }
         });
@@ -67,15 +74,12 @@ public abstract class ChildTestActivity extends BaseActivity {
         mFailureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBtnClickFailure();
+                mTestItem.setState(TestItem.STATE_FAILURE);
+                EventBus.getDefault().post(new ResultEvent(mTestItem));
                 finish();
             }
         });
     }
-
-    public abstract void onBtnClickFailure();
-
-    public abstract void onBtnClickSuccess();
 
     public abstract int getContentLayout();
 }
