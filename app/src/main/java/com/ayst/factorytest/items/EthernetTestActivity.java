@@ -37,6 +37,11 @@ public class EthernetTestActivity extends ChildTestActivity {
     }
 
     @Override
+    public int getFullscreenLayout() {
+        return 0;
+    }
+
+    @Override
     public void initViews() {
         super.initViews();
 

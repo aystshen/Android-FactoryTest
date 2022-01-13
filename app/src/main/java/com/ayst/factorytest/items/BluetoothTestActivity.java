@@ -133,6 +133,11 @@ public class BluetoothTestActivity extends ChildTestActivity {
     }
 
     @Override
+    public int getFullscreenLayout() {
+        return 0;
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
 

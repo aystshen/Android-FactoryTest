@@ -50,8 +50,17 @@ public abstract class ChildTestActivity extends BaseActivity {
         mSuccessBtn = findViewById(R.id.btn_success);
         mFailureBtn = findViewById(R.id.btn_failure);
 
-        View view = LayoutInflater.from(this).inflate(getContentLayout(), mContainerLayout, true);
-        ButterKnife.bind(this, view);
+        int contentLayoutId = getContentLayout();
+        if (contentLayoutId != 0) {
+            View view = LayoutInflater.from(this).inflate(getContentLayout(), mContainerLayout, true);
+            ButterKnife.bind(this, view);
+        }
+
+        int fullScreenLayoutId = getFullscreenLayout();
+        if (fullScreenLayoutId != 0) {
+            View view = LayoutInflater.from(this).inflate(fullScreenLayoutId, mFullscreenLayout, true);
+            ButterKnife.bind(this, view);
+        }
 
         mTitleBar.setTitle(mTestItem.getName());
         mTitleBar.getLeftText().setFocusable(false);
@@ -82,4 +91,6 @@ public abstract class ChildTestActivity extends BaseActivity {
     }
 
     public abstract int getContentLayout();
+
+    public abstract int getFullscreenLayout();
 }

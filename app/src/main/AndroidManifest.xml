@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FactoryTest">
-        <activity android:name=".items.MobileNetTestActivity"></activity>
+        <activity android:name=".items.LcdTestActivity"></activity>
+        <activity android:name=".items.MobileNetTestActivity" />
         <activity android:name=".items.EthernetTestActivity" />
         <activity android:name=".items.BluetoothTestActivity" />
         <activity android:name=".items.WifiTestActivity" />
