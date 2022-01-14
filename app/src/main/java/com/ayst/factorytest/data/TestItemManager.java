@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.ayst.factorytest.MainActivity;
 import com.ayst.factorytest.items.BacklightTestActivity;
+import com.ayst.factorytest.items.BatteryTestActivity;
 import com.ayst.factorytest.items.BluetoothTestActivity;
 import com.ayst.factorytest.items.CameraTestActivity;
 import com.ayst.factorytest.items.EthernetTestActivity;
@@ -76,7 +77,7 @@ public class TestItemManager {
         mItemTargets.put("摄像头", CameraTestActivity.class);
         mItemTargets.put("人体感应", HumanSensorActivity.class);
         mItemTargets.put("背光", BacklightTestActivity.class);
-        mItemTargets.put("电池", MainActivity.class);
+        mItemTargets.put("电池", BatteryTestActivity.class);
         mItemTargets.put("光感", MainActivity.class);
         mItemTargets.put("温湿度", MainActivity.class);
         mItemTargets.put("G-Sensor", MainActivity.class);
