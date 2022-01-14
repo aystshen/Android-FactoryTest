@@ -8,16 +8,6 @@
     android:padding="5dp"
     tools:context=".items.TouchTestActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:text="请点击所有方格。"
-        android:textSize="@dimen/text_normal"
-        android:textColor="@color/black"/>
-
     <Button
         android:id="@+id/btn_touch1"
         android:layout_width="40dp"
@@ -56,5 +46,15 @@
         android:layout_height="40dp"
         android:layout_centerInParent="true"
         android:background="@drawable/btn_touch_selector"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/btn_touch5"
+        android:layout_marginBottom="20dp"
+        android:text="请点击所有方格。"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@color/black"/>
 
 </RelativeLayout>
