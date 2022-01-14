@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.ayst.factorytest.MainActivity;
 import com.ayst.factorytest.items.BluetoothTestActivity;
+import com.ayst.factorytest.items.CameraTestActivity;
 import com.ayst.factorytest.items.EthernetTestActivity;
 import com.ayst.factorytest.items.InfoTestActivity;
 import com.ayst.factorytest.items.KeyTestActivity;
@@ -70,7 +71,7 @@ public class TestItemManager {
         mItemTargets.put("喇叭", SpeakerTestActivity.class);
         mItemTargets.put("麦克风", RecordTestActivity.class);
         mItemTargets.put("按键", KeyTestActivity.class);
-        mItemTargets.put("摄像头", MainActivity.class);
+        mItemTargets.put("摄像头", CameraTestActivity.class);
         mItemTargets.put("人体感应", MainActivity.class);
         mItemTargets.put("背光", MainActivity.class);
         mItemTargets.put("电池", MainActivity.class);
