@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".items.RecordTestActivity">
+    tools:context=".items.LightSensorActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="请对准麦克风大声说话，检查下面指针是否摆动，声音是否播放正常？"
+        android:text="自动感应光线强度，请检查指针是否同光线强度变化而变化。"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
 
@@ -24,8 +24,8 @@
         app:dbv_firstColor="@color/red"
         app:dbv_secondColor="@color/yellow"
         app:dbv_thirdColor="@color/green"
-        app:dbv_max="0"
-        app:dbv_min="-100"
+        app:dbv_max="5000"
+        app:dbv_min="0"
         app:dbv_section="10"
         app:dbv_portion="10"
         app:dbv_lineWidth="2dp"
@@ -35,7 +35,7 @@
         app:dbv_shortScaleLength="10dp"
         app:dbv_startAngle="180"
         app:dbv_sweepAngle="180"
-        app:dbv_value="-100"
+        app:dbv_value="0"
         app:dbv_showValueText="false"
         app:dbv_showPointerRange="true"
         app:dbv_firstRange="30"

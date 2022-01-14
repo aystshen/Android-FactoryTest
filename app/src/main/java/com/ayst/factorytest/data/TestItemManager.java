@@ -14,6 +14,7 @@ import com.ayst.factorytest.items.HumanSensorActivity;
 import com.ayst.factorytest.items.InfoTestActivity;
 import com.ayst.factorytest.items.KeyTestActivity;
 import com.ayst.factorytest.items.LcdTestActivity;
+import com.ayst.factorytest.items.LightSensorActivity;
 import com.ayst.factorytest.items.MobileNetTestActivity;
 import com.ayst.factorytest.items.RecordTestActivity;
 import com.ayst.factorytest.items.SpeakerTestActivity;
@@ -78,7 +79,7 @@ public class TestItemManager {
         mItemTargets.put("人体感应", HumanSensorActivity.class);
         mItemTargets.put("背光", BacklightTestActivity.class);
         mItemTargets.put("电池", BatteryTestActivity.class);
-        mItemTargets.put("光感", MainActivity.class);
+        mItemTargets.put("光感", LightSensorActivity.class);
         mItemTargets.put("温湿度", MainActivity.class);
         mItemTargets.put("G-Sensor", MainActivity.class);
         mItemTargets.put("麦克风阵列", MainActivity.class);
