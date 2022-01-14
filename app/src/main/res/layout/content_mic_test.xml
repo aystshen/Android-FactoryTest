@@ -40,6 +40,7 @@
         app:dbv_firstRange="30"
         app:dbv_secondRange="40"
         app:dbv_headerText="db"
+        app:dbv_headerTextSize="@dimen/text_normal"
         app:dbv_headerTextColor="@color/black"
         app:dbv_pointerColor="@color/black"
         app:dbv_minPointerColor="@color/black_30"
