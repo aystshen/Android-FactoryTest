@@ -10,6 +10,7 @@ import com.ayst.factorytest.items.EthernetTestActivity;
 import com.ayst.factorytest.items.InfoTestActivity;
 import com.ayst.factorytest.items.LcdTestActivity;
 import com.ayst.factorytest.items.MobileNetTestActivity;
+import com.ayst.factorytest.items.TouchTestActivity;
 import com.ayst.factorytest.items.WifiTestActivity;
 import com.ayst.factorytest.model.TestItem;
 
@@ -62,7 +63,7 @@ public class TestItemManager {
         mItemTargets.put("以太网", EthernetTestActivity.class);
         mItemTargets.put("移动网络", MobileNetTestActivity.class);
         mItemTargets.put("显示", LcdTestActivity.class);
-        mItemTargets.put("触摸", MainActivity.class);
+        mItemTargets.put("触摸", TouchTestActivity.class);
         mItemTargets.put("喇叭", MainActivity.class);
         mItemTargets.put("麦克风", MainActivity.class);
         mItemTargets.put("按键", MainActivity.class);
