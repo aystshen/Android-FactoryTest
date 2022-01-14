@@ -8,6 +8,7 @@ import com.ayst.factorytest.MainActivity;
 import com.ayst.factorytest.items.BluetoothTestActivity;
 import com.ayst.factorytest.items.CameraTestActivity;
 import com.ayst.factorytest.items.EthernetTestActivity;
+import com.ayst.factorytest.items.HumanSensorActivity;
 import com.ayst.factorytest.items.InfoTestActivity;
 import com.ayst.factorytest.items.KeyTestActivity;
 import com.ayst.factorytest.items.LcdTestActivity;
@@ -72,7 +73,7 @@ public class TestItemManager {
         mItemTargets.put("麦克风", RecordTestActivity.class);
         mItemTargets.put("按键", KeyTestActivity.class);
         mItemTargets.put("摄像头", CameraTestActivity.class);
-        mItemTargets.put("人体感应", MainActivity.class);
+        mItemTargets.put("人体感应", HumanSensorActivity.class);
         mItemTargets.put("背光", MainActivity.class);
         mItemTargets.put("电池", MainActivity.class);
         mItemTargets.put("光感", MainActivity.class);

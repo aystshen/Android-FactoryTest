@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FactoryTest">
-        <activity android:name=".items.CameraTestActivity"></activity>
+        <activity android:name=".items.HumanSensorActivity"></activity>
+        <activity android:name=".items.CameraTestActivity" />
         <activity android:name=".items.KeyTestActivity" />
         <activity android:name=".items.RecordTestActivity" />
         <activity android:name=".items.SpeakerTestActivity" />
