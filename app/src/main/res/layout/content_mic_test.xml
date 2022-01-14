@@ -46,7 +46,6 @@
         app:dbv_minPointerColor="@color/black_30"
         app:dbv_maxPointerColor="@color/black_30"
         app:dbv_scaleColor="@color/black"
-        app:dbv_scaleTextSize="@dimen/text_small"
-        />
+        app:dbv_scaleTextSize="@dimen/text_small" />
 
 </LinearLayout>

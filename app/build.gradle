@@ -103,6 +103,9 @@ dependencies {
 
     // DashBoardView
     implementation 'com.ayst.dbv:dashboardview:1.5.2'
+
+    // gson
+    implementation 'com.google.code.gson:gson:2.8.9'
 }
 
 def releaseTime() {
