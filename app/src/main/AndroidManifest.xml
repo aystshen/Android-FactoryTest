@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -20,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FactoryTest">
-        <activity android:name=".items.SpeakerTestActivity"></activity>
+        <activity android:name=".items.RecordTestActivity"></activity>
+        <activity android:name=".items.SpeakerTestActivity" />
         <activity android:name=".items.TouchTestActivity" />
         <activity android:name=".items.LcdTestActivity" />
         <activity android:name=".items.MobileNetTestActivity" />

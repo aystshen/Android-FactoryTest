@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".items.RecordTestActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请对准麦克风大声说话，检查下面指针是否摆动，声音是否播放正常？"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@color/black"/>
+
+    <com.ayst.dbv.DashboardView
+        android:id="@+id/dashboard"
+        android:layout_width="@dimen/dashboard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:dbv_firstColor="@color/red"
+        app:dbv_secondColor="@color/yellow"
+        app:dbv_thirdColor="@color/green"
+        app:dbv_max="0"
+        app:dbv_min="-100"
+        app:dbv_section="10"
+        app:dbv_portion="10"
+        app:dbv_lineWidth="2dp"
+        app:dbv_colorWidth="10dp"
+        app:dbv_colorPadding="10dp"
+        app:dbv_longScaleLength="15dp"
+        app:dbv_shortScaleLength="10dp"
+        app:dbv_startAngle="180"
+        app:dbv_sweepAngle="180"
+        app:dbv_value="-100"
+        app:dbv_showValueText="false"
+        app:dbv_showPointerRange="true"
+        app:dbv_firstRange="30"
+        app:dbv_secondRange="40"
+        app:dbv_headerText="db"
+        app:dbv_headerTextColor="@color/black"
+        app:dbv_pointerColor="@color/black"
+        app:dbv_minPointerColor="@color/black_30"
+        app:dbv_maxPointerColor="@color/black_30"
+        app:dbv_scaleColor="@color/black"
+        app:dbv_scaleTextSize="@dimen/text_small"
+        />
+
+</LinearLayout>
