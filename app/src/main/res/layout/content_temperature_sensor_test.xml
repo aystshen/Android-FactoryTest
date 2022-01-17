@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".items.TemperatureSensorTestActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="下面仪表所指温湿度与专业温湿度器对比是否一致？"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+
+        <com.ayst.dbv.DashboardView
+            android:id="@+id/dashboard_t"
+            android:layout_width="@dimen/dashboard_width"
+            android:layout_height="wrap_content"
+            app:dbv_firstColor="@color/blue"
+            app:dbv_secondColor="@color/green"
+            app:dbv_thirdColor="@color/red"
+            app:dbv_max="100"
+            app:dbv_min="-30"
+            app:dbv_section="13"
+            app:dbv_portion="10"
+            app:dbv_lineWidth="2dp"
+            app:dbv_colorWidth="15dp"
+            app:dbv_colorPadding="10dp"
+            app:dbv_longScaleLength="15dp"
+            app:dbv_shortScaleLength="10dp"
+            app:dbv_startAngle="180"
+            app:dbv_sweepAngle="180"
+            app:dbv_value="0"
+            app:dbv_showValueText="true"
+            app:dbv_showPointerRange="true"
+            app:dbv_firstRange="23"
+            app:dbv_secondRange="25"
+            app:dbv_headerText="℃"
+            app:dbv_headerTextSize="@dimen/text_normal"
+            app:dbv_headerTextColor="@color/black"
+            app:dbv_pointerColor="@color/black"
+            app:dbv_minPointerColor="@color/black_30"
+            app:dbv_maxPointerColor="@color/black_30"
+            app:dbv_scaleColor="@color/black"
+            app:dbv_scaleTextSize="@dimen/text_small" />
+
+        <com.ayst.dbv.DashboardView
+            android:id="@+id/dashboard_h"
+            android:layout_width="@dimen/dashboard_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            app:dbv_firstColor="@color/red"
+            app:dbv_secondColor="@color/green"
+            app:dbv_thirdColor="@color/yellow"
+            app:dbv_max="100"
+            app:dbv_min="0"
+            app:dbv_section="10"
+            app:dbv_portion="10"
+            app:dbv_lineWidth="2dp"
+            app:dbv_colorWidth="15dp"
+            app:dbv_colorPadding="10dp"
+            app:dbv_longScaleLength="15dp"
+            app:dbv_shortScaleLength="10dp"
+            app:dbv_startAngle="180"
+            app:dbv_sweepAngle="180"
+            app:dbv_value="0"
+            app:dbv_showValueText="true"
+            app:dbv_showPointerRange="true"
+            app:dbv_firstRange="30"
+            app:dbv_secondRange="50"
+            app:dbv_headerText="%"
+            app:dbv_headerTextSize="@dimen/text_normal"
+            app:dbv_headerTextColor="@color/black"
+            app:dbv_pointerColor="@color/black"
+            app:dbv_minPointerColor="@color/black_30"
+            app:dbv_maxPointerColor="@color/black_30"
+            app:dbv_scaleColor="@color/black"
+            app:dbv_scaleTextSize="@dimen/text_small" />
+
+    </LinearLayout>
+
+</RelativeLayout>
