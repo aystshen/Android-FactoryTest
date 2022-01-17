@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.ayst.factorytest.MainActivity;
+import com.ayst.factorytest.items.AccSensorActivity;
 import com.ayst.factorytest.items.BacklightTestActivity;
 import com.ayst.factorytest.items.BatteryTestActivity;
 import com.ayst.factorytest.items.BluetoothTestActivity;
@@ -82,7 +83,7 @@ public class TestItemManager {
         mItemTargets.put("电池", BatteryTestActivity.class);
         mItemTargets.put("光感", LightSensorActivity.class);
         mItemTargets.put("温湿度", TemperatureSensorTestActivity.class);
-        mItemTargets.put("G-Sensor", MainActivity.class);
+        mItemTargets.put("加速度", AccSensorActivity.class);
         mItemTargets.put("麦克风阵列", MainActivity.class);
         mItemTargets.put("GPS", MainActivity.class);
         mItemTargets.put("USB", MainActivity.class);
