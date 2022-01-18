@@ -101,7 +101,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             int position = parent.getChildLayoutPosition(child);
-            int column = (position + 1) % 3;
+            int column = (position + 1) % mSpanCount;
             column = column == 0 ? mSpanCount : column;
 
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
