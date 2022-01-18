@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/xui_popup_bg" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/arrow_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="?attr/xui_popup_arrow_up_margin_top"
+        app:srcCompat="?attr/xui_popup_arrow_up" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/arrow_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginBottom="?attr/xui_popup_arrow_down_margin_bottom"
+        app:srcCompat="?attr/xui_popup_arrow_down" />
+
+</FrameLayout>
