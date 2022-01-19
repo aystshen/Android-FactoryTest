@@ -19,6 +19,7 @@ import com.ayst.factorytest.items.LightSensorActivity;
 import com.ayst.factorytest.items.MobileNetTestActivity;
 import com.ayst.factorytest.items.NarTestActivity;
 import com.ayst.factorytest.items.RecordTestActivity;
+import com.ayst.factorytest.items.RegularBootTestActivity;
 import com.ayst.factorytest.items.SpeakerTestActivity;
 import com.ayst.factorytest.items.TemperatureSensorTestActivity;
 import com.ayst.factorytest.items.TouchTestActivity;
@@ -89,7 +90,7 @@ public class TestItemManager {
         mItemTargets.put("USB", MainActivity.class);
         mItemTargets.put("sdcard", MainActivity.class);
         mItemTargets.put("串口", MainActivity.class);
-        mItemTargets.put("定时开关机", MainActivity.class);
+        mItemTargets.put("定时开关机", RegularBootTestActivity.class);
         mItemTargets.put("看门狗", MainActivity.class);
         mItemTargets.put("GPIO", MainActivity.class);
         mItemTargets.put("韦根", MainActivity.class);

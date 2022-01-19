@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FactoryTest">
-        <activity android:name=".items.NarTestActivity"></activity>
+        <activity android:name=".items.RegularBootTestActivity"></activity>
+        <activity android:name=".items.NarTestActivity" />
         <activity android:name=".items.AccSensorActivity" />
         <activity android:name=".items.TemperatureSensorTestActivity" />
         <activity android:name=".items.LightSensorActivity" />
