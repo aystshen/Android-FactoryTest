@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".items.SdcardTestActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="请插入sdcard卡，观察下表是否能正确显示所有设备路径。"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_normal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="1px"
+        android:background="@drawable/bg_recyclerview"/>
+
+</LinearLayout>
