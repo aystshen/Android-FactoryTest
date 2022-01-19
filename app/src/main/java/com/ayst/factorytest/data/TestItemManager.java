@@ -86,7 +86,6 @@ public class TestItemManager {
         mItemTargets.put("温湿度", TemperatureSensorTestActivity.class);
         mItemTargets.put("加速度", AccSensorActivity.class);
         mItemTargets.put("麦克风阵列", NarTestActivity.class);
-        mItemTargets.put("GPS", MainActivity.class);
         mItemTargets.put("USB", MainActivity.class);
         mItemTargets.put("sdcard", MainActivity.class);
         mItemTargets.put("串口", MainActivity.class);
