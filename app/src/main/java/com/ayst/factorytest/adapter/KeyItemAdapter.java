@@ -12,7 +12,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 public class KeyItemAdapter extends BaseQuickAdapter<KeyItem, BaseViewHolder> {
     public KeyItemAdapter() {
-        super(R.layout.layout_key_item);
+        super(R.layout.layout_rv_item);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

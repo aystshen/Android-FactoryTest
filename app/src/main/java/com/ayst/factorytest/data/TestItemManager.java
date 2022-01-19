@@ -17,6 +17,7 @@ import com.ayst.factorytest.items.KeyTestActivity;
 import com.ayst.factorytest.items.LcdTestActivity;
 import com.ayst.factorytest.items.LightSensorActivity;
 import com.ayst.factorytest.items.MobileNetTestActivity;
+import com.ayst.factorytest.items.NarTestActivity;
 import com.ayst.factorytest.items.RecordTestActivity;
 import com.ayst.factorytest.items.SpeakerTestActivity;
 import com.ayst.factorytest.items.TemperatureSensorTestActivity;
@@ -84,7 +85,7 @@ public class TestItemManager {
         mItemTargets.put("光感", LightSensorActivity.class);
         mItemTargets.put("温湿度", TemperatureSensorTestActivity.class);
         mItemTargets.put("加速度", AccSensorActivity.class);
-        mItemTargets.put("麦克风阵列", MainActivity.class);
+        mItemTargets.put("麦克风阵列", NarTestActivity.class);
         mItemTargets.put("GPS", MainActivity.class);
         mItemTargets.put("USB", MainActivity.class);
         mItemTargets.put("sdcard", MainActivity.class);
