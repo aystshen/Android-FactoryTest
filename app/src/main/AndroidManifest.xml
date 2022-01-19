@@ -21,6 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FactoryTest">
+        <activity android:name=".items.UsbTestActivity"></activity>
         <activity android:name=".items.WatchdogTestActivity" />
         <activity android:name=".items.RegularBootTestActivity" />
         <activity android:name=".items.NarTestActivity" />
