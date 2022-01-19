@@ -23,6 +23,7 @@ import com.ayst.factorytest.items.RegularBootTestActivity;
 import com.ayst.factorytest.items.SpeakerTestActivity;
 import com.ayst.factorytest.items.TemperatureSensorTestActivity;
 import com.ayst.factorytest.items.TouchTestActivity;
+import com.ayst.factorytest.items.WatchdogTestActivity;
 import com.ayst.factorytest.items.WifiTestActivity;
 import com.ayst.factorytest.model.TestItem;
 
@@ -91,7 +92,7 @@ public class TestItemManager {
         mItemTargets.put("sdcard", MainActivity.class);
         mItemTargets.put("串口", MainActivity.class);
         mItemTargets.put("定时开关机", RegularBootTestActivity.class);
-        mItemTargets.put("看门狗", MainActivity.class);
+        mItemTargets.put("看门狗", WatchdogTestActivity.class);
         mItemTargets.put("GPIO", MainActivity.class);
         mItemTargets.put("韦根", MainActivity.class);
     }
