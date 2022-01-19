@@ -95,9 +95,7 @@ public class KeyTestActivity extends ChildTestActivity {
                     mKeyItemAdapter.notifyDataSetChanged();
                     mClicked.put(event.getKeyCode(), true);
                     if (mClicked.size() >= mKeyItems.size()) {
-                        mTestItem.setState(TestItem.STATE_SUCCESS);
-                        EventBus.getDefault().post(new ResultEvent(mTestItem));
-                        finish();
+                        finish(TestItem.STATE_SUCCESS);
                     }
                 }
                 return true;

@@ -41,8 +41,6 @@ public class MobileNetTestActivity extends ChildTestActivity {
     @BindView(R.id.tv_imei)
     TextView mImeiTv;
 
-    private Handler mHandler;
-
     private ConnectivityManager.NetworkCallback mNetworkCallback = new ConnectivityManager.NetworkCallback() {
         public void onCapabilitiesChanged(Network network, NetworkCapabilities networkCapabilities) {
             Log.d(TAG, "ConnectivityManager->onCapabilitiesChanged");
@@ -66,8 +64,6 @@ public class MobileNetTestActivity extends ChildTestActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mHandler = new Handler(getMainLooper());
     }
 
     @Override

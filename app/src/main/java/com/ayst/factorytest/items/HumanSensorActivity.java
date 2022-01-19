@@ -101,9 +101,7 @@ public class HumanSensorActivity extends ChildTestActivity {
                         }
                         // 一次状态翻转，视为测试通过。
                         if (mPreState != 0 && mPreState != state) {
-                            mTestItem.setState(TestItem.STATE_SUCCESS);
-                            EventBus.getDefault().post(new ResultEvent(mTestItem));
-                            finish();
+                            finish(TestItem.STATE_SUCCESS);
                         } else {
                             mPreState = state;
                         }

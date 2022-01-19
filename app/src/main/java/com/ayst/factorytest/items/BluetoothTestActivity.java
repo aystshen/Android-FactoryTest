@@ -34,7 +34,6 @@ public class BluetoothTestActivity extends ChildTestActivity {
     @BindView(R.id.lv_bt)
     ListView mDeviceLv;
 
-    private Handler mHandler;
     private DeviceListAdapter mDeviceListAdapter = null;
     private ArrayList<ScanResult> mData = new ArrayList<ScanResult>();
     private BluetoothAdapter mBluetoothAdapter;
@@ -124,7 +123,6 @@ public class BluetoothTestActivity extends ChildTestActivity {
         if (mBluetoothAdapter == null) {
             Log.e(TAG, "not supported");
         }
-        mHandler = new Handler(Looper.getMainLooper());
     }
 
     @Override

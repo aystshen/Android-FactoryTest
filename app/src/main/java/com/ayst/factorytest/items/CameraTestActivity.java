@@ -29,14 +29,11 @@ public class CameraTestActivity extends ChildTestActivity {
     @BindView(R.id.layout_camera)
     FlexboxLayout mCameraLayout;
 
-    private Handler mHandler;
     private List<CameraItem> mCameras = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mHandler = new Handler(Looper.getMainLooper());
     }
 
     @Override

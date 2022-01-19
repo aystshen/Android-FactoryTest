@@ -31,8 +31,6 @@ public class WifiTestActivity extends ChildTestActivity {
     @BindView(R.id.lv_wifi)
     ListView mWifiLv;
 
-    private Handler mHandler;
-
     private WifiInfo mWifiInfo;
     private List<ScanResult> mWifiList;
     private WifiReceiver mWifiReceiver;
@@ -48,7 +46,6 @@ public class WifiTestActivity extends ChildTestActivity {
 
         mWifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         mWifiReceiver = new WifiReceiver();
-        mHandler = new Handler(Looper.getMainLooper());
     }
 
     @Override

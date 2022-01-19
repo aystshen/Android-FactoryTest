@@ -49,9 +49,7 @@ public class TouchTestActivity extends ChildTestActivity {
         view.setSelected(true);
         mClicked.put(view.getId(), true);
         if (mClicked.size() >= POINT_MAX) {
-            mTestItem.setState(TestItem.STATE_SUCCESS);
-            EventBus.getDefault().post(new ResultEvent(mTestItem));
-            finish();
+            finish(TestItem.STATE_SUCCESS);
         }
     }
 }

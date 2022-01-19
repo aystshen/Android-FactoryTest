@@ -30,14 +30,11 @@ public class RecordTestActivity extends ChildTestActivity {
     private int mRecordBufferSize;
     private AudioRecord mAudioRecord;
     private AudioTrack mAudioTrack;
-    private Handler mHandler;
 
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mHandler = new Handler(getMainLooper());
 
         // 创建AudioRecord
         mRecordBufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE_DEFAULT,

@@ -88,9 +88,7 @@ public class AccSensorActivity extends ChildTestActivity {
             mZ = true;
         }
         if (mX && mY && mZ) {
-            mTestItem.setState(TestItem.STATE_SUCCESS);
-            EventBus.getDefault().post(new ResultEvent(mTestItem));
-            finish();
+            finish(TestItem.STATE_SUCCESS);
         }
     }
 

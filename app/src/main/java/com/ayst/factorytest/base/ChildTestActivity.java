@@ -1,6 +1,7 @@
 package com.ayst.factorytest.base;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,8 @@ import com.ayst.factorytest.model.TestItem;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.security.InvalidParameterException;
 
 import butterknife.ButterKnife;
 
@@ -31,6 +34,7 @@ public abstract class ChildTestActivity extends BaseActivity {
     protected Button mFailureBtn;
 
     protected TestItem mTestItem;
+    protected Handler mHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,11 +42,12 @@ public abstract class ChildTestActivity extends BaseActivity {
         setContentView(R.layout.activity_child_base);
 
         mTestItem = (TestItem) getIntent().getSerializableExtra("item");
+        mHandler = new Handler(getMainLooper());
 
         initViews();
     }
 
-    public void initViews() {
+    protected void initViews() {
         mTitleBar = findViewById(R.id.title_bar);
         mFullscreenLayout = findViewById(R.id.layout_fullscreen);
         mContainerLayout = findViewById(R.id.layout_container);
@@ -88,6 +93,23 @@ public abstract class ChildTestActivity extends BaseActivity {
                 finish();
             }
         });
+    }
+
+    protected void finish(int state) {
+        if (state == TestItem.STATE_UNKNOWN
+                || state == TestItem.STATE_SUCCESS
+                || state == TestItem.STATE_FAILURE) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mTestItem.setState(state);
+                    EventBus.getDefault().post(new ResultEvent(mTestItem));
+                    finish();
+                }
+            }, 1000);
+        } else {
+            throw new InvalidParameterException("State must be TestItem.STATE_UNKNOWN/TestItem.STATE_SUCCESS/TestItem.STATE_FAILURE");
+        }
     }
 
     public abstract int getContentLayout();
