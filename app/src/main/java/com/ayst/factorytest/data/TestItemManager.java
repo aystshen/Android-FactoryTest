@@ -11,6 +11,7 @@ import com.ayst.factorytest.items.BatteryTestActivity;
 import com.ayst.factorytest.items.BluetoothTestActivity;
 import com.ayst.factorytest.items.CameraTestActivity;
 import com.ayst.factorytest.items.EthernetTestActivity;
+import com.ayst.factorytest.items.GpioTestActivity;
 import com.ayst.factorytest.items.HumanSensorActivity;
 import com.ayst.factorytest.items.InfoTestActivity;
 import com.ayst.factorytest.items.KeyTestActivity;
@@ -96,7 +97,7 @@ public class TestItemManager {
         mItemTargets.put("串口", UartTestActivity.class);
         mItemTargets.put("定时开关机", RegularBootTestActivity.class);
         mItemTargets.put("看门狗", WatchdogTestActivity.class);
-        mItemTargets.put("GPIO", MainActivity.class);
+        mItemTargets.put("GPIO", GpioTestActivity.class);
         mItemTargets.put("韦根", MainActivity.class);
     }
 
