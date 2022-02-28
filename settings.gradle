@@ -1,2 +1,2 @@
-include ':app', ':xui'
+include ':app', ':xui', ':serialport'
 rootProject.name = "Factory Test"

@@ -24,6 +24,7 @@ import com.ayst.factorytest.items.SdcardTestActivity;
 import com.ayst.factorytest.items.SpeakerTestActivity;
 import com.ayst.factorytest.items.TemperatureSensorTestActivity;
 import com.ayst.factorytest.items.TouchTestActivity;
+import com.ayst.factorytest.items.UartTestActivity;
 import com.ayst.factorytest.items.UsbTestActivity;
 import com.ayst.factorytest.items.WatchdogTestActivity;
 import com.ayst.factorytest.items.WifiTestActivity;
@@ -92,7 +93,7 @@ public class TestItemManager {
         mItemTargets.put("麦克风阵列", NarTestActivity.class);
         mItemTargets.put("USB", UsbTestActivity.class);
         mItemTargets.put("sdcard", SdcardTestActivity.class);
-        mItemTargets.put("串口", MainActivity.class);
+        mItemTargets.put("串口", UartTestActivity.class);
         mItemTargets.put("定时开关机", RegularBootTestActivity.class);
         mItemTargets.put("看门狗", WatchdogTestActivity.class);
         mItemTargets.put("GPIO", MainActivity.class);
