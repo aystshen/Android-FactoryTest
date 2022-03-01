@@ -89,7 +89,7 @@ public class GpioTestActivity extends ChildTestActivity {
             super.run();
 
             int index = mItems.size();
-            while (!interrupted()) {
+            while (!isInterrupted()) {
                 if (index < mItems.size() - 1) {
                     index++;
                 } else {
@@ -109,9 +109,11 @@ public class GpioTestActivity extends ChildTestActivity {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    Log.e(TAG, "TestThread, interrupted");
+                    Log.w(TAG, "TestThread, interrupted");
+                    break;
                 }
             }
+            Log.i(TAG, "TestThread, exit");
         }
     }
 }

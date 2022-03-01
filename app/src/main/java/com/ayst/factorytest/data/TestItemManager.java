@@ -28,6 +28,7 @@ import com.ayst.factorytest.items.TouchTestActivity;
 import com.ayst.factorytest.items.UartTestActivity;
 import com.ayst.factorytest.items.UsbTestActivity;
 import com.ayst.factorytest.items.WatchdogTestActivity;
+import com.ayst.factorytest.items.WiegandTestActivity;
 import com.ayst.factorytest.items.WifiTestActivity;
 import com.ayst.factorytest.model.TestItem;
 
@@ -98,7 +99,7 @@ public class TestItemManager {
         mItemTargets.put("定时开关机", RegularBootTestActivity.class);
         mItemTargets.put("看门狗", WatchdogTestActivity.class);
         mItemTargets.put("GPIO", GpioTestActivity.class);
-        mItemTargets.put("韦根", MainActivity.class);
+        mItemTargets.put("韦根", WiegandTestActivity.class);
     }
 
     private void loadConfig() {

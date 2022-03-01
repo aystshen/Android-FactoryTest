@@ -2,7 +2,9 @@
   <dictionary name="28821">
     <words>
       <w>backlight</w>
+      <w>gpio</w>
       <w>uart</w>
+      <w>wiegand</w>
     </words>
   </dictionary>
 </component>
