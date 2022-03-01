@@ -76,7 +76,6 @@ public class RecordTestActivity extends ChildTestActivity {
 
     @Override
     protected void onDestroy() {
-        stop();
         mAudioRecord.release();
         mAudioTrack.release();
         super.onDestroy();
