@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:text="正在打开摄像头..."
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />

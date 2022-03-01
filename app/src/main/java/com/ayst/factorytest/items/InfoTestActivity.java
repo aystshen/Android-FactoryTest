@@ -64,6 +64,8 @@ public class InfoTestActivity extends ChildTestActivity {
         mSnTv.setText(AppUtils.getSerialNo());
         mRomSizeTv.setText(App.getTBManager().getInternalStorageSize() / 1024 / 1024 + "MB");
         mRamSizeTv.setText(App.getTBManager().getMemorySize() / 1024 / 1024 + "MB");
+        mResolutionTv.setText(App.getTBManager().getScreenWidth(this)
+                + "x" + App.getTBManager().getScreenHeight(this));
         mImeiTv.setText(AppUtils.getIMEI(this));
     }
 }

@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="自动感应光线强度，请检查指针是否同光线强度变化而变化。"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
@@ -19,8 +18,8 @@
         android:id="@+id/dashboard"
         android:layout_width="@dimen/dashboard_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         app:dbv_firstColor="@color/green"
         app:dbv_secondColor="@color/yellow"
         app:dbv_thirdColor="@color/red"

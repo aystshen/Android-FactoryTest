@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="请对准麦克风大声说话，检查下面指针是否摆动，声音是否播放正常？"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
@@ -20,7 +19,8 @@
         android:layout_width="@dimen/dashboard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         app:dbv_firstColor="@color/red"
         app:dbv_secondColor="@color/yellow"
         app:dbv_thirdColor="@color/green"

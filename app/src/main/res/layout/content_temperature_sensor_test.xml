@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="下面仪表所指温湿度与专业温湿度器对比是否一致？"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
@@ -18,9 +17,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:orientation="horizontal"
-        android:layout_centerInParent="true">
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
 
         <com.ayst.dbv.DashboardView
             android:id="@+id/dashboard_t"

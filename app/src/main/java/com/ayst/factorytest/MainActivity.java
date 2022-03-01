@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        WidgetUtils.initGridRecyclerView(mItemsRv, 3, 1, getResources().getColor(R.color.gray));
+        WidgetUtils.initGridRecyclerView(mItemsRv, 4, 1, getResources().getColor(R.color.gray));
         mTestItems = TestItemManager.getInstance().getTestItems();
         mTestItemAdapter = new TestItemAdapter();
         mTestItemAdapter.setList(mTestItems);

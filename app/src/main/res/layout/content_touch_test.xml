@@ -5,45 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="5dp"
+    android:padding="1dp"
     tools:context=".items.TouchTestActivity">
 
     <Button
         android:id="@+id/btn_touch1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/h_margin"
+        android:layout_height="@dimen/h_margin"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/btn_touch_selector"/>
 
     <Button
         android:id="@+id/btn_touch2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/h_margin"
+        android:layout_height="@dimen/h_margin"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/btn_touch_selector"/>
 
     <Button
         android:id="@+id/btn_touch3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/h_margin"
+        android:layout_height="@dimen/h_margin"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/btn_touch_selector"/>
 
     <Button
         android:id="@+id/btn_touch4"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/h_margin"
+        android:layout_height="@dimen/h_margin"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/btn_touch_selector"/>
 
     <Button
         android:id="@+id/btn_touch5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/h_margin"
+        android:layout_height="@dimen/h_margin"
         android:layout_centerInParent="true"
         android:background="@drawable/btn_touch_selector"/>
 

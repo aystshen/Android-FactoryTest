@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
         android:text="各路GPIO将交替输出高低电平（间隔1秒），请查看各路GPIO输出电压是否正常。"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />

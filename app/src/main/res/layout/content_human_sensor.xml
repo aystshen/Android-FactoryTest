@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="请靠近设备，并观察下面圆点是否显示绿色。"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />

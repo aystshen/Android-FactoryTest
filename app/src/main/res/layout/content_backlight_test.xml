@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="请缓慢拖动进度条至最左、最右侧，观察屏幕亮度变化是否线性、自然。"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />
@@ -26,6 +25,5 @@
         android:progress="0"
         app:xsb_insideRangeLineStrokeWidth="10dp"
         app:xsb_outsideRangeLineStrokeWidth="10dp"/>
-
 
 </RelativeLayout>
