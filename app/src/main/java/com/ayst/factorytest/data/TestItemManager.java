@@ -76,28 +76,34 @@ public class TestItemManager {
 
     private void bindTargets() {
         mItemTargets.put("信息", InfoTestActivity.class);
+
+        // 全自动测试项（自动测试项放前面）
         mItemTargets.put("WiFi", WifiTestActivity.class);
         mItemTargets.put("蓝牙", BluetoothTestActivity.class);
         mItemTargets.put("以太网", EthernetTestActivity.class);
         mItemTargets.put("移动网络", MobileNetTestActivity.class);
+        mItemTargets.put("定时开关机", RegularBootTestActivity.class);
+        mItemTargets.put("看门狗", WatchdogTestActivity.class);
+        mItemTargets.put("串口", UartTestActivity.class);
+
+        // 半自动测试项
+        mItemTargets.put("人体感应", HumanSensorActivity.class);
+        mItemTargets.put("加速度", AccSensorActivity.class);
+
+        // 人工测试项（人工测试项放后面）
         mItemTargets.put("显示", LcdTestActivity.class);
         mItemTargets.put("触摸", TouchTestActivity.class);
         mItemTargets.put("喇叭", SpeakerTestActivity.class);
         mItemTargets.put("麦克风", RecordTestActivity.class);
+        mItemTargets.put("麦克风阵列", NarTestActivity.class);
         mItemTargets.put("按键", KeyTestActivity.class);
         mItemTargets.put("摄像头", CameraTestActivity.class);
-        mItemTargets.put("人体感应", HumanSensorActivity.class);
         mItemTargets.put("背光", BacklightTestActivity.class);
         mItemTargets.put("电池", BatteryTestActivity.class);
         mItemTargets.put("光感", LightSensorActivity.class);
         mItemTargets.put("温湿度", TemperatureSensorTestActivity.class);
-        mItemTargets.put("加速度", AccSensorActivity.class);
-        mItemTargets.put("麦克风阵列", NarTestActivity.class);
         mItemTargets.put("USB", UsbTestActivity.class);
         mItemTargets.put("sdcard", SdcardTestActivity.class);
-        mItemTargets.put("串口", UartTestActivity.class);
-        mItemTargets.put("定时开关机", RegularBootTestActivity.class);
-        mItemTargets.put("看门狗", WatchdogTestActivity.class);
         mItemTargets.put("GPIO", GpioTestActivity.class);
         mItemTargets.put("韦根", WiegandTestActivity.class);
     }
