@@ -95,8 +95,10 @@ public class HumanSensorActivity extends ChildTestActivity {
                     public void onSensorChanged(SensorEvent event) {
                         float state = event.values[0];
                         if (state == STATE_NEAR) {
+                            mStateView.setSelected(true);
                             mTipsTv.setText("请保持静止(5秒)，并观察下面圆点是否显示灰色。");
                         } else if (state == STATE_FAR) {
+                            mStateView.setSelected(false);
                             mTipsTv.setText("请靠近设备，并观察下面圆点是否显示绿色。");
                         }
                         // 一次状态翻转，视为测试通过。
