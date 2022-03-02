@@ -1,11 +1,14 @@
 package com.ayst.factorytest.items;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
 
 import com.ayst.factorytest.App;
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.ayst.factorytest.model.TestItem;
 
 import butterknife.BindView;
 
@@ -26,6 +29,17 @@ public class EthernetTestActivity extends ChildTestActivity {
     @BindView(R.id.tv_mode)
     TextView mModeTv;
 
+    private static boolean ipCheck(String str) {
+        if (!TextUtils.isEmpty(str)) {
+            String regex = "^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])\\." +
+                    "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\." +
+                    "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\." +
+                    "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)$";
+            return str.matches(regex);
+        }
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +59,27 @@ public class EthernetTestActivity extends ChildTestActivity {
     public void initViews() {
         super.initViews();
 
-        mMacTv.setText(App.getTBManager().getEthMac());
-        mIpTv.setText(App.getTBManager().getIp("eth0"));
-        mNetmaskTv.setText(App.getTBManager().getNetmask("eth0"));
-        mGatewayTv.setText(App.getTBManager().getGateway("eth0"));
+        mSuccessBtn.setVisibility(View.GONE);
+
+        String mac = App.getTBManager().getEthMac();
+        String ip = App.getTBManager().getIp("eth0");
+        String netmask = App.getTBManager().getNetmask("eth0");
+        String gateway = App.getTBManager().getGateway("eth0");
+        String mode = App.getTBManager().getIpAssignment("eth0");
+
+        mMacTv.setText(mac);
+        mIpTv.setText(ip);
+        mNetmaskTv.setText(netmask);
+        mGatewayTv.setText(gateway);
         mDns1Tv.setText(App.getTBManager().getDns1("eth0"));
         mDns2Tv.setText(App.getTBManager().getDns2("eth0"));
-        mModeTv.setText(App.getTBManager().getIpAssignment("eth0"));
+        mModeTv.setText(mode);
+
+        if (!TextUtils.isEmpty(mac) && ipCheck(ip) && ipCheck(netmask) && ipCheck(gateway)
+                && (TextUtils.equals(mode, "DHCP") || TextUtils.equals(mode, "STATIC"))) {
+            finish(TestItem.STATE_SUCCESS);
+        } else {
+            finish(TestItem.STATE_FAILURE);
+        }
     }
 }

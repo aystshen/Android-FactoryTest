@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.ayst.factorytest.model.TestItem;
 
 import java.util.ArrayList;
 
@@ -61,6 +62,8 @@ public class BluetoothTestActivity extends ChildTestActivity {
                     mData.add(new ScanResult(device, result.getRssi()));
                     mDeviceListAdapter.notifyDataSetChanged();
                     mDeviceLv.setVisibility(View.VISIBLE);
+
+                    finish(TestItem.STATE_SUCCESS);
                 }
             });
         }
@@ -109,6 +112,8 @@ public class BluetoothTestActivity extends ChildTestActivity {
                 mData.add(new ScanResult(device, rssi));
                 mDeviceListAdapter.notifyDataSetChanged();
                 mDeviceLv.setVisibility(View.VISIBLE);
+
+                finish(TestItem.STATE_SUCCESS);
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 scan(true);
             }
@@ -133,6 +138,13 @@ public class BluetoothTestActivity extends ChildTestActivity {
     @Override
     public int getFullscreenLayout() {
         return 0;
+    }
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+
+        mSuccessBtn.setVisibility(View.GONE);
     }
 
     @Override

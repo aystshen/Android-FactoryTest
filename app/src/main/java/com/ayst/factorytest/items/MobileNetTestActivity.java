@@ -11,13 +11,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.ayst.factorytest.model.TestItem;
 import com.ayst.factorytest.utils.AppUtils;
 
 import butterknife.BindView;
@@ -80,8 +83,18 @@ public class MobileNetTestActivity extends ChildTestActivity {
     public void initViews() {
         super.initViews();
 
+        mSuccessBtn.setVisibility(View.GONE);
+
+        String imei = AppUtils.getIMEI(this);
+
 //        mSignalTv.setText();
-        mImeiTv.setText(AppUtils.getIMEI(this));
+        mImeiTv.setText(imei);
+
+        if (!TextUtils.isEmpty(imei)) {
+            finish(TestItem.STATE_SUCCESS);
+        } else {
+            finish(TestItem.STATE_FAILURE);
+        }
     }
 
     @Override

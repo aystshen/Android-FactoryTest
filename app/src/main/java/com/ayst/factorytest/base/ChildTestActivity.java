@@ -35,6 +35,7 @@ public abstract class ChildTestActivity extends BaseActivity {
 
     protected TestItem mTestItem;
     protected Handler mHandler;
+    protected boolean isFinished = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,18 +96,21 @@ public abstract class ChildTestActivity extends BaseActivity {
         });
     }
 
-    protected void finish(int state) {
+    protected synchronized void finish(int state) {
         if (state == TestItem.STATE_UNKNOWN
                 || state == TestItem.STATE_SUCCESS
                 || state == TestItem.STATE_FAILURE) {
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mTestItem.setState(state);
-                    EventBus.getDefault().post(new ResultEvent(mTestItem));
-                    finish();
-                }
-            }, 1000);
+            if (!isFinished) {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mTestItem.setState(state);
+                        EventBus.getDefault().post(new ResultEvent(mTestItem));
+                        finish();
+                    }
+                }, 1000);
+                isFinished = true;
+            }
         } else {
             throw new InvalidParameterException("State must be TestItem.STATE_UNKNOWN/TestItem.STATE_SUCCESS/TestItem.STATE_FAILURE");
         }

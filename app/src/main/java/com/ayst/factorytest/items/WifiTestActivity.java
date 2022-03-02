@@ -20,6 +20,7 @@ import android.widget.ListView;
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.adapter.WifiListAdapter;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.ayst.factorytest.model.TestItem;
 
 import java.util.List;
 
@@ -56,6 +57,13 @@ public class WifiTestActivity extends ChildTestActivity {
     @Override
     public int getFullscreenLayout() {
         return 0;
+    }
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+
+        mSuccessBtn.setVisibility(View.GONE);
     }
 
     @Override
@@ -157,6 +165,10 @@ public class WifiTestActivity extends ChildTestActivity {
         }
         mWifiAdapter.updateList(mWifiList);
         mWifiAdapter.notifyDataSetChanged();
+
+        if (!mWifiList.isEmpty()) {
+            finish(TestItem.STATE_SUCCESS);
+        }
     }
 
     private void updateConnectionState(NetworkInfo.DetailedState state) {
