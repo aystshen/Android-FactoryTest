@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.topband.tbapi.** {*;}
+-keep class com.ayst.androidx.** {*;}
+-keep class com.ayst.nd01sdk.** {*;}
+-keep class com.ayst.audio.** {*;}
+-keep class android.os.** {*;}
