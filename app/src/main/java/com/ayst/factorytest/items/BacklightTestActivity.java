@@ -3,11 +3,11 @@ package com.ayst.factorytest.items;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.SeekBar;
 
 import com.ayst.factorytest.App;
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
-import com.xuexiang.xui.widget.picker.XSeekBar;
 
 import butterknife.BindView;
 
@@ -15,7 +15,7 @@ public class BacklightTestActivity extends ChildTestActivity {
     private static final String TAG = "BacklightTestActivity";
 
     @BindView(R.id.seekbar_backlight)
-    XSeekBar mBacklightSeekBar;
+    SeekBar mBacklightSeekBar;
 
     private int mBrightnessDefault;
 
@@ -40,11 +40,21 @@ public class BacklightTestActivity extends ChildTestActivity {
     public void initViews() {
         super.initViews();
 
-        mBacklightSeekBar.setDefaultValue(getBrightness());
-        mBacklightSeekBar.setOnSeekBarListener(new XSeekBar.OnSeekBarListener() {
+        mBacklightSeekBar.setProgress(getBrightness());
+        mBacklightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onValueChanged(XSeekBar seekBar, int newValue) {
-                App.getTBManager().setBrightness(newValue);
+            public void onProgressChanged(SeekBar seekBar, int value, boolean b) {
+                App.getTBManager().setBrightness(value);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
     }
