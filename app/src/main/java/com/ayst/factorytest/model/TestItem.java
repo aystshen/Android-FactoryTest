@@ -53,6 +53,18 @@ public class TestItem implements Serializable {
         this.state = state;
     }
 
+    public String getStateStr() {
+        switch (state) {
+            case STATE_UNKNOWN:
+                return "忽略";
+            case STATE_SUCCESS:
+                return "通过";
+            case STATE_FAILURE:
+                return "失败";
+        }
+        return "忽略";
+    }
+
     @Override
     public String toString() {
         return "TestItem{" +

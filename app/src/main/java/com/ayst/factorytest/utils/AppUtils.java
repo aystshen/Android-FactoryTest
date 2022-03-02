@@ -438,7 +438,7 @@ public class AppUtils {
 
                     if (sdcardDir.canWrite()) {
                         String dir = sdcardDir.getAbsolutePath()
-                                + File.separator + "agingtest";
+                                + File.separator + "factorytest";
                         File file = new File(dir);
                         if (!file.exists()) {
                             Log.i(TAG, "getExternalRootDir, dir not exist and make dir");

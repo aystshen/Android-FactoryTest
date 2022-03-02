@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ayst.factorytest.adapter.TestItemAdapter;
 import com.ayst.factorytest.base.BaseActivity;
 import com.ayst.factorytest.data.TestItemManager;
+import com.ayst.factorytest.data.TestResultExport;
 import com.ayst.factorytest.model.ResultEvent;
 import com.ayst.factorytest.model.TestItem;
 import com.blankj.utilcode.util.AppUtils;
@@ -126,6 +127,7 @@ public class MainActivity extends BaseActivity {
             mNextItem++;
         } else {
             mNextItem = INVALID_ITEM;
+            new TestResultExport(this, mTestItems).export();
         }
     }
 }
