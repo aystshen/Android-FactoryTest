@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#396490</color>
-    <color name="colorPrimaryDark">#102026</color>
-    <color name="colorAccent">#396490</color>
+    <color name="colorPrimary">#3c3f41</color>
+    <color name="colorPrimaryDark">#2b2b2b</color>
+    <color name="colorAccent">#3c3f41</color>
 
     <color name="bg">#ffebedee</color>
 
     <color name="transparent">#00000000</color>
     <color name="yellow">#fffdfe29</color>
-    <color name="green">#ff0bbb10</color>
-    <color name="green_50">#800bbb10</color>
+    <color name="green">#ff558759</color>
+    <color name="green_50">#80558759</color>
     <color name="orange">#fffa9d3e</color>
-    <color name="gray">#ffc6c6c6</color>
-    <color name="gray_50">#80c6c6c6</color>
-    <color name="red">#ffff0000</color>
-    <color name="red_50">#80ff0000</color>
+    <color name="gray">#fff2f2f2</color>
+    <color name="gray_50">#80f2f2f2</color>
+    <color name="red">#fff15c58</color>
+    <color name="red_50">#80f15c58</color>
     <color name="orange_red">#ffe6615c</color>
     <color name="orange_red_50">#80e6615c</color>
 
