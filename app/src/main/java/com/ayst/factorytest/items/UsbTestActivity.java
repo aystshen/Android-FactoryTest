@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Build;
@@ -63,7 +64,11 @@ public class UsbTestActivity extends ChildTestActivity {
     protected void initViews() {
         super.initViews();
 
-        WidgetUtils.initGridRecyclerView(mItemsRv, 2, 1, getResources().getColor(R.color.gray));
+        int spanCount = 2;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            spanCount = 1;
+        }
+        WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
         mStringItemAdapter = new StringItemAdapter();
         mStringItemAdapter.setList(mItems);
         mItemsRv.setAdapter(mStringItemAdapter);

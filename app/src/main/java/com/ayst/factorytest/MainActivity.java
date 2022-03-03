@@ -1,6 +1,7 @@
 package com.ayst.factorytest;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -69,7 +70,11 @@ public class MainActivity extends BaseActivity {
 
         mVersionTv.setText(AppUtils.getAppVersionName());
 
-        WidgetUtils.initGridRecyclerView(mItemsRv, 4, 1, getResources().getColor(R.color.gray));
+        int spanCount = 4;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            spanCount = 2;
+        }
+        WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
         mTestItems = TestItemManager.getInstance().getTestItems();
         mTestItemAdapter = new TestItemAdapter();
         mTestItemAdapter.setList(mTestItems);

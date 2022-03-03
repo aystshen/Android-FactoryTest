@@ -1,5 +1,6 @@
 package com.ayst.factorytest.items;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -76,7 +77,11 @@ public class KeyTestActivity extends ChildTestActivity {
 
         Log.i(TAG, "initViews, param: " + mTestItem.getParam());
 
-        WidgetUtils.initGridRecyclerView(mItemsRv, 3, 1, getResources().getColor(R.color.gray));
+        int spanCount = 2;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            spanCount = 1;
+        }
+        WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
         mKeyItems = parseParam(mTestItem.getParam());
         mKeyItemAdapter = new KeyItemAdapter();
         mKeyItemAdapter.setList(mKeyItems);

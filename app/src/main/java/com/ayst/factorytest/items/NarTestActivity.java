@@ -1,5 +1,6 @@
 package com.ayst.factorytest.items;
 
+import android.content.res.Configuration;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
@@ -87,7 +88,11 @@ public class NarTestActivity extends ChildTestActivity {
 
         mNarParam = parseParam(mTestItem.getParam());
 
-        WidgetUtils.initGridRecyclerView(mItemsRv, 2, 1, getResources().getColor(R.color.gray));
+        int spanCount = 2;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            spanCount = 1;
+        }
+        WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
         for (int i = 0; i < mNarParam.getChannels(); i++) {
             mNarItems.add(0.0);
         }

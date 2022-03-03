@@ -1,5 +1,6 @@
 package com.ayst.factorytest.items;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -57,7 +58,11 @@ public class GpioTestActivity extends ChildTestActivity {
             setGpio(i, GpioItem.STATE_LOW);
         }
 
-        WidgetUtils.initGridRecyclerView(mItemsRv, 3, 1, getResources().getColor(R.color.gray));
+        int spanCount = 2;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            spanCount = 1;
+        }
+        WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
         mGpioItemAdapter = new GpioItemAdapter();
         mGpioItemAdapter.setList(mItems);
         mItemsRv.setAdapter(mGpioItemAdapter);

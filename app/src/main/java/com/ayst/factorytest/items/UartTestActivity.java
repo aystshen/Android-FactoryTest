@@ -1,5 +1,6 @@
 package com.ayst.factorytest.items;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.serialport.SerialPort;
@@ -81,7 +82,11 @@ public class UartTestActivity extends ChildTestActivity {
 
         Log.i(TAG, "initViews, param: " + mTestItem.getParam());
 
-        WidgetUtils.initGridRecyclerView(mItemsRv, 3, 1, getResources().getColor(R.color.gray));
+        int spanCount = 2;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            spanCount = 1;
+        }
+        WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
         mUartItems = parseParam(mTestItem.getParam());
         mUartItemAdapter = new UartItemAdapter();
         mUartItemAdapter.setList(mUartItems);
