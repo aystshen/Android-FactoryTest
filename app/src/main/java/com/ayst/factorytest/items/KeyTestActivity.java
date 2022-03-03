@@ -12,13 +12,10 @@ import com.ayst.factorytest.R;
 import com.ayst.factorytest.adapter.KeyItemAdapter;
 import com.ayst.factorytest.base.ChildTestActivity;
 import com.ayst.factorytest.model.KeyItem;
-import com.ayst.factorytest.model.ResultEvent;
 import com.ayst.factorytest.model.TestItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xuexiang.xui.utils.WidgetUtils;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
