@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Factory Test</string>
+    <string name="app_name">工厂测试</string>
 
     <!--    WiFiTestActivity-->
     <string name="wifi_test_connected">Connected</string>
