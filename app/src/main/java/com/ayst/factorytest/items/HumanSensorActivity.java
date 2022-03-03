@@ -99,7 +99,7 @@ public class HumanSensorActivity extends ChildTestActivity {
                             mTipsTv.setText("请保持静止(5秒)，并观察下面圆点是否显示灰色。");
                         } else if (state == STATE_FAR) {
                             mStateView.setSelected(false);
-                            mTipsTv.setText("请靠近设备，并观察下面圆点是否显示绿色。");
+                            mTipsTv.setText("请靠近设备，并观察下面圆点是否显示黄色。");
                         }
                         // 一次状态翻转，视为测试通过。
                         if (mPreState != 0 && mPreState != state) {
