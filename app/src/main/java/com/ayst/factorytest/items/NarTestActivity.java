@@ -18,6 +18,7 @@ import com.ayst.factorytest.R;
 import com.ayst.factorytest.adapter.NarItemAdapter;
 import com.ayst.factorytest.base.ChildTestActivity;
 import com.ayst.factorytest.model.NarParam;
+import com.blankj.utilcode.util.VolumeUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xuexiang.xui.utils.WidgetUtils;
@@ -32,7 +33,7 @@ import butterknife.BindView;
 public class NarTestActivity extends ChildTestActivity {
     private static final String TAG = "NarTestActivity";
 
-    private static final String PARAM_DEFAULT = "{'card':0, 'device': 1, 'channels': 4, 'rate':16000, 'bits':16, 'period_size':1024, 'period_cnt':3, 'play_channel':0}";
+    private static final String PARAM_DEFAULT = "{'card':0, 'device': 1, 'channels': 4, 'rate':16000, 'bits':16, 'period_size':1024, 'period_cnt':3, 'play_channel':2}";
 
     private static final int MESSAGE_UPDATE_VOL = 1;
 
@@ -121,6 +122,11 @@ public class NarTestActivity extends ChildTestActivity {
 
     private void start() {
         Log.i(TAG, "start...");
+
+        // 音量调取最大
+        VolumeUtils.setVolume(AudioManager.STREAM_MUSIC,
+                VolumeUtils.getMaxVolume(AudioManager.STREAM_MUSIC),
+                AudioManager.FLAG_SHOW_UI);
 
         // 开始录音
         mAudioRecord.start();
