@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +43,8 @@ public class MainActivity extends BaseActivity {
     RecyclerView mItemsRv;
     @BindView(R.id.btn_start)
     Button mStartBtn;
+    @BindView(R.id.tv_version)
+    TextView mVersionTv;
 
     private int mNextItem = INVALID_ITEM;
     private ArrayList<TestItem> mTestItems;
@@ -64,6 +66,8 @@ public class MainActivity extends BaseActivity {
                 AppUtils.exitApp();
             }
         });
+
+        mVersionTv.setText(AppUtils.getAppVersionName());
 
         WidgetUtils.initGridRecyclerView(mItemsRv, 4, 1, getResources().getColor(R.color.gray));
         mTestItems = TestItemManager.getInstance().getTestItems();
