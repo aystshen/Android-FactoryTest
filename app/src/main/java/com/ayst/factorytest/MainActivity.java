@@ -123,6 +123,12 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        AppUtils.exitApp();
+    }
+
     private void next() {
         if (mNextItem < mTestItems.size()) {
             TestItem item = mTestItems.get(mNextItem);
