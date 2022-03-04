@@ -10,40 +10,40 @@
 
     <Button
         android:id="@+id/btn_touch1"
-        android:layout_width="@dimen/h_margin"
-        android:layout_height="@dimen/h_margin"
+        android:layout_width="@dimen/touch_size"
+        android:layout_height="@dimen/touch_size"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/btn_touch_selector"/>
 
     <Button
         android:id="@+id/btn_touch2"
-        android:layout_width="@dimen/h_margin"
-        android:layout_height="@dimen/h_margin"
+        android:layout_width="@dimen/touch_size"
+        android:layout_height="@dimen/touch_size"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/btn_touch_selector"/>
 
     <Button
         android:id="@+id/btn_touch3"
-        android:layout_width="@dimen/h_margin"
-        android:layout_height="@dimen/h_margin"
+        android:layout_width="@dimen/touch_size"
+        android:layout_height="@dimen/touch_size"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/btn_touch_selector"/>
 
     <Button
         android:id="@+id/btn_touch4"
-        android:layout_width="@dimen/h_margin"
-        android:layout_height="@dimen/h_margin"
+        android:layout_width="@dimen/touch_size"
+        android:layout_height="@dimen/touch_size"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/btn_touch_selector"/>
 
     <Button
         android:id="@+id/btn_touch5"
-        android:layout_width="@dimen/h_margin"
-        android:layout_height="@dimen/h_margin"
+        android:layout_width="@dimen/touch_size"
+        android:layout_height="@dimen/touch_size"
         android:layout_centerInParent="true"
         android:background="@drawable/btn_touch_selector"/>
 

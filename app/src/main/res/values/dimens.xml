@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Font-->
     <dimen name="text_big">18sp</dimen>
     <dimen name="text_normal">14sp</dimen>
     <dimen name="text_small">12sp</dimen>
     <dimen name="text_small_small">8sp</dimen>
 
+    <!--Layout-->
     <dimen name="h_margin">50dp</dimen>
     <dimen name="v_margin">40dp</dimen>
     <dimen name="btn_height">50dp</dimen>
     <dimen name="title_height">60dp</dimen>
     <dimen name="item_height">140dp</dimen>
     <dimen name="content_item_height">100dp</dimen>
+    <dimen name="touch_size">40dp</dimen>
+
+    <!--DashBoard-->
     <dimen name="dashboard_width">500dp</dimen>
+    <dimen name="dashboard_color_width">15dp</dimen>
+    <dimen name="dashboard_color_padding">10dp</dimen>
+    <dimen name="dashboard_long_scale_length">15dp</dimen>
+    <dimen name="dashboard_short_scale_length">10dp</dimen>
 </resources>

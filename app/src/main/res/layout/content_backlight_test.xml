@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:maxHeight="10dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginStart="@dimen/h_margin"
+        android:layout_marginEnd="@dimen/h_margin"
         android:max="255"
         android:progress="0"/>
 

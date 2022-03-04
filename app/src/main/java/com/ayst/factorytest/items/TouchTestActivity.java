@@ -5,10 +5,7 @@ import android.view.View;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
-import com.ayst.factorytest.model.ResultEvent;
 import com.ayst.factorytest.model.TestItem;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 
