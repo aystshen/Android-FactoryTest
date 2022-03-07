@@ -136,7 +136,7 @@ public class UartTestActivity extends ChildTestActivity {
             mReadThread.start();
 
             mOutputStream.write(DataConversion.decodeHexString(uart.getSend()));
-        } catch (IOException e) {
+        } catch (Exception e) {
             Log.e(TAG, "testUart, error: " + e.getMessage());
 
             uart.setState(UartItem.STATE_FAILURE);
