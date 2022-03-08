@@ -18,6 +18,7 @@ import com.ayst.factorytest.items.KeyTestActivity;
 import com.ayst.factorytest.items.LcdTestActivity;
 import com.ayst.factorytest.items.LightSensorActivity;
 import com.ayst.factorytest.items.MobileNetTestActivity;
+import com.ayst.factorytest.items.ND01TestActivity;
 import com.ayst.factorytest.items.NarTestActivity;
 import com.ayst.factorytest.items.RecordTestActivity;
 import com.ayst.factorytest.items.RegularBootTestActivity;
@@ -106,6 +107,7 @@ public class TestItemManager {
         mItemTargets.put("sdcard", SdcardTestActivity.class);
         mItemTargets.put("GPIO", GpioTestActivity.class);
         mItemTargets.put("韦根", WiegandTestActivity.class);
+        mItemTargets.put("物距", ND01TestActivity.class);
     }
 
     private void loadConfig() {

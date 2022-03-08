@@ -10,7 +10,8 @@
         android:name="android.permission.LOCAL_MAC_ADDRESS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+    <uses-permission
+        android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
@@ -22,6 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FactoryTest">
+        <activity android:name=".items.ND01TestActivity"></activity>
         <activity android:name=".items.WiegandTestActivity" />
         <activity android:name=".items.GpioTestActivity" />
         <activity android:name=".items.UartTestActivity" />
