@@ -11,24 +11,25 @@ import android.widget.TextView;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.ayst.factorytest.model.ND01Param;
 import com.ayst.factorytest.model.TestItem;
 import com.ayst.factorytest.utils.AppUtils;
 import com.ayst.nd01sdk.ND01;
 import com.ayst.nd01sdk.ND01Data;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 import butterknife.BindView;
 
 public class ND01TestActivity extends ChildTestActivity implements View.OnClickListener {
     private static final String TAG = "ND01TestActivity";
 
-    private static final String PARAM_DEFAULT = "{'i2c': 1}";
+    private static final String PARAM_DEFAULT = "{'i2c': 1, 'calibrate': true}";
 
     @BindView(R.id.layout_cal1)
     LinearLayout mCal1Layout;
@@ -47,9 +48,10 @@ public class ND01TestActivity extends ChildTestActivity implements View.OnClickL
     @BindView(R.id.tv_distance)
     TextView mDistanceTv;
 
-    private int mI2C = 1;
     private ND01 mND01;
     private RangingThread mRangingThread;
+    private Gson mGson = new Gson();
+    private ND01Param mND01Param;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +61,18 @@ public class ND01TestActivity extends ChildTestActivity implements View.OnClickL
         new Thread(new Runnable() {
             @Override
             public void run() {
-                if (mND01.init(mI2C, ND01.ND01_DEVICEMODE_CONTINUOUS_RANGING) == 0) {
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mCal1Btn.setEnabled(true);
-                        }
-                    });
+                if (mND01.init(mND01Param.getI2c(), ND01.ND01_DEVICEMODE_CONTINUOUS_RANGING) == 0) {
+                    if (mND01Param.getCalibrate()) { // 需要标定，显示标定按钮
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mCal1Btn.setEnabled(true);
+                            }
+                        });
+                    } else { // 不需要标定，直接开始测量
+                        mRangingThread = new RangingThread();
+                        mRangingThread.start();
+                    }
                 } else {
                     finish(TestItem.STATE_FAILURE);
                 }
@@ -93,14 +100,19 @@ public class ND01TestActivity extends ChildTestActivity implements View.OnClickL
 
         Log.i(TAG, "onCreate, param: " + mTestItem.getParam());
 
-        parseParam(mTestItem.getParam());
+        mND01Param = parseParam(mTestItem.getParam());
 
-        mSuccessBtn.setVisibility(View.GONE);
-
-        mCal1Btn.setOnClickListener(this);
-        mCal2Btn.setOnClickListener(this);
-        mStep1Btn.setOnClickListener(this);
-        mStep2Btn.setOnClickListener(this);
+        if (mND01Param.getCalibrate()) { // 需要标定
+            mSuccessBtn.setVisibility(View.GONE);
+            mCal1Btn.setOnClickListener(this);
+            mCal2Btn.setOnClickListener(this);
+            mStep1Btn.setOnClickListener(this);
+            mStep2Btn.setOnClickListener(this);
+        } else { // 不需要标定
+            mCal1Layout.setVisibility(View.INVISIBLE);
+            mCal2Layout.setVisibility(View.INVISIBLE);
+            mDistanceLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -112,15 +124,10 @@ public class ND01TestActivity extends ChildTestActivity implements View.OnClickL
         }
     }
 
-    private void parseParam(String json) {
-        if (!TextUtils.isEmpty(json)) {
-            try {
-                JSONObject obj = new JSONObject(json);
-                mI2C = obj.getInt("i2c");
-            } catch (JSONException e) {
-                Log.e(TAG, "parseParam, " + e.getMessage());
-            }
-        }
+    private ND01Param parseParam(String param) {
+        Type type = new TypeToken<ND01Param>() {
+        }.getType();
+        return mGson.fromJson(param, type);
     }
 
     @Override
