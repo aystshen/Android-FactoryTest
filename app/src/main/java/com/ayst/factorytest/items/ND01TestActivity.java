@@ -82,7 +82,7 @@ public class ND01TestActivity extends ChildTestActivity implements View.OnClickL
 
     @Override
     public int getContentLayout() {
-        return R.layout.content_n_d01_test;
+        return R.layout.content_nd01_test;
     }
 
     @Override

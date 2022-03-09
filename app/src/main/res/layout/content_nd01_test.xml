@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="0厘米"
+            android:text="0mm"
             android:textColor="@color/black"
             android:textSize="@dimen/text_big"
             android:textStyle="bold" />
