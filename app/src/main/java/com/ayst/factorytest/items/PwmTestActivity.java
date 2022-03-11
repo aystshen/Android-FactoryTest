@@ -119,10 +119,6 @@ public class PwmTestActivity extends ChildTestActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        for (PwmItem pwm : mPwmItems) {
-            initPwm(pwm.getPwm(), pwm.getPeriod(), 0, false);
-        }
-
         if (mPwmItems.size() > 0) {
             mTestThread = new TestThread();
             mTestThread.start();
@@ -199,6 +195,10 @@ public class PwmTestActivity extends ChildTestActivity {
         @Override
         public void run() {
             super.run();
+
+            for (PwmItem pwm : mPwmItems) {
+                initPwm(pwm.getPwm(), pwm.getPeriod(), 0, false);
+            }
 
             int index = mPwmItems.size();
             while (!isInterrupted()) {
