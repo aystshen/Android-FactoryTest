@@ -20,6 +20,7 @@ import com.ayst.factorytest.items.LightSensorActivity;
 import com.ayst.factorytest.items.MobileNetTestActivity;
 import com.ayst.factorytest.items.ND01TestActivity;
 import com.ayst.factorytest.items.NarTestActivity;
+import com.ayst.factorytest.items.PwmTestActivity;
 import com.ayst.factorytest.items.RecordTestActivity;
 import com.ayst.factorytest.items.RegularBootTestActivity;
 import com.ayst.factorytest.items.SdcardTestActivity;
@@ -108,6 +109,7 @@ public class TestItemManager {
         mItemTargets.put("GPIO", GpioTestActivity.class);
         mItemTargets.put("韦根", WiegandTestActivity.class);
         mItemTargets.put("物距", ND01TestActivity.class);
+        mItemTargets.put("PWM", PwmTestActivity.class);
     }
 
     private void loadConfig() {

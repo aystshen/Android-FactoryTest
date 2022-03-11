@@ -23,5 +23,7 @@
   {"name": "USB", "param": ""},
   {"name": "sdcard", "param": ""},
   {"name": "GPIO", "param": ""},
-  {"name": "韦根", "param": "{'write': {'format': 26, 'value': 7825015}, 'read': {'format': 26, 'value': 0}}"}
+  {"name": "韦根", "param": "{'write': {'format': 26, 'value': 7825015}, 'read': {'format': 26, 'value': 0}}"},
+  {"name": "物距", "param": "{'i2c': 1, 'calibrate': true}"},
+  {"name": "PWM", "param": "[{'name': '红色LED', 'pwm': 0, 'period': 10000, 'duty': 1000, 'state': 0}, {'name': '绿色LED', 'pwm': 1, 'period': 10000, 'duty': 1000, 'state': 0}, {'name': '蓝色LED', 'pwm': 2, 'period': 10000, 'duty': 1000, 'state': 0}]"}
 ]
