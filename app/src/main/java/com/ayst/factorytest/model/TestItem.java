@@ -12,16 +12,34 @@ public class TestItem implements Serializable {
     public static final int STATE_FAILURE = 1;
     public static final int STATE_SUCCESS = 2;
 
+    private String key;
     private String name;
     private String param;
     private Class<? extends Activity> activity;
     private int state = STATE_UNKNOWN;
 
-    public TestItem(String name, String param, Class<? extends Activity> activity, int state) {
+    public TestItem(String key, String name, String param, Class<? extends Activity> activity, int state) {
+        this.key = key;
         this.name = name;
         this.param = param;
         this.activity = activity;
         this.state = state;
+    }
+
+    public TestItem(String name, Class<? extends Activity> activity) {
+        this.key = "";
+        this.name = name;
+        this.param = "";
+        this.activity = activity;
+        this.state = STATE_UNKNOWN;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getName() {
@@ -71,7 +89,8 @@ public class TestItem implements Serializable {
     @Override
     public String toString() {
         return "TestItem{" +
-                "name='" + name + '\'' +
+                "key='" + key + '\'' +
+                ", name='" + name + '\'' +
                 ", param='" + param + '\'' +
                 ", activity=" + activity +
                 ", state=" + state +

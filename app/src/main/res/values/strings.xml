@@ -5,6 +5,35 @@
     <string name="ignore">IGNORE</string>
     <string name="start">START</string>
 
+    <string name="test_item_info">Information</string>
+    <string name="test_item_wifi">WiFi</string>
+    <string name="test_item_bluetooth">Bluetooth</string>
+    <string name="test_item_ethernet">Ethernet</string>
+    <string name="test_item_mobile">Mobile network</string>
+    <string name="test_item_timingboot">Timing Boot</string>
+    <string name="test_item_watchdog">Watchdog</string>
+    <string name="test_item_uart">Uart</string>
+    <string name="test_item_humansensor">Human Sensor</string>
+    <string name="test_item_accsensor">Acc Sensor</string>
+    <string name="test_item_display">Display</string>
+    <string name="test_item_touch">Touch Panel</string>
+    <string name="test_item_speader">Speaker</string>
+    <string name="test_item_mic">Microphone</string>
+    <string name="test_item_micarray">Microphone Array</string>
+    <string name="test_item_key">Key</string>
+    <string name="test_item_camera">Camera</string>
+    <string name="test_item_backlight">Backlight</string>
+    <string name="test_item_battery">Battery</string>
+    <string name="test_item_light">Light Sensor</string>
+    <string name="test_item_tempsensor">Temperature-Humidity Sensor</string>
+    <string name="test_item_usb">USB</string>
+    <string name="test_item_sdcard">sdcard</string>
+    <string name="test_item_gpio">GPIO</string>
+    <string name="test_item_wiegand">Wiegand</string>
+    <string name="test_item_nd01">Distance Sensor</string>
+    <string name="test_item_pwm">PWM</string>
+    <string name="test_item_led">LED</string>
+
     <!--    WiFiTestActivity-->
     <string name="wifi_test_connected">Connected</string>
     <string name="wifi_test_connecting">Connecting</string>

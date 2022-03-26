@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity {
             spanCount = 2;
         }
         WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
-        mTestItems = TestItemManager.getInstance().getTestItems();
+        mTestItems = TestItemManager.getInstance(getApplicationContext()).getTestItems();
         mTestItemAdapter = new TestItemAdapter();
         mTestItemAdapter.setList(mTestItems);
         mItemsRv.setAdapter(mTestItemAdapter);
