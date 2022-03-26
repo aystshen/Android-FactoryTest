@@ -6,14 +6,11 @@
     <string name="start">开始</string>
 
     <!--    WiFiTestActivity-->
-    <string name="wifi_test_connected">Connected</string>
-    <string name="wifi_test_connecting">Connecting</string>
-    <string name="wifi_test_authenticating">Authenticating</string>
-    <string name="wifi_test_disconnected">Disconnected</string>
-    <string name="wifi_test_obtaining_ipaddr">Obtaining ip</string>
-    <string name="wifi_test_opening">OPENING</string>
-    <string name="wifi_test_closing">CLOSING</string>
-    <string name="wifi_test_closed">CLOSED</string>
+    <string name="wifi_test_connected">已连接</string>
+    <string name="wifi_test_connecting">连接中</string>
+    <string name="wifi_test_authenticating">验证中</string>
+    <string name="wifi_test_disconnected">已断开</string>
+    <string name="wifi_test_obtaining_ipaddr">正在获取IP</string>
 
     <!--    AccSensorActivity-->
     <string name="acc_test_prompt">请依次将设备平放、横放、竖放，直到X/Y/Z三者均变为绿色。</string>
