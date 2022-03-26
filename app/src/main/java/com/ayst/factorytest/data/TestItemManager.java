@@ -16,6 +16,7 @@ import com.ayst.factorytest.items.HumanSensorActivity;
 import com.ayst.factorytest.items.InfoTestActivity;
 import com.ayst.factorytest.items.KeyTestActivity;
 import com.ayst.factorytest.items.LcdTestActivity;
+import com.ayst.factorytest.items.LedTestActivity;
 import com.ayst.factorytest.items.LightSensorActivity;
 import com.ayst.factorytest.items.MobileNetTestActivity;
 import com.ayst.factorytest.items.ND01TestActivity;
@@ -110,6 +111,7 @@ public class TestItemManager {
         mItemTargets.put("韦根", WiegandTestActivity.class);
         mItemTargets.put("物距", ND01TestActivity.class);
         mItemTargets.put("PWM", PwmTestActivity.class);
+        mItemTargets.put("LED", LedTestActivity.class);
     }
 
     private void loadConfig() {
