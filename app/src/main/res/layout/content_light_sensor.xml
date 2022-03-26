@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="自动感应光线强度，请检查指针是否同光线强度变化而变化。"
+        android:text="@string/light_test_prompt"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
 

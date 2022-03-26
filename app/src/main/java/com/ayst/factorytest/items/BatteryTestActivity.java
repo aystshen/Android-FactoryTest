@@ -55,40 +55,40 @@ public class BatteryTestActivity extends ChildTestActivity {
 
                 switch (status) {
                     case BatteryManager.BATTERY_STATUS_UNKNOWN:
-                        mStatusTv.setText("未知");
+                        mStatusTv.setText(R.string.battery_test_status_unknow);
                         break;
                     case BatteryManager.BATTERY_STATUS_CHARGING:
-                        mStatusTv.setText("充电");
+                        mStatusTv.setText(R.string.battery_test_status_charging);
                         break;
                     case BatteryManager.BATTERY_STATUS_DISCHARGING:
-                        mStatusTv.setText("放电");
+                        mStatusTv.setText(R.string.battery_test_status_discharging);
                         break;
                     case BatteryManager.BATTERY_STATUS_NOT_CHARGING:
-                        mStatusTv.setText("未充电");
+                        mStatusTv.setText(R.string.battery_test_status_not_charging);
                         break;
                     case BatteryManager.BATTERY_STATUS_FULL:
-                        mStatusTv.setText("满电");
+                        mStatusTv.setText(R.string.battery_test_status_full);
                         break;
                 }
 
                 switch (health) {
                     case BatteryManager.BATTERY_HEALTH_UNKNOWN:
-                        mHealthTv.setText("未知");
+                        mHealthTv.setText(R.string.battery_test_health_unknow);
                         break;
                     case BatteryManager.BATTERY_HEALTH_GOOD:
-                        mHealthTv.setText("健康");
+                        mHealthTv.setText(R.string.battery_test_health_good);
                         break;
                     case BatteryManager.BATTERY_HEALTH_OVERHEAT:
-                        mHealthTv.setText("过热");
+                        mHealthTv.setText(R.string.battery_test_health_overheat);
                         break;
                     case BatteryManager.BATTERY_HEALTH_DEAD:
-                        mHealthTv.setText("损坏");
+                        mHealthTv.setText(R.string.battery_test_health_dead);
                         break;
                     case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE:
-                        mHealthTv.setText("过压");
+                        mHealthTv.setText(R.string.battery_test_health_overvoltage);
                         break;
                     case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE:
-                        mHealthTv.setText("未明示故障");
+                        mHealthTv.setText(R.string.battery_test_health_unspecified);
                         break;
                 }
 

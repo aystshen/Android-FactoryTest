@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,17 +15,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="电池状态："
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:text="@string/battery_test_status"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <TextView
             android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 
@@ -40,17 +39,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="充电类型："
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:text="@string/battery_test_plugged"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <TextView
             android:id="@+id/tv_plugged"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 
@@ -64,17 +63,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="健康状态："
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:text="@string/battery_test_health"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <TextView
             android:id="@+id/tv_health"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 
@@ -88,17 +87,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="剩余电量："
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:text="@string/battery_test_level"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <TextView
             android:id="@+id/tv_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 
@@ -112,17 +111,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="当前电压："
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:text="@string/battery_test_voltage"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <TextView
             android:id="@+id/tv_voltage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 
@@ -136,17 +135,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="电池温度："
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:text="@string/battery_test_temperature"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <TextView
             android:id="@+id/tv_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 
@@ -160,17 +159,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="电池容量："
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:text="@string/battery_test_scale"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <TextView
             android:id="@+id/tv_scale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 
@@ -184,17 +183,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="电池类型："
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:text="@string/battery_test_type"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <TextView
             android:id="@+id/tv_technology"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            android:textSize="@dimen/text_normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 

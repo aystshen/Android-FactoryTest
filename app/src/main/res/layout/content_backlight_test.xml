@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="请缓慢拖动进度条至最左、最右侧，观察屏幕亮度变化是否线性、自然。"
+        android:text="@string/backlight_test_prompt"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />
 

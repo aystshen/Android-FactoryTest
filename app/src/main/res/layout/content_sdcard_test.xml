@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="请插入sdcard卡，观察下表是否能正确显示所有设备路径。"
+        android:text="@string/sdcard_test_prompt"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />
 

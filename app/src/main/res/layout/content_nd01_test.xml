@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="非线性标定"
+            android:text="@string/nd01_test_nonlinear_calibration"
             android:textColor="@color/black"
             android:textSize="@dimen/text_big"
             android:textStyle="bold" />
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/v_margin"
-            android:text="使用反射率90%左右的白色平面，将设备固定，与目标平面平行，距离保持在150mm，点击‘标定’按钮，等待15秒标定完成，点击‘下一步’。"
+            android:text="@string/nd01_test_nonlinear_calibration_prompt"
             android:textColor="@color/black"
             android:textSize="@dimen/text_normal" />
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/v_margin"
             android:gravity="left"
-            android:text="注意：\n* 避免在强环境光的场景中进行标定。\n* 标定目标为反射率90%左右的白色平面。\n* 模组与标定目标平行。\n* 默认标定距离为150mm。 \n* 需要注意设备的发射端视场角内不能有其他物体的遮挡。"
+            android:text="@string/nd01_test_nonlinear_calibration_note"
             android:textColor="@color/black"
             android:textSize="@dimen/text_normal" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/v_margin"
             android:enabled="false"
-            android:text="标定"
+            android:text="@string/nd01_test_calibration"
             android:textColor="@drawable/btn_text_selector" />
 
         <Button
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:text="下一步"
+            android:text="@string/nd01_test_next"
             android:textColor="@drawable/btn_text_selector" />
 
     </LinearLayout>
@@ -69,7 +69,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="盖板串扰"
+            android:text="@string/nd01_test_cover_calibration"
             android:textColor="@color/black"
             android:textSize="@dimen/text_big"
             android:textStyle="bold" />
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/v_margin"
-            android:text="使用反射率18%左右的灰色平面，将设备固定，与目标平面平行，距离保持在800mm，点击‘标定’按钮，等待15秒标定完成，点击‘下一步’。"
+            android:text="@string/nd01_test_cover_calibration_prompt"
             android:textColor="@color/black"
             android:textSize="@dimen/text_normal" />
 
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/v_margin"
             android:gravity="left"
-            android:text="注意：\n* 避免在强环境光的场景中进行标定。\n* 标定目标为反射率18%左右的灰色平面。\n* 模组与标定目标平行。\n* 默认标定距离为800mm。 \n* 需要注意设备的发射端视场角内不能有其他物体的遮挡。"
+            android:text="@string/nd01_test_cover_calibration_note"
             android:textColor="@color/black"
             android:textSize="@dimen/text_normal" />
 
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/v_margin"
-            android:text="标定"
+            android:text="@string/nd01_test_calibration"
             android:textColor="@drawable/btn_text_selector" />
 
         <Button
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:text="下一步"
+            android:text="@string/nd01_test_next"
             android:textColor="@drawable/btn_text_selector" />
 
     </LinearLayout>
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="使用反射率18%左右的灰色平面，将设备固定，与目标平面平行，距离保持在300mm，查看下面获取的距离值是否准确（误差小于30mm）。"
+            android:text="@string/nd01_test_range_prompt"
             android:textColor="@color/black"
             android:textSize="@dimen/text_normal" />
 

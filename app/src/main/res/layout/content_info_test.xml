@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="设备型号："
+            android:text="@string/info_test_model"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Android版本："
+            android:text="@string/info_test_android_version"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="固件版本："
+            android:text="@string/info_test_firmware_version"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="WiFi MAC："
+            android:text="@string/info_test_wifi_mac"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -112,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="蓝牙MAC："
+            android:text="@string/info_test_bt_mac"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="以太网MAC："
+            android:text="@string/info_test_eth_mac"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -160,7 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="序列号："
+            android:text="@string/info_test_sn"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -184,7 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="存储空间："
+            android:text="@string/info_test_rom_size"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -208,7 +208,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="内存大小："
+            android:text="@string/info_test_ram_size"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -232,7 +232,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="分辨率："
+            android:text="@string/info_test_resolution"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -256,7 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="IMEI："
+            android:text="@string/info_test_imei"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 

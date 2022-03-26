@@ -96,10 +96,10 @@ public class HumanSensorActivity extends ChildTestActivity {
                         float state = event.values[0];
                         if (state == STATE_NEAR) {
                             mStateView.setSelected(true);
-                            mTipsTv.setText("请保持静止(5秒)，并观察下面圆点是否显示灰色。");
+                            mTipsTv.setText(R.string.human_test_prompt_far);
                         } else if (state == STATE_FAR) {
                             mStateView.setSelected(false);
-                            mTipsTv.setText("请靠近设备，并观察下面圆点是否显示黄色。");
+                            mTipsTv.setText(R.string.human_test_prompt_near);
                         }
                         // 一次状态翻转，视为测试通过。
                         if (mPreState != 0 && mPreState != state) {

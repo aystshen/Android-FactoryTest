@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="正在打开摄像头..."
+        android:text="@string/camera_test_prompt"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />
 

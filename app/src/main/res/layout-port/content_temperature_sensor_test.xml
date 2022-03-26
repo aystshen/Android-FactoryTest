@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="下面仪表所指温湿度与专业温湿度器对比是否一致？"
+        android:text="@string/temperature_test_prompt"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
 
@@ -44,7 +44,7 @@
             app:dbv_showPointerRange="true"
             app:dbv_firstRange="23"
             app:dbv_secondRange="25"
-            app:dbv_headerText="温度（℃）"
+            app:dbv_headerText="@string/temperature_test_temp_header"
             app:dbv_headerTextSize="@dimen/text_normal"
             app:dbv_headerTextColor="@color/black"
             app:dbv_pointerColor="@color/black"
@@ -77,7 +77,7 @@
             app:dbv_showPointerRange="true"
             app:dbv_firstRange="30"
             app:dbv_secondRange="50"
-            app:dbv_headerText="湿度（%）"
+            app:dbv_headerText="@string/temperature_test_humidity_header"
             app:dbv_headerTextSize="@dimen/text_normal"
             app:dbv_headerTextColor="@color/black"
             app:dbv_pointerColor="@color/black"

@@ -1,6 +1,9 @@
 package com.ayst.factorytest.model;
 
 import android.app.Activity;
+import android.content.Context;
+
+import com.ayst.factorytest.R;
 
 import java.io.Serializable;
 
@@ -53,16 +56,16 @@ public class TestItem implements Serializable {
         this.state = state;
     }
 
-    public String getStateStr() {
+    public String getStateStr(Context context) {
         switch (state) {
             case STATE_UNKNOWN:
-                return "忽略";
+                return context.getString(R.string.ignore);
             case STATE_SUCCESS:
-                return "通过";
+                return context.getString(R.string.success);
             case STATE_FAILURE:
-                return "失败";
+                return context.getString(R.string.fail);
         }
-        return "忽略";
+        return context.getString(R.string.ignore);
     }
 
     @Override

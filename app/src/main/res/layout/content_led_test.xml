@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="各路LED将依次点亮，请观察LED显示状态是否正确。"
+        android:text="@string/led_test_prompt"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />
 

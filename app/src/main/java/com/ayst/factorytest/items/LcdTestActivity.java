@@ -47,16 +47,16 @@ public class LcdTestActivity extends ChildTestActivity {
             public void onClick(View view) {
                 switch (mClickCnt) {
                     case 0:
-                        update("点击屏幕继续", 0xffffffff, 0xffff0000);
+                        update(getString(R.string.lcd_test_click), 0xffffffff, 0xffff0000);
                         break;
                     case 1:
-                        update("点击屏幕继续", 0xffffffff, 0xff00ff00);
+                        update(getString(R.string.lcd_test_click), 0xffffffff, 0xff00ff00);
                         break;
                     case 2:
-                        update("点击屏幕继续", 0xffffffff, 0xff0000ff);
+                        update(getString(R.string.lcd_test_click), 0xffffffff, 0xff0000ff);
                         break;
                     case 3:
-                        update("以上步骤是否分别显示红、绿、蓝界面？", 0xff000000,
+                        update(getString(R.string.lcd_test_prompt), 0xff000000,
                                 getResources().getColor(R.color.white));
                         mButtonLayout.setVisibility(View.VISIBLE);
                         break;

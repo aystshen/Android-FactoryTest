@@ -1,0 +1,150 @@
+<resources>
+    <string name="app_name">工厂测试</string>
+    <string name="success">成功</string>
+    <string name="fail">失败</string>
+    <string name="ignore">忽略</string>
+    <string name="start">开始</string>
+
+    <!--    WiFiTestActivity-->
+    <string name="wifi_test_connected">Connected</string>
+    <string name="wifi_test_connecting">Connecting</string>
+    <string name="wifi_test_authenticating">Authenticating</string>
+    <string name="wifi_test_disconnected">Disconnected</string>
+    <string name="wifi_test_obtaining_ipaddr">Obtaining ip</string>
+    <string name="wifi_test_opening">OPENING</string>
+    <string name="wifi_test_closing">CLOSING</string>
+    <string name="wifi_test_closed">CLOSED</string>
+
+    <!--    AccSensorActivity-->
+    <string name="acc_test_prompt">请依次将设备平放、横放、竖放，直到X/Y/Z三者均变为绿色。</string>
+
+    <!--    BacklightTestActivity-->
+    <string name="backlight_test_prompt">请缓慢拖动进度条至最左、最右侧，观察屏幕亮度变化是否线性、自然。</string>
+
+    <!--    BatteryTestActivity-->
+    <string name="battery_test_status">电池状态：</string>
+    <string name="battery_test_plugged">充电类型：</string>
+    <string name="battery_test_health">健康状态：</string>
+    <string name="battery_test_level">剩余电量：</string>
+    <string name="battery_test_voltage">当前电压：</string>
+    <string name="battery_test_temperature">电池温度：</string>
+    <string name="battery_test_scale">电池容量：</string>
+    <string name="battery_test_type">电池类型：</string>
+    <string name="battery_test_status_unknow">未知</string>
+    <string name="battery_test_status_charging">充电</string>
+    <string name="battery_test_status_discharging">放电</string>
+    <string name="battery_test_status_not_charging">未充电</string>
+    <string name="battery_test_status_full">满电</string>
+    <string name="battery_test_health_unknow">未知</string>
+    <string name="battery_test_health_good">健康</string>
+    <string name="battery_test_health_overheat">过热</string>
+    <string name="battery_test_health_dead">损坏</string>
+    <string name="battery_test_health_overvoltage">过压</string>
+    <string name="battery_test_health_unspecified">未明示故障</string>
+
+    <!--    BluetoothTestActivity-->
+    <string name="bluetooth_test_prompt">正在搜索附近蓝牙设备...</string>
+
+    <!--    CameraTestActivity-->
+    <string name="camera_test_prompt">正在打开摄像头...</string>
+
+    <!--    GpioTestActivity-->
+    <string name="gpio_test_prompt">各路GPIO将交替输出高低电平（间隔1秒），请查看各路GPIO输出电压是否正常。</string>
+
+    <!--    HumanSensorActivity-->
+    <string name="human_test_prompt">请靠近设备，并观察下面圆点是否显示黄色。</string>
+    <string name="human_test_prompt_far">请远离设备或保持静止(5秒)，并观察下面圆点是否显示灰色。</string>
+    <string name="human_test_prompt_near">请靠近设备并保持活动，并观察下面圆点是否显示黄色。</string>
+
+    <!--    InfoTestActivity-->
+    <string name="info_test_model">设备型号：</string>
+    <string name="info_test_android_version">安卓版本：</string>
+    <string name="info_test_firmware_version">固件版本：</string>
+    <string name="info_test_wifi_mac">WiFi MAC：</string>
+    <string name="info_test_bt_mac">蓝牙MAC：</string>
+    <string name="info_test_eth_mac">以太网MAC：</string>
+    <string name="info_test_sn">序列号：</string>
+    <string name="info_test_rom_size">存储空间：</string>
+    <string name="info_test_ram_size">内存大小：</string>
+    <string name="info_test_resolution">分辨率：</string>
+    <string name="info_test_imei">IMEI：</string>
+
+    <!--    KeyTestActivity-->
+    <string name="key_test_prompt">请依次按下下面所有按键。</string>
+
+    <!--    LcdTestActivity-->
+    <string name="lcd_test_prompt">以上步骤是否分别显示红、绿、蓝界面？</string>
+    <string name="lcd_test_click">点击屏幕继续</string>
+
+    <!--    LedTestActivity-->
+    <string name="led_test_prompt">各路LED（发光二极管）将依次点亮，请观察LED（发光二级管）状态。</string>
+
+    <!--    LightSensorActivity-->
+    <string name="light_test_prompt">请检查指针是否根据光线强度变化而变化。</string>
+
+    <!--    MicTestActivity-->
+    <string name="mic_test_prompt">请对准麦克风大声说话，检查下面指针是否摆动，声音回放是否正常。</string>
+
+    <!--    MobileNetTestActivity-->
+    <string name="mobile_net_test_type">网络类型：</string>
+    <string name="mobile_net_test_signal">信号强度：</string>
+
+    <!--    NarTestActivity-->
+    <string name="nar_test_prompt">请对准麦克风说话，观察以下各通道录音数据是否变化，声音回放是否正常。</string>
+
+    <!--    ND01TestActivity-->
+    <string name="nd01_test_calibration">标定</string>
+    <string name="nd01_test_next">下一步</string>
+    <string name="nd01_test_nonlinear_calibration">非线性标定</string>
+    <string name="nd01_test_nonlinear_calibration_prompt">使用反射率90%左右的白色平面，将设备固定，与目标平面平行，距离保持在150mm，点击‘标定’按钮，等待15秒标定完成，点击‘下一步’。</string>
+    <string name="nd01_test_nonlinear_calibration_note">注意：\n* 避免在强环境光的场景中进行标定。\n* 标定目标为反射率90%左右的白色平面。\n* 模组与标定目标平行。\n* 默认标定距离为150mm。 \n* 需要注意设备的发射端视场角内不能有其他物体的遮挡。</string>
+    <string name="nd01_test_cover_calibration">盖板标定</string>
+    <string name="nd01_test_cover_calibration_prompt">使用反射率18%左右的灰色平面，将设备固定，与目标平面平行，距离保持在800mm，点击‘标定’按钮，等待15秒标定完成，点击‘下一步’。</string>
+    <string name="nd01_test_cover_calibration_note">注意：\n* 避免在强环境光的场景中进行标定。\n* 标定目标为反射率18%左右的灰色平面。\n* 模组与标定目标平行。\n* 默认标定距离为800mm。 \n* 需要注意设备的发射端视场角内不能有其他物体的遮挡。</string>
+    <string name="nd01_test_range_prompt">使用反射率18%左右的灰色平面，将设备固定，与目标平面平行，距离保持在300mm，查看下面获取的距离值是否准确（误差小于30mm）。</string>
+
+    <!--PwmTestActivity-->
+    <string name="pwm_test_prompt">各路PWM将按照参数配置的占空比依次输出，请观察PWM器件是否正常工作（PWM器件可能是LED灯、电机等）。</string>
+
+    <!--    RegularBootTestActivity-->
+    <string name="regularboot_test_prompt">正在测试定时开关机...</string>
+
+    <!--    SdcardTestActivity-->
+    <string name="sdcard_test_prompt">请插入sdcard卡，观察下表是否能正确显示所有设备路径。</string>
+
+    <!--    SpeakerTestActivity-->
+    <string name="speaker_test_prompt">是否能听见喇叭声音，且无破音、杂音、失真等现象？</string>
+
+    <!--    TemperatureSensorTestActivity-->
+    <string name="temperature_test_prompt">温湿度与专业温湿度计对比是否一致？</string>
+    <string name="temperature_test_temp_header">温度（℃）</string>
+    <string name="temperature_test_humidity_header">湿度（%）</string>
+
+    <!--    TouchTestActivity-->
+    <string name="touch_test_prompt">请点击所有方格。</string>
+
+    <!--    UartTestActivity-->
+    <string name="uart_test_prompt">请观察下面串口测试结果（通过显示 绿色，失败显示 红色）。</string>
+
+    <!--    UsbTestActivity-->
+    <string name="usb_test_prompt">请依次插入任意USB设备（U盘、鼠标、键盘等）至待测USB口，观察下表是否能正确显示所有设备路径。</string>
+
+    <!--    WatchdogTestActivity-->
+    <string name="watchdog_test_prompt">正在测试看门狗...</string>
+
+    <!--    WiegandTestActivity-->
+    <string name="wiegand_test_write">韦根写</string>
+    <string name="wiegand_test_write_prompt">观察韦根外设是否成功接收数据</string>
+    <string name="wiegand_test_read">韦根读</string>
+    <string name="wiegand_test_read_prompt">刷卡（门禁卡、公交卡、工牌等），观察是否能正确读出卡号</string>
+
+    <!--    WiFiTestActivity-->
+    <string name="wifi_test_prompt">正在搜索附近WiFi热点...</string>
+
+    <!--    TestResultExport-->
+    <string name="rest_result">"测试结果（%1$s）\n\n"</string>
+    <string name="rest_result_total">"共计 %1$s 项\n"</string>
+    <string name="rest_result_success">"通过 %1$s 项\n"</string>
+    <string name="rest_result_fail">"失败 %1$s 项\n"</string>
+    <string name="rest_result_ignore">"忽略 %1$s 项\n"</string>
+</resources>

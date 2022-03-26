@@ -1,7 +1,9 @@
 package com.ayst.factorytest.data;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
+import com.ayst.factorytest.R;
 import com.ayst.factorytest.model.TestItem;
 import com.ayst.factorytest.utils.AppUtils;
 
@@ -60,6 +62,7 @@ public class TestResultExport {
      * 失败 7 项
      * 忽略 0 项
      */
+    @SuppressLint("StringFormatMatches")
     public void export() {
         File file = new File(AppUtils.getExternalRootDir(mContext) + "/result.txt");
         if (file.exists()) {
@@ -73,9 +76,9 @@ public class TestResultExport {
             int unknownCnt = 0;
             fos = new FileOutputStream(file);
 
-            fos.write(("测试结果（" + mDateFormat.format(new Date()) + "）\n\n").getBytes());
+            fos.write(String.format(mContext.getString(R.string.rest_result), mDateFormat.format(new Date())).getBytes());
             for (TestItem item : mItems) {
-                fos.write((item.getName() + ": " + item.getStateStr() + "\n").getBytes());
+                fos.write((item.getName() + ": " + item.getStateStr(mContext) + "\n").getBytes());
                 switch (item.getState()) {
                     case TestItem.STATE_UNKNOWN:
                         unknownCnt++;
@@ -88,10 +91,11 @@ public class TestResultExport {
                         break;
                 }
             }
-            fos.write(("\n共计 " + mItems.size() + " 项" + "\n").getBytes());
-            fos.write(("通过 " + successCnt + " 项" + "\n").getBytes());
-            fos.write(("失败 " + failureCnt + " 项" + "\n").getBytes());
-            fos.write(("忽略 " + unknownCnt + " 项" + "\n").getBytes());
+            fos.write(("\n").getBytes());
+            fos.write(String.format(mContext.getString(R.string.rest_result_total), mItems.size()).getBytes());
+            fos.write(String.format(mContext.getString(R.string.rest_result_success), successCnt).getBytes());
+            fos.write(String.format(mContext.getString(R.string.rest_result_fail), failureCnt).getBytes());
+            fos.write(String.format(mContext.getString(R.string.rest_result_ignore), unknownCnt).getBytes());
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="能听见喇叭声音，且无破音、杂音、失真等现象？"
+        android:text="@string/speaker_test_prompt"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
 

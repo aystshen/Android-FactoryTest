@@ -56,7 +56,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_start_selector"
             android:backgroundTint="@null"
-            android:text="开始"
+            android:text="@string/start"
             android:textColor="@color/white"
             android:textSize="@dimen/text_normal" />
 

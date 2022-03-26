@@ -53,7 +53,7 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@id/btn_touch5"
         android:layout_marginBottom="20dp"
-        android:text="请点击所有方格。"
+        android:text="@string/touch_test_prompt"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
 

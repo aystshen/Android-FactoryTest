@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="MAC："
+            android:text="MAC:"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="IP："
+            android:text="IP:"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="子网掩码："
+            android:text="Netmask:"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="网关："
+            android:text="Gateway:"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -160,7 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="模式："
+            android:text="Mode:"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 

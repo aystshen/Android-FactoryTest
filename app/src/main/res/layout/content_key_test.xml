@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="请依次按下下面所有按键。"
+        android:text="@string/key_test_prompt"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />
 

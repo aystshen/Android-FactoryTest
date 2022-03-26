@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="网络类型："
+            android:text="@string/mobile_net_test_type"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="信号强度："
+            android:text="@string/mobile_net_test_signal"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 

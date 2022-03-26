@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="韦根写"
+            android:text="@string/wiegand_test_write"
             android:textColor="@color/black"
             android:textSize="@dimen/text_normal" />
 
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="（观察韦根外设是否成功接收数据）"
+            android:text="@string/wiegand_test_write_prompt"
             android:textColor="@color/black_50"
             android:textSize="@dimen/text_small" />
 
@@ -56,7 +56,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="韦根读"
+            android:text="@string/wiegand_test_read"
             android:textColor="@color/black"
             android:textSize="@dimen/text_normal" />
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="（刷卡“门禁卡、公交卡、工牌等”，观察是否能正确读出卡号）"
+            android:text="@string/wiegand_test_read_prompt"
             android:textColor="@color/black_50"
             android:textSize="@dimen/text_small" />
 
