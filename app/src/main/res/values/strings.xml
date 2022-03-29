@@ -147,7 +147,7 @@
     <string name="temperature_test_humidity_header">Humidity(%)</string>
 
     <!--    TouchTestActivity-->
-    <string name="touch_test_prompt">Please click all squares.</string>
+    <string name="touch_test_prompt">Please line the screen to connect all the rectangles.</string>
 
     <!--    UartTestActivity-->
     <string name="uart_test_prompt">Please observe the following serial port test results (pass in green, fail in red).</string>

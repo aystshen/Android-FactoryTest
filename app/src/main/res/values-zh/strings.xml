@@ -148,7 +148,7 @@
     <string name="temperature_test_humidity_header">湿度（%）</string>
 
     <!--    TouchTestActivity-->
-    <string name="touch_test_prompt">请点击所有方格。</string>
+    <string name="touch_test_prompt">请在屏幕上划线以连接所有方格。</string>
 
     <!--    UartTestActivity-->
     <string name="uart_test_prompt">请观察下面串口测试结果（通过显示 绿色，失败显示 红色）。</string>

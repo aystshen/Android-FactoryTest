@@ -6,14 +6,16 @@ import android.view.View;
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
 import com.ayst.factorytest.model.TestItem;
+import com.ayst.factorytest.view.TouchTestView;
 
 import java.util.HashMap;
 
-import butterknife.OnClick;
+import butterknife.BindView;
 
-public class TouchTestActivity extends ChildTestActivity {
+public class TouchTestActivity extends ChildTestActivity implements TouchTestView.CallBack {
 
-    private static final int POINT_MAX = 5; //测试点总数
+    @BindView(R.id.touch_test)
+    TouchTestView mTouchTestView;
 
     private HashMap<Integer, Boolean> mClicked = new HashMap<>();
 
@@ -39,14 +41,13 @@ public class TouchTestActivity extends ChildTestActivity {
         mTitleBar.setVisibility(View.INVISIBLE);
         mContainerLayout.setVisibility(View.INVISIBLE);
         mSuccessBtn.setVisibility(View.GONE);
+        mFailureBtn.setVisibility(View.GONE);
+
+        mTouchTestView.setCallBack(this);
     }
 
-    @OnClick({R.id.btn_touch1, R.id.btn_touch2, R.id.btn_touch3, R.id.btn_touch4, R.id.btn_touch5})
-    public void onViewClicked(View view) {
-        view.setSelected(true);
-        mClicked.put(view.getId(), true);
-        if (mClicked.size() >= POINT_MAX) {
-            finish(TestItem.STATE_SUCCESS);
-        }
+    @Override
+    public void onTestCompleted() {
+        finish(TestItem.STATE_SUCCESS);
     }
 }
