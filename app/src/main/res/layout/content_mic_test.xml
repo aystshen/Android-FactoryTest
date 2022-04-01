@@ -7,12 +7,25 @@
     tools:context=".items.RecordTestActivity">
 
     <TextView
+        android:id="@+id/tv_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/mic_test_prompt"
         android:textSize="@dimen/text_normal"
         android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/btn_record_play"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_prompt"
+        android:layout_marginTop="@dimen/v_margin"
+        android:layout_centerHorizontal="true"
+        android:enabled="false"
+        android:text="@string/mic_test_play"
+        android:textColor="@drawable/btn_text_selector" />
 
     <com.ayst.dbv.DashboardView
         android:id="@+id/dashboard"

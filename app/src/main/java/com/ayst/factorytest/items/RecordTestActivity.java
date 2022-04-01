@@ -7,13 +7,22 @@ import android.media.AudioRecord;
 import android.media.AudioTrack;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.Environment;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.core.content.ContextCompat;
 
 import com.ayst.dbv.DashboardView;
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
 import com.blankj.utilcode.util.VolumeUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import butterknife.BindView;
 
@@ -26,15 +35,23 @@ public class RecordTestActivity extends ChildTestActivity {
 
     @BindView(R.id.dashboard)
     DashboardView mDashboardView;
+    @BindView(R.id.btn_record_play)
+    Button mRecordPlayBtn;
 
+    private boolean isRecording = true;
     private int mRecordBufferSize;
     private AudioRecord mAudioRecord;
     private AudioTrack mAudioTrack;
+    private String mRecordFilePath;
 
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 创建文件路径
+        mRecordFilePath = ContextCompat.getExternalFilesDirs(this,
+                Environment.DIRECTORY_MUSIC)[0].getAbsolutePath() + File.separator + "record.pcm";
 
         // 创建AudioRecord
         mRecordBufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE_DEFAULT,
@@ -63,6 +80,31 @@ public class RecordTestActivity extends ChildTestActivity {
     }
 
     @Override
+    protected void initViews() {
+        super.initViews();
+
+        mRecordPlayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isRecording) {
+                    mRecordPlayBtn.setText(R.string.mic_test_record);
+                    play();
+                } else {
+                    mRecordPlayBtn.setText(R.string.mic_test_play);
+                    record();
+                }
+            }
+        });
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mRecordPlayBtn.setEnabled(true);
+            }
+        }, 3000);
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         record();
@@ -78,19 +120,78 @@ public class RecordTestActivity extends ChildTestActivity {
     protected void onDestroy() {
         mAudioRecord.release();
         mAudioTrack.release();
+        File file = new File(mRecordFilePath);
+        if (file.exists()) {
+            file.delete();
+        }
         super.onDestroy();
     }
 
     private void record() {
         Log.i(TAG, "record");
 
+        isRecording = true;
+
+        // 停止播放
+        mAudioTrack.stop();
+
+        // 开始录音
+        mAudioRecord.startRecording();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                File file = new File(mRecordFilePath);
+                if (file.exists()) {
+                    file.delete();
+                }
+
+                FileOutputStream fos = null;
+                try {
+                    fos = new FileOutputStream(mRecordFilePath);
+                    byte[] buffer = new byte[mRecordBufferSize];
+
+                    // 循环读取语音流（PCM数据包）
+                    while (mAudioRecord.read(buffer, 0, mRecordBufferSize) > 0) {
+                        Log.d(TAG, "AudioRecord read: " + buffer.length);
+
+                        // PCM数据保存到本地文件
+                        fos.write(buffer);
+
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mDashboardView.setValue((int) (calculateVol(0, buffer) - 100));
+                            }
+                        });
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (fos != null) {
+                        try {
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private void play() {
+        Log.i(TAG, "play");
+
+        isRecording = false;
+
+        // 停止录音
+        mAudioRecord.stop();
+
         // 音量调取最大
         VolumeUtils.setVolume(AudioManager.STREAM_MUSIC,
                 VolumeUtils.getMaxVolume(AudioManager.STREAM_MUSIC),
                 AudioManager.FLAG_SHOW_UI);
-
-        // 开始录音
-        mAudioRecord.startRecording();
 
         // 开始播放
         mAudioTrack.play();
@@ -98,21 +199,41 @@ public class RecordTestActivity extends ChildTestActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                byte[] buffer = new byte[mRecordBufferSize];
+                File file = new File(mRecordFilePath);
+                if (!file.exists()) {
+                    Log.e(TAG, "play, " + mRecordFilePath + " not exist");
+                    return;
+                }
 
-                // 循环读取语音流（PCM数据包）
-                while (mAudioRecord.read(buffer, 0, mRecordBufferSize) > 0) {
-                    Log.d(TAG, "AudioRecord read: " + buffer.length);
+                long fileSize = file.length();
+                if (fileSize > Integer.MAX_VALUE) {
+                    Log.w(TAG, "play, file too big");
+                    fileSize = Integer.MAX_VALUE;
+                }
 
-                    // PCM数据写入AudioTrack中播放
-                    mAudioTrack.write(buffer.clone(), 0, buffer.length);
+                FileInputStream fis = null;
+                try {
+                    fis = new FileInputStream(mRecordFilePath);
 
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mDashboardView.setValue((int)(calculateVol(0, buffer)-100));
+                    int size;
+                    byte[] buffer = new byte[mRecordBufferSize];
+                    while ((size = fis.read(buffer, 0, mRecordBufferSize)) >= 0) {
+
+                        Log.d(TAG, "AudioTrack write: " + size + "/" + fileSize);
+
+                        // PCM数据写入AudioTrack中播放
+                        mAudioTrack.write(buffer.clone(), 0, size);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (fis != null) {
+                        try {
+                            fis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                    });
+                    }
                 }
             }
         }).start();

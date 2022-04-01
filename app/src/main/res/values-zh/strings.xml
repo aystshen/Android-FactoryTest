@@ -110,7 +110,9 @@
     <string name="light_test_prompt">请检查指针是否根据光线强度变化而变化。</string>
 
     <!--    MicTestActivity-->
-    <string name="mic_test_prompt">请对准麦克风大声说话，检查下面指针是否摆动，声音回放是否正常。</string>
+    <string name="mic_test_prompt">请对准麦克风大声说话，检查下面指针是否摆动，录音结束后点击‘播放’按钮，检查声音回放是否正常。</string>
+    <string name="mic_test_record">录音</string>
+    <string name="mic_test_play">播放</string>
 
     <!--    MobileNetTestActivity-->
     <string name="mobile_net_test_type">网络类型：</string>
