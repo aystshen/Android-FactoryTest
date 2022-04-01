@@ -11,80 +11,112 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/temperature_test_prompt"
-        android:textSize="@dimen/text_normal"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_normal" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal">
 
-        <com.ayst.dbv.DashboardView
-            android:id="@+id/dashboard_t"
-            android:layout_width="@dimen/dashboard_width"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:dbv_firstColor="@color/blue"
-            app:dbv_secondColor="@color/green"
-            app:dbv_thirdColor="@color/red"
-            app:dbv_max="100"
-            app:dbv_min="-30"
-            app:dbv_section="13"
-            app:dbv_portion="10"
-            app:dbv_lineWidth="1dp"
-            app:dbv_colorWidth="@dimen/dashboard_color_width"
-            app:dbv_colorPadding="@dimen/dashboard_color_padding"
-            app:dbv_longScaleLength="@dimen/dashboard_long_scale_length"
-            app:dbv_shortScaleLength="@dimen/dashboard_short_scale_length"
-            app:dbv_startAngle="180"
-            app:dbv_sweepAngle="180"
-            app:dbv_value="0"
-            app:dbv_showValueText="true"
-            app:dbv_showPointerRange="true"
-            app:dbv_firstRange="23"
-            app:dbv_secondRange="25"
-            app:dbv_headerText="@string/temperature_test_temp_header"
-            app:dbv_headerTextSize="@dimen/text_normal"
-            app:dbv_headerTextColor="@color/black"
-            app:dbv_pointerColor="@color/black"
-            app:dbv_minPointerColor="@color/black_30"
-            app:dbv_maxPointerColor="@color/black_30"
-            app:dbv_scaleColor="@color/black"
-            app:dbv_scaleTextSize="@dimen/text_small" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <com.ayst.dbv.DashboardView
-            android:id="@+id/dashboard_h"
-            android:layout_width="@dimen/dashboard_width"
+            <com.ayst.dbv.DashboardView
+                android:id="@+id/dashboard_t"
+                android:layout_width="@dimen/dashboard_width"
+                android:layout_height="wrap_content"
+                app:dbv_colorPadding="@dimen/dashboard_color_padding"
+                app:dbv_colorWidth="@dimen/dashboard_color_width"
+                app:dbv_firstColor="@color/blue"
+                app:dbv_firstRange="23"
+                app:dbv_headerText="@string/temperature_test_temp_header"
+                app:dbv_headerTextColor="@color/black"
+                app:dbv_headerTextSize="@dimen/text_normal"
+                app:dbv_lineWidth="1dp"
+                app:dbv_longScaleLength="@dimen/dashboard_long_scale_length"
+                app:dbv_max="100"
+                app:dbv_maxPointerColor="@color/black_30"
+                app:dbv_min="-30"
+                app:dbv_minPointerColor="@color/black_30"
+                app:dbv_pointerColor="@color/black"
+                app:dbv_portion="10"
+                app:dbv_scaleColor="@color/black"
+                app:dbv_scaleTextSize="@dimen/text_small"
+                app:dbv_secondColor="@color/green"
+                app:dbv_secondRange="25"
+                app:dbv_section="13"
+                app:dbv_shortScaleLength="@dimen/dashboard_short_scale_length"
+                app:dbv_showPointerRange="true"
+                app:dbv_showValueText="false"
+                app:dbv_startAngle="180"
+                app:dbv_sweepAngle="180"
+                app:dbv_thirdColor="@color/red"
+                app:dbv_value="0" />
+
+            <TextView
+                android:id="@+id/tv_t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            app:dbv_firstColor="@color/red"
-            app:dbv_secondColor="@color/green"
-            app:dbv_thirdColor="@color/yellow"
-            app:dbv_max="100"
-            app:dbv_min="0"
-            app:dbv_section="10"
-            app:dbv_portion="10"
-            app:dbv_lineWidth="1dp"
-            app:dbv_colorWidth="@dimen/dashboard_color_width"
-            app:dbv_colorPadding="@dimen/dashboard_color_padding"
-            app:dbv_longScaleLength="@dimen/dashboard_long_scale_length"
-            app:dbv_shortScaleLength="@dimen/dashboard_short_scale_length"
-            app:dbv_startAngle="180"
-            app:dbv_sweepAngle="180"
-            app:dbv_value="0"
-            app:dbv_showValueText="true"
-            app:dbv_showPointerRange="true"
-            app:dbv_firstRange="30"
-            app:dbv_secondRange="50"
-            app:dbv_headerText="@string/temperature_test_humidity_header"
-            app:dbv_headerTextSize="@dimen/text_normal"
-            app:dbv_headerTextColor="@color/black"
-            app:dbv_pointerColor="@color/black"
-            app:dbv_minPointerColor="@color/black_30"
-            app:dbv_maxPointerColor="@color/black_30"
-            app:dbv_scaleColor="@color/black"
-            app:dbv_scaleTextSize="@dimen/text_small" />
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.ayst.dbv.DashboardView
+                android:id="@+id/dashboard_h"
+                android:layout_width="@dimen/dashboard_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                app:dbv_colorPadding="@dimen/dashboard_color_padding"
+                app:dbv_colorWidth="@dimen/dashboard_color_width"
+                app:dbv_firstColor="@color/red"
+                app:dbv_firstRange="30"
+                app:dbv_headerText="@string/temperature_test_humidity_header"
+                app:dbv_headerTextColor="@color/black"
+                app:dbv_headerTextSize="@dimen/text_normal"
+                app:dbv_lineWidth="1dp"
+                app:dbv_longScaleLength="@dimen/dashboard_long_scale_length"
+                app:dbv_max="100"
+                app:dbv_maxPointerColor="@color/black_30"
+                app:dbv_min="0"
+                app:dbv_minPointerColor="@color/black_30"
+                app:dbv_pointerColor="@color/black"
+                app:dbv_portion="10"
+                app:dbv_scaleColor="@color/black"
+                app:dbv_scaleTextSize="@dimen/text_small"
+                app:dbv_secondColor="@color/green"
+                app:dbv_secondRange="50"
+                app:dbv_section="10"
+                app:dbv_shortScaleLength="@dimen/dashboard_short_scale_length"
+                app:dbv_showPointerRange="true"
+                app:dbv_showValueText="false"
+                app:dbv_startAngle="180"
+                app:dbv_sweepAngle="180"
+                app:dbv_thirdColor="@color/yellow"
+                app:dbv_value="0" />
+
+            <TextView
+                android:id="@+id/tv_h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
