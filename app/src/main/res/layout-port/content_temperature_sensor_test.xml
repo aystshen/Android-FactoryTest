@@ -18,6 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
 
@@ -40,7 +41,7 @@
             app:dbv_startAngle="180"
             app:dbv_sweepAngle="180"
             app:dbv_value="0"
-            app:dbv_showValueText="true"
+            app:dbv_showValueText="false"
             app:dbv_showPointerRange="true"
             app:dbv_firstRange="23"
             app:dbv_secondRange="25"
@@ -52,6 +53,14 @@
             app:dbv_maxPointerColor="@color/black_30"
             app:dbv_scaleColor="@color/black"
             app:dbv_scaleTextSize="@dimen/text_small" />
+
+        <TextView
+            android:id="@+id/tv_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
         <com.ayst.dbv.DashboardView
             android:id="@+id/dashboard_h"
@@ -73,7 +82,7 @@
             app:dbv_startAngle="180"
             app:dbv_sweepAngle="180"
             app:dbv_value="0"
-            app:dbv_showValueText="true"
+            app:dbv_showValueText="false"
             app:dbv_showPointerRange="true"
             app:dbv_firstRange="30"
             app:dbv_secondRange="50"
@@ -85,6 +94,14 @@
             app:dbv_maxPointerColor="@color/black_30"
             app:dbv_scaleColor="@color/black"
             app:dbv_scaleTextSize="@dimen/text_small" />
+
+        <TextView
+            android:id="@+id/tv_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal" />
 
     </LinearLayout>
 
