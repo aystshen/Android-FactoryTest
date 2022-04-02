@@ -114,44 +114,44 @@ The configuration file consists of a Json array containing several Json items, e
 ```json
 [{'name':'BACK', 'code': 4, 'state': 0}, {'name':'MENU', 'code': 82, 'state': 0}, {'name':'MUTE', 'code': 164, 'state': 0}, {'name':'VOL+', 'code': 24, 'state': 0}, {'name':'VOL-', 'code': 25, 'state': 0}]
 ```
-- name: key name
-- code: key code
-- state: status (default: 0)
+- **name**: key name
+- **code**: key code
+- **state**: status (default: 0)
 
 #### Wiegand Parameters
 ```json
 {'write': {'format': 26, 'value': 7825015}, 'read': {'format': 26, 'value': 0}}
 ```
-- write: wiegand write.
-- read: wiegand read.
-- format: format (26: wiegand 26, 34: wiegand 34).
-- value: data to be written to the wiegand peripherals (**note** : In the Wiegand read configuration this item is set to 0 by default).
+- **write**: wiegand write.
+- **read**: wiegand read.
+- **format**: format (26: wiegand 26, 34: wiegand 34).
+- **value**: data to be written to the wiegand peripherals (**note** : In the Wiegand read configuration this item is set to 0 by default).
 
 #### ND01 Parameters
 ```json
 {'i2c': 1, 'calibrate': true}
 ```
-- i2c: i2c bus.
-- calibrate: whether calibration is required (true: calibration is required, false: no calibration is required).
+- **i2c**: i2c bus.
+- **calibrate**: whether calibration is required (true: calibration is required, false: no calibration is required).
 
 #### PWM Parameters
 ```json
 [{'name': 'LED', 'pwm': 0, 'period': 10000, 'duty': 1000, 'state': 0}, {'name': 'Motor', 'pwm': 1, 'period': 10000, 'duty': 1000, 'state': 0}, {'name': 'Buzzer', 'pwm': 2, 'period': 10000, 'duty': 1000, 'state': 0}]
 ```
-- name: device name (Indicates the best device name, for example: LED, Motor, Buzzer, etc.)
-- pwm: pwm id (Which channel pwm of the cpu.)
-- period: pwm period
-- duty: duty cycle (The duty cycle expected to output when tested.)
-- state: status (default: 0)
+- **name**: device name (Indicates the best device name, for example: LED, Motor, Buzzer, etc.)
+- **pwm**: pwm id (Which channel pwm of the cpu.)
+- **period**: pwm period
+- **duty**: duty cycle (The duty cycle expected to output when tested.)
+- **state**: status (default: 0)
 
 #### LED Parameters
 ```json
 [{'name': 'RED', 'device': 'led_r', 'brightness': 1000, 'state': 0}, {'name': 'GREEN', 'device': 'led_g', 'brightness': 1000, 'state': 0}, {'name': 'BLUE', 'device': 'led_b', 'brightness': 1000, 'state': 0}]
 ```
-- name: led name (for example: red, green, blue)
-- device: device name in /sys/class/leds/
-- brightness: brightness value of led after lighting (duty cycle of pwm).
-- state: status (default: 0)
+- **name**: led name (for example: red, green, blue)
+- **device**: device name in /sys/class/leds/
+- **brightness**: brightness value of led after lighting (duty cycle of pwm).
+- **state**: status (default: 0)
 
 ## Test Results
 After completion of all tests will export test results to a local file (sdcard/factorytest/result.txt), the content is as follows:
