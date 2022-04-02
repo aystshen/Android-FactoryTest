@@ -7,7 +7,6 @@ FactoryTest is used for manufacturing tests on Android devices. Includes: WiFi, 
 ## Preview
 ![image](screenshots/home.png)  
 ![image](screenshots/result.png)  
-![image](screenshots/wifi.png)   
 ![image](screenshots/microphone.png)  
 ![image](screenshots/touch.png)  
 
