@@ -13,15 +13,22 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.adapter.WifiListAdapter;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.ayst.factorytest.model.NarParam;
 import com.ayst.factorytest.model.TestItem;
+import com.ayst.factorytest.model.WiFiParam;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import butterknife.BindView;
@@ -40,6 +47,9 @@ public class WifiTestActivity extends ChildTestActivity {
 
     private ConnectivityManager mConnManager;
     private WifiManager mWifiManager;
+
+    private Gson mGson = new Gson();
+    private WiFiParam mWiFiParam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +73,21 @@ public class WifiTestActivity extends ChildTestActivity {
     protected void initViews() {
         super.initViews();
 
+        Log.i(TAG, "initViews, param: " + mTestItem.getParam());
+
+        if (!TextUtils.isEmpty(mTestItem.getParam())) {
+            mWiFiParam = parseParam(mTestItem.getParam());
+            Toast.makeText(this, String.format(getString(R.string.wifi_test_toast),
+                    mWiFiParam.getSsid(), mWiFiParam.getRssi()), Toast.LENGTH_LONG).show();
+        }
+
         mSuccessBtn.setVisibility(View.GONE);
+    }
+
+    private WiFiParam parseParam(String param) {
+        Type type = new TypeToken<WiFiParam>() {
+        }.getType();
+        return mGson.fromJson(param, type);
     }
 
     @Override
@@ -166,7 +190,20 @@ public class WifiTestActivity extends ChildTestActivity {
         mWifiAdapter.updateList(mWifiList);
         mWifiAdapter.notifyDataSetChanged();
 
-        if (!mWifiList.isEmpty()) {
+        if (mWiFiParam != null) {
+            for (ScanResult result : mWifiList) {
+                if (TextUtils.equals(result.SSID, mWiFiParam.getSsid())) {
+                    Log.i(TAG, "updateAccessPoints, scan to ssid: " + result.SSID
+                            + ", rssi: " + result.level);
+                    mTestItem.setExtras("ssid: " + result.SSID + ", rssi: " + result.level);
+                    if (result.level > mWiFiParam.getRssi()) {
+                        finish(TestItem.STATE_SUCCESS);
+                    } else {
+                        finish(TestItem.STATE_FAILURE);
+                    }
+                }
+            }
+        } else if (!mWifiList.isEmpty()) {
             finish(TestItem.STATE_SUCCESS);
         }
     }

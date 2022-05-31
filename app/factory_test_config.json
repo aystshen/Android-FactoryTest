@@ -1,6 +1,6 @@
 [
   {"key": "info", "param": ""},
-  {"key": "wifi", "param": ""},
+  {"key": "wifi", "param": "{'ssid': 'test', 'rssi': -30}"},
   {"key": "bt", "param": ""},
   {"key": "eth", "param": ""},
   {"key": "mobile", "param": ""},

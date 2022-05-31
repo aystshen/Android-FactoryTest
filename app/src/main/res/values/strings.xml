@@ -40,6 +40,7 @@
     <string name="wifi_test_authenticating">Authenticating</string>
     <string name="wifi_test_disconnected">Disconnected</string>
     <string name="wifi_test_obtaining_ipaddr">Obtaining ip</string>
+    <string name="wifi_test_toast">"The scanning SSID %1$s signal strength needs to be greater than %2$d db."</string>
 
     <!--    AccSensorActivity-->
     <string name="acc_test_prompt">Put the device horizontally, horizontally, and vertically until X/Y/Z turn green.</string>
