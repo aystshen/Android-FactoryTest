@@ -14,6 +14,8 @@ public class LcdTestActivity extends ChildTestActivity {
 
     @BindView(R.id.bg)
     FrameLayout mBgView;
+    @BindView(R.id.view_black)
+    FrameLayout mBlackView;
     @BindView(R.id.tv_tips)
     TextView mTipsTv;
 
@@ -56,6 +58,20 @@ public class LcdTestActivity extends ChildTestActivity {
                         update(getString(R.string.lcd_test_click), 0xffffffff, 0xff0000ff);
                         break;
                     case 3:
+                        update(getString(R.string.lcd_test_click), 0xffffffff, 0xffffff00);
+                        break;
+                    case 4:
+                        update(getString(R.string.lcd_test_click), 0xffffffff, 0xffa9a9a9);
+                        break;
+                    case 5:
+                        update(getString(R.string.lcd_test_click), 0xffffffff, 0xff000000);
+                        break;
+                    case 6:
+                        mBlackView.setVisibility(View.VISIBLE);
+                        update(getString(R.string.lcd_test_click), 0xffffffff, 0xffa9a9a9);
+                        break;
+                    case 7:
+                        mBlackView.setVisibility(View.INVISIBLE);
                         update(getString(R.string.lcd_test_prompt), 0xff000000,
                                 getResources().getColor(R.color.white));
                         mButtonLayout.setVisibility(View.VISIBLE);
