@@ -23,8 +23,7 @@
         android:layout_below="@+id/tv_prompt"
         android:layout_marginTop="@dimen/v_margin"
         android:layout_centerHorizontal="true"
-        android:enabled="false"
-        android:text="@string/mic_test_play"
+        android:text="@string/mic_test_record"
         android:textColor="@drawable/btn_text_selector" />
 
     <com.ayst.dbv.DashboardView
@@ -48,7 +47,7 @@
         app:dbv_shortScaleLength="@dimen/dashboard_short_scale_length"
         app:dbv_startAngle="180"
         app:dbv_sweepAngle="180"
-        app:dbv_value="0"
+        app:dbv_value="-100"
         app:dbv_showValueText="true"
         app:dbv_showPointerRange="true"
         app:dbv_firstRange="30"

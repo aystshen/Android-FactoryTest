@@ -110,7 +110,7 @@
     <string name="light_test_prompt">Please check if the pointer changes according to the light intensity.</string>
 
     <!--    MicTestActivity-->
-    <string name="mic_test_prompt">Please speak loudly at the microphone and check whether the pointer below swings. After recording, click the "Play" button to check whether the sound playback is normal.</string>
+    <string name="mic_test_prompt">Please click "Record", and speak loudly with the microphone aligned, check whether the pointer below swings, click "Play" button after recording, check whether the sound playback is normal.</string>
     <string name="mic_test_record">Record</string>
     <string name="mic_test_play">Play</string>
 

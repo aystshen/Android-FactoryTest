@@ -38,7 +38,7 @@ public class RecordTestActivity extends ChildTestActivity {
     @BindView(R.id.btn_record_play)
     Button mRecordPlayBtn;
 
-    private boolean isRecording = true;
+    private boolean isRecording = false;
     private int mRecordBufferSize;
     private AudioRecord mAudioRecord;
     private AudioTrack mAudioTrack;
@@ -95,31 +95,16 @@ public class RecordTestActivity extends ChildTestActivity {
                 }
             }
         });
-
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mRecordPlayBtn.setEnabled(true);
-            }
-        }, 3000);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        record();
-    }
-
-    @Override
-    protected void onStop() {
-        stop();
-        super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        mAudioRecord.release();
+        mAudioTrack.stop();
         mAudioTrack.release();
+
+        mAudioRecord.stop();
+        mAudioRecord.release();
+
         File file = new File(mRecordFilePath);
         if (file.exists()) {
             file.delete();
@@ -237,11 +222,6 @@ public class RecordTestActivity extends ChildTestActivity {
                 }
             }
         }).start();
-    }
-
-    private void stop() {
-        mAudioTrack.stop();
-        mAudioRecord.stop();
     }
 
     private double calculateVol(int ch, byte[] buffer) {
