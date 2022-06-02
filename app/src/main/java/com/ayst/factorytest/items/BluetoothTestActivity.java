@@ -9,8 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,6 +61,7 @@ public class BluetoothTestActivity extends ChildTestActivity {
                     mDeviceListAdapter.notifyDataSetChanged();
                     mDeviceLv.setVisibility(View.VISIBLE);
 
+                    updateParam(String.format("{'device':'%s', 'rssi':%d}", device.getAddress(), result.getRssi()));
                     finish(TestItem.STATE_SUCCESS);
                 }
             });

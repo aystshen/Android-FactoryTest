@@ -11,8 +11,6 @@ import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +20,6 @@ import android.widget.Toast;
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.adapter.WifiListAdapter;
 import com.ayst.factorytest.base.ChildTestActivity;
-import com.ayst.factorytest.model.NarParam;
 import com.ayst.factorytest.model.TestItem;
 import com.ayst.factorytest.model.WiFiParam;
 import com.google.gson.Gson;
@@ -195,7 +192,7 @@ public class WifiTestActivity extends ChildTestActivity {
                 if (TextUtils.equals(result.SSID, mWiFiParam.getSsid())) {
                     Log.i(TAG, "updateAccessPoints, scan to ssid: " + result.SSID
                             + ", rssi: " + result.level);
-                    mTestItem.setExtras("ssid: " + result.SSID + ", rssi: " + result.level);
+                    updateParam(String.format("{'ssid':'%s', 'rssi':%d}", result.SSID, result.level));
                     if (result.level > mWiFiParam.getRssi()) {
                         finish(TestItem.STATE_SUCCESS);
                     } else {
@@ -204,6 +201,8 @@ public class WifiTestActivity extends ChildTestActivity {
                 }
             }
         } else if (!mWifiList.isEmpty()) {
+            ScanResult result = mWifiList.get(0);
+            updateParam(String.format("{'ssid':'%s', 'rssi':%d}", result.SSID, result.level));
             finish(TestItem.STATE_SUCCESS);
         }
     }

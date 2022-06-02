@@ -15,7 +15,6 @@ public class TestItem implements Serializable {
     private String key;
     private String name;
     private String param;
-    private String extras;
     private Class<? extends Activity> activity;
     private int state = STATE_UNKNOWN;
 
@@ -59,14 +58,6 @@ public class TestItem implements Serializable {
         this.param = param;
     }
 
-    public String getExtras() {
-        return extras;
-    }
-
-    public void setExtras(String extras) {
-        this.extras = extras;
-    }
-
     public Class<? extends Activity> getActivity() {
         return activity;
     }
@@ -101,7 +92,6 @@ public class TestItem implements Serializable {
                 "key='" + key + '\'' +
                 ", name='" + name + '\'' +
                 ", param='" + param + '\'' +
-                ", extras='" + extras + '\'' +
                 ", activity=" + activity +
                 ", state=" + state +
                 '}';

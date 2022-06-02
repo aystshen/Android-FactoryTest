@@ -9,6 +9,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.adapter.StringItemAdapter;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.google.gson.Gson;
 import com.xuexiang.xui.utils.WidgetUtils;
 
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class UsbTestActivity extends ChildTestActivity {
     @BindView(R.id.rv_items)
     RecyclerView mItemsRv;
 
+    private Gson mGson = new Gson();
     private StringItemAdapter mStringItemAdapter;
     private ArrayList<String> mItems = new ArrayList<>();
     private BroadcastReceiver mUsbStateChangeReceiver = new BroadcastReceiver() {
@@ -101,10 +104,14 @@ public class UsbTestActivity extends ChildTestActivity {
         UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
         HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
         Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
+        ArrayList<String> deviceNames = new ArrayList<>();
         while (deviceIterator.hasNext()) {
             UsbDevice device = deviceIterator.next();
             mItems.add(device.getDeviceName());
+            deviceNames.add(device.getDeviceName());
         }
+        updateParam(mGson.toJson(deviceNames));
+
         mStringItemAdapter.setList(mItems);
         mStringItemAdapter.notifyDataSetChanged();
     }

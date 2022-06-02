@@ -116,6 +116,10 @@ public abstract class ChildTestActivity extends BaseActivity {
         }
     }
 
+    protected void updateParam(String param) {
+        mTestItem.setParam(param);
+    }
+
     public abstract int getContentLayout();
 
     public abstract int getFullscreenLayout();

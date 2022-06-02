@@ -9,7 +9,6 @@ import android.net.NetworkInfo;
 import android.net.NetworkRequest;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -89,6 +88,8 @@ public class MobileNetTestActivity extends ChildTestActivity {
 
 //        mSignalTv.setText();
         mImeiTv.setText(imei);
+
+        updateParam(String.format("{'signal':%d, 'imei':'%s'}", -1, imei));
 
         if (!TextUtils.isEmpty(imei)) {
             finish(TestItem.STATE_SUCCESS);

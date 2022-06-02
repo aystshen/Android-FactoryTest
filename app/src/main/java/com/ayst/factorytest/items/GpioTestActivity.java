@@ -66,6 +66,8 @@ public class GpioTestActivity extends ChildTestActivity {
         mGpioItemAdapter = new GpioItemAdapter();
         mGpioItemAdapter.setList(mItems);
         mItemsRv.setAdapter(mGpioItemAdapter);
+
+        updateParam(String.format("{'num':%d}", App.getTBManager().getGpioNum()));
     }
 
     @Override

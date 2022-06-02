@@ -78,7 +78,7 @@ public class TestResultExport {
 
             fos.write(String.format(mContext.getString(R.string.rest_result), mDateFormat.format(new Date())).getBytes());
             for (TestItem item : mItems) {
-                fos.write((item.getName() + ": " + item.getStateStr(mContext) + "\n").getBytes());
+                fos.write((item.getName() + ": " + item.getStateStr(mContext) + " " + item.getParam() + "\n").getBytes());
                 switch (item.getState()) {
                     case TestItem.STATE_UNKNOWN:
                         unknownCnt++;

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.adapter.UartItemAdapter;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.ayst.factorytest.model.KeyItem;
 import com.ayst.factorytest.model.TestItem;
 import com.ayst.factorytest.model.UartItem;
 import com.ayst.factorytest.utils.DataConversion;
@@ -88,6 +89,9 @@ public class UartTestActivity extends ChildTestActivity {
         }
         WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
         mUartItems = parseParam(mTestItem.getParam());
+        for (UartItem uart : mUartItems) {
+            uart.setState(UartItem.STATE_UNKNOWN);
+        }
         mUartItemAdapter = new UartItemAdapter();
         mUartItemAdapter.setList(mUartItems);
         mItemsRv.setAdapter(mUartItemAdapter);
@@ -111,6 +115,7 @@ public class UartTestActivity extends ChildTestActivity {
         if (index < mUartItems.size()) {
             testUart(mUartItems.get(index));
         } else {
+            updateParam(mGson.toJson(mUartItems));
             finishWithCheckResult();
         }
     }

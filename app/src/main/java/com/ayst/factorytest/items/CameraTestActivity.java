@@ -2,8 +2,6 @@ package com.ayst.factorytest.items;
 
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -101,6 +99,8 @@ public class CameraTestActivity extends ChildTestActivity {
                         mCameraLayout.addView(surface, layoutParams);
                     }
                 }
+
+                updateParam(String.format("{'num':%d}", cameraNumber));
             }
         }, 1000);
     }

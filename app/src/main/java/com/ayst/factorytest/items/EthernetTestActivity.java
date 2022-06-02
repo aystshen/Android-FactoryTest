@@ -66,14 +66,19 @@ public class EthernetTestActivity extends ChildTestActivity {
         String netmask = App.getTBManager().getNetmask("eth0");
         String gateway = App.getTBManager().getGateway("eth0");
         String mode = App.getTBManager().getIpAssignment("eth0");
+        String dns1 = App.getTBManager().getDns1("eth0");
+        String dns2 = App.getTBManager().getDns2("eth0");
 
         mMacTv.setText(mac);
         mIpTv.setText(ip);
         mNetmaskTv.setText(netmask);
         mGatewayTv.setText(gateway);
-        mDns1Tv.setText(App.getTBManager().getDns1("eth0"));
-        mDns2Tv.setText(App.getTBManager().getDns2("eth0"));
+        mDns1Tv.setText(dns1);
+        mDns2Tv.setText(dns2);
         mModeTv.setText(mode);
+
+        updateParam(String.format("{'mac':'%s', 'ip':'%s', 'netmask':'%s', 'gateway':'%s', 'dns1':'%s', 'dns2':'%s', 'mode':'%s'}",
+                mac, ip, netmask, gateway, dns1, dns2, mode));
 
         if (!TextUtils.isEmpty(mac) && ipCheck(ip) && ipCheck(netmask) && ipCheck(gateway)
                 && (TextUtils.equals(mode, "DHCP") || TextUtils.equals(mode, "STATIC"))) {

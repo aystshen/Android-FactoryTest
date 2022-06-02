@@ -12,10 +12,7 @@ import android.widget.TextView;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
-import com.ayst.factorytest.model.ResultEvent;
 import com.ayst.factorytest.model.TestItem;
-
-import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 
@@ -105,6 +102,8 @@ public class AccSensorActivity extends ChildTestActivity {
                         float y = event.values[1];
                         float z = event.values[2];
                         update(x, y, z);
+
+                        updateParam(String.format("{'x':%f, 'y':%f, 'z':%f}", x, y, z));
                     }
 
                     @Override

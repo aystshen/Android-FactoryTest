@@ -83,6 +83,9 @@ public class KeyTestActivity extends ChildTestActivity {
         }
         WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
         mKeyItems = parseParam(mTestItem.getParam());
+        for (KeyItem key : mKeyItems) {
+            key.setState(KeyItem.STATE_UNKNOWN);
+        }
         mKeyItemAdapter = new KeyItemAdapter();
         mKeyItemAdapter.setList(mKeyItems);
         mItemsRv.setAdapter(mKeyItemAdapter);
@@ -96,6 +99,8 @@ public class KeyTestActivity extends ChildTestActivity {
                     mKeyItems.get(i).setState(KeyItem.STATE_SUCCESS);
                     mKeyItemAdapter.notifyDataSetChanged();
                     mClicked.put(event.getKeyCode(), true);
+
+                    updateParam(mGson.toJson(mKeyItems));
                     if (mClicked.size() >= mKeyItems.size()) {
                         finish(TestItem.STATE_SUCCESS);
                     }

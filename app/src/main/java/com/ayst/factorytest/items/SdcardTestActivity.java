@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.format.Formatter;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.ayst.factorytest.R;
 import com.ayst.factorytest.adapter.StringItemAdapter;
 import com.ayst.factorytest.base.ChildTestActivity;
 import com.blankj.utilcode.util.SDCardUtils;
+import com.google.gson.Gson;
 import com.xuexiang.xui.utils.WidgetUtils;
 
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class SdcardTestActivity extends ChildTestActivity {
     @BindView(R.id.rv_items)
     RecyclerView mItemsRv;
 
+    private Gson mGson = new Gson();
     private StringItemAdapter mStringItemAdapter;
     private ArrayList<String> mItems = new ArrayList<>();
     private BroadcastReceiver mMediaStateChangeReceiver = new BroadcastReceiver() {
@@ -97,14 +100,16 @@ public class SdcardTestActivity extends ChildTestActivity {
     private void getSdcard() {
         mItems.clear();
 
-        List<SDCardUtils.SDCardInfo> sdCardInfo = SDCardUtils.getSDCardInfo();
-        for (SDCardUtils.SDCardInfo cardInfo : sdCardInfo) {
+        List<SDCardUtils.SDCardInfo> cardInfos = SDCardUtils.getSDCardInfo();
+        for (SDCardUtils.SDCardInfo cardInfo : cardInfos) {
             StringBuilder builder = new StringBuilder();
             builder.append("路径: " + cardInfo.getPath() + "\n空间: "
                     + Formatter.formatFileSize(this, cardInfo.getAvailableSize())
                     + "(共" + Formatter.formatFileSize(this, cardInfo.getTotalSize()) + ")");
             mItems.add(builder.toString());
         }
+        updateParam(mGson.toJson(cardInfos));
+
         mStringItemAdapter.setList(mItems);
         mStringItemAdapter.notifyDataSetChanged();
     }

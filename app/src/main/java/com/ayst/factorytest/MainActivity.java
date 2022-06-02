@@ -115,6 +115,7 @@ public class MainActivity extends BaseActivity {
         for (int i = 0; i < mTestItems.size(); i++) {
             if (TextUtils.equals(item.getName(), mTestItems.get(i).getName())) {
                 mTestItems.get(i).setState(item.getState());
+                mTestItems.get(i).setParam(item.getParam());
                 mTestItemAdapter.notifyDataSetChanged();
             }
         }
