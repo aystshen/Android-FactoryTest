@@ -22,9 +22,11 @@ import com.ayst.factorytest.data.TestItemManager;
 import com.ayst.factorytest.data.TestResultExport;
 import com.ayst.factorytest.model.ResultEvent;
 import com.ayst.factorytest.model.TestItem;
+import com.ayst.factorytest.utils.SPUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.google.gson.Gson;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 
@@ -62,6 +64,7 @@ public class MainActivity extends BaseActivity {
     Button mCleanResultBtn;
 
     private int mNextItem = INVALID_ITEM;
+    private Gson mGson = new Gson();
     private ArrayList<TestItem> mTestItems;
     private TestItemAdapter mTestItemAdapter;
 
@@ -136,7 +139,7 @@ public class MainActivity extends BaseActivity {
         mCleanResultBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
+                SPUtils.get(MainActivity.this).clear();
             }
         });
     }
@@ -152,6 +155,7 @@ public class MainActivity extends BaseActivity {
     public void onResultEvent(ResultEvent event) {
         TestItem item = event.getTestItem();
         Log.i(TAG, "onResultEvent, " + item.toString());
+        SPUtils.get(this).saveData(item.getKey(), mGson.toJson(item));
         for (int i = 0; i < mTestItems.size(); i++) {
             if (TextUtils.equals(item.getName(), mTestItems.get(i).getName())) {
                 mTestItems.get(i).setState(item.getState());

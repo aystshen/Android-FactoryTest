@@ -33,7 +33,12 @@ import com.ayst.factorytest.items.UsbTestActivity;
 import com.ayst.factorytest.items.WatchdogTestActivity;
 import com.ayst.factorytest.items.WiegandTestActivity;
 import com.ayst.factorytest.items.WifiTestActivity;
+import com.ayst.factorytest.model.KeyItem;
+import com.ayst.factorytest.model.NarParam;
 import com.ayst.factorytest.model.TestItem;
+import com.ayst.factorytest.utils.SPUtils;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +46,9 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -52,6 +59,7 @@ public class TestItemManager {
 
     private static TestItemManager sInstance = null;
     private static Context sContext;
+    private Gson mGson = new Gson();
     private ArrayList<TestItem> mTestItems = new ArrayList<>();
     private LinkedHashMap<String, TestItem> mItemTargets = new LinkedHashMap<>();
 
@@ -142,14 +150,23 @@ public class TestItemManager {
     private void parse(String json) {
         if (!TextUtils.isEmpty(json)) {
             try {
+                Type type = new TypeToken<TestItem>() {
+                }.getType();
                 JSONArray jsonArray = new JSONArray(json);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject obj = jsonArray.getJSONObject(i);
                     String key = obj.getString("key");
                     String param = obj.getString("param");
                     if (mItemTargets.get(key) != null) {
-                        mTestItems.add(new TestItem(key, mItemTargets.get(key).getName(), param,
-                                mItemTargets.get(key).getActivity(), TestItem.STATE_UNKNOWN));
+                        String history = SPUtils.get(sContext).getData(key, "");
+                        if (!TextUtils.isEmpty(history)) {
+                            TestItem item = mGson.fromJson(history, type);
+                            item.setActivity(mItemTargets.get(key).getActivity());
+                            mTestItems.add(item);
+                        } else {
+                            mTestItems.add(new TestItem(key, mItemTargets.get(key).getName(), param,
+                                    mItemTargets.get(key).getActivity(), TestItem.STATE_UNKNOWN));
+                        }
                     }
                 }
             } catch (JSONException e) {
