@@ -5,6 +5,11 @@
     <string name="ignore">忽略</string>
     <string name="start">开始</string>
 
+    <!--MainActivity-->
+    <string name="main_scan_qrcode_tips">扫描二维码，导出测试结果</string>
+    <string name="main_show_qrcode">显示二维码</string>
+    <string name="main_clean_result">清除记录</string>
+
     <!--    TestItem-->
     <string name="test_item_info">信息</string>
     <string name="test_item_wifi">WiFi</string>

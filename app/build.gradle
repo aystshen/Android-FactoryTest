@@ -128,6 +128,8 @@ dependencies {
 //    implementation 'com.github.freyskill:SerialPortHelper:v1.0.1'
 
     implementation 'commons-collections:commons-collections:3.2.2'
+
+    implementation 'com.google.zxing:core:3.3.0'
 }
 
 def releaseTime() {

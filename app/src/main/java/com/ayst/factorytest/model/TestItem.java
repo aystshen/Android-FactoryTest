@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.ayst.factorytest.R;
 
+import org.jetbrains.annotations.TestOnly;
+
 import java.io.Serializable;
 
 public class TestItem implements Serializable {
@@ -15,7 +17,7 @@ public class TestItem implements Serializable {
     private String key;
     private String name;
     private String param;
-    private Class<? extends Activity> activity;
+    private transient Class<? extends Activity> activity;
     private int state = STATE_UNKNOWN;
 
     public TestItem(String key, String name, String param, Class<? extends Activity> activity, int state) {

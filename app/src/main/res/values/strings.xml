@@ -34,6 +34,11 @@
     <string name="test_item_pwm">PWM</string>
     <string name="test_item_led">LED</string>
 
+    <!--MainActivity-->
+    <string name="main_scan_qrcode_tips">Scan the QR code to export the test results.</string>
+    <string name="main_show_qrcode">Show QRCode</string>
+    <string name="main_clean_result">Clean Result</string>
+
     <!--    WiFiTestActivity-->
     <string name="wifi_test_connected">Connected</string>
     <string name="wifi_test_connecting">Connecting</string>

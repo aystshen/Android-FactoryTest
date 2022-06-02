@@ -12,62 +12,122 @@
         android:layout_height="@dimen/title_height"
         android:backgroundTint="@color/colorPrimary" />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingStart="@dimen/h_margin"
-        android:paddingEnd="@dimen/h_margin"
-        android:background="@color/gray">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:background="@color/gray"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/h_margin"
+            android:paddingEnd="@dimen/h_margin">
 
-            <View
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@mipmap/ic_launcher"/>
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="@string/app_name"
-                android:textSize="@dimen/text_small" />
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_version"
-                android:layout_width="wrap_content"
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/app_name"
+                    android:textSize="@dimen/text_small" />
+
+                <TextView
+                    android:id="@+id/tv_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="1.0.0"
+                    android:textSize="@dimen/text_small" />
+
+                <Button
+                    android:id="@+id/btn_show_qrcode"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/main_show_qrcode"
+                    android:textColor="@drawable/btn_text_selector" />
+
+                <Button
+                    android:id="@+id/btn_clean_result"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_clean_result"
+                    android:textColor="@drawable/btn_text_selector" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_start_selector"
+                android:backgroundTint="@null"
+                android:text="@string/start"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_normal" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_items"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="1.0.0"
-                android:textSize="@dimen/text_small" />
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_recyclerview"
+                android:padding="1px" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_start"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/btn_height"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_start_selector"
-            android:backgroundTint="@null"
-            android:text="@string/start"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_normal" />
+        <RelativeLayout
+            android:id="@+id/layout_qrcode"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_items"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="1px"
-            android:background="@drawable/bg_recyclerview"/>
+            <ImageButton
+                android:id="@+id/btn_close_qrcode"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:background="@color/transparent"
+                android:src="@mipmap/ic_close" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_qrcode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:layout_margin="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:text="扫描二维码，导出测试结果"
+                android:textColor="@color/black_70"
+                android:textSize="@dimen/text_normal"/>
+
+        </RelativeLayout>
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -2,11 +2,15 @@ package com.ayst.factorytest;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,6 +50,16 @@ public class MainActivity extends BaseActivity {
     Button mStartBtn;
     @BindView(R.id.tv_version)
     TextView mVersionTv;
+    @BindView(R.id.layout_qrcode)
+    RelativeLayout mQRCodeLayout;
+    @BindView(R.id.iv_qrcode)
+    ImageView mQRCodeIv;
+    @BindView(R.id.btn_close_qrcode)
+    ImageButton mCloseQRCodeBtn;
+    @BindView(R.id.btn_show_qrcode)
+    Button mShowQRCodeBtn;
+    @BindView(R.id.btn_clean_result)
+    Button mCleanResultBtn;
 
     private int mNextItem = INVALID_ITEM;
     private ArrayList<TestItem> mTestItems;
@@ -99,6 +113,32 @@ public class MainActivity extends BaseActivity {
                 next();
             }
         });
+
+        mCloseQRCodeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mQRCodeLayout.setVisibility(View.GONE);
+            }
+        });
+
+        mShowQRCodeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TestResultExport export = new TestResultExport(MainActivity.this, mTestItems);
+                Bitmap qrcode = export.exportQRCode();
+                mQRCodeLayout.setVisibility(View.VISIBLE);
+                if (qrcode != null) {
+                    mQRCodeIv.setImageBitmap(qrcode);
+                }
+            }
+        });
+
+        mCleanResultBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO
+            }
+        });
     }
 
     @Override
@@ -143,7 +183,13 @@ public class MainActivity extends BaseActivity {
             mNextItem++;
         } else {
             mNextItem = INVALID_ITEM;
-            new TestResultExport(this, mTestItems).export();
+            TestResultExport export = new TestResultExport(this, mTestItems);
+            export.exportFile();
+            Bitmap qrcode = export.exportQRCode();
+            mQRCodeLayout.setVisibility(View.VISIBLE);
+            if (qrcode != null) {
+                mQRCodeIv.setImageBitmap(qrcode);
+            }
         }
     }
 }
