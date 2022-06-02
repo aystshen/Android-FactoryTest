@@ -27,7 +27,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -74,7 +73,6 @@
                 android:id="@+id/btn_start"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_height"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/btn_start_selector"
                 android:backgroundTint="@null"
                 android:text="@string/start"
