@@ -11,6 +11,7 @@ import com.ayst.factorytest.R;
 import com.ayst.factorytest.model.TestItem;
 import com.ayst.factorytest.utils.AppUtils;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -29,7 +30,7 @@ public class TestResultExport {
     private static final String TAG = "TestResultExport";
 
     private Context mContext;
-    private Gson mGson = new Gson();
+    private Gson mGson = new GsonBuilder().disableHtmlEscaping().create();;
     private ArrayList<TestItem> mItems;
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -194,8 +195,11 @@ public class TestResultExport {
             sb.append(",");
         }
         sb.append("}");
-        Log.i(TAG, "exportQRCode, content: " + sb.toString());
-        return createQRCodeBitmap(sb.toString(), 1000, 1000,"UTF-8",
+        String qr = sb.toString();
+        qr = qr.replaceAll("\"","");
+        qr = qr.replaceAll("\'","");
+        Log.i(TAG, "exportQRCode, content: " + qr);
+        return createQRCodeBitmap(qr, 1000, 1000,"UTF-8",
                 "L", "1", Color.BLACK, Color.WHITE);
     }
 }
