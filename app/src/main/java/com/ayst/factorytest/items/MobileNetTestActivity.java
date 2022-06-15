@@ -9,6 +9,8 @@ import android.net.NetworkInfo;
 import android.net.NetworkRequest;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -38,10 +40,14 @@ public class MobileNetTestActivity extends ChildTestActivity {
 
     @BindView(R.id.tv_type)
     TextView mTypeTv;
+    @BindView(R.id.tv_sim)
+    TextView mSimTv;
     @BindView(R.id.tv_signal)
     TextView mSignalTv;
     @BindView(R.id.tv_imei)
     TextView mImeiTv;
+
+    private int mLastSignal = 0;
 
     private ConnectivityManager.NetworkCallback mNetworkCallback = new ConnectivityManager.NetworkCallback() {
         public void onCapabilitiesChanged(Network network, NetworkCapabilities networkCapabilities) {
@@ -86,16 +92,31 @@ public class MobileNetTestActivity extends ChildTestActivity {
 
         String imei = AppUtils.getIMEI(this);
 
-//        mSignalTv.setText();
         mImeiTv.setText(imei);
 
-        updateParam(String.format("{'signal':%d, 'imei':'%s'}", -1, imei));
-
-        if (!TextUtils.isEmpty(imei)) {
-            finish(TestItem.STATE_SUCCESS);
+        boolean hasSimCard = hasSimCard(this);
+        if (hasSimCard) {
+            mSimTv.setText(getText(R.string.mobile_net_test_insert));
+            getMobileNetworkSignal(this);
         } else {
-            finish(TestItem.STATE_FAILURE);
+            mSimTv.setText(getText(R.string.mobile_net_test_not_insert));
+            Log.e(TAG, "initViews, no sim cards");
         }
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                updateParam(String.format("{'sim':%d, 'signal':%d, 'imei':'%s'}", hasSimCard ? 1 : 0, mLastSignal, imei));
+
+                if (!TextUtils.isEmpty(imei)
+                        && hasSimCard
+                        && mLastSignal != 0) {
+                    finish(TestItem.STATE_SUCCESS);
+                } else {
+                    finish(TestItem.STATE_FAILURE);
+                }
+            }
+        }, 3000);
     }
 
     @Override
@@ -275,5 +296,37 @@ public class MobileNetTestActivity extends ChildTestActivity {
         }
 
         return state;
+    }
+
+    public boolean hasSimCard(Context context) {
+        TelephonyManager telMgr = (TelephonyManager)
+                context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (telMgr != null) {
+            int simState = telMgr.getSimState();
+            switch (simState) {
+                case TelephonyManager.SIM_STATE_ABSENT:
+                case TelephonyManager.SIM_STATE_UNKNOWN:
+                    return false; // 没有SIM卡
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private void getMobileNetworkSignal(Context context) {
+        TelephonyManager telMgr = (TelephonyManager)
+                context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (telMgr != null) {
+            telMgr.listen(new PhoneStateListener() {
+                @Override
+                public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+                    super.onSignalStrengthsChanged(signalStrength);
+                    int asu = signalStrength.getGsmSignalStrength();
+                    mLastSignal = -113 + 2 * asu;
+                    mSignalTv.setText(mLastSignal + "dBm");
+                    Log.i(TAG, "getMobileNetworkSignal, signal: " + mLastSignal + " dBm");
+                }
+            }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+        }
     }
 }

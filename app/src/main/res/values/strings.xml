@@ -122,6 +122,9 @@
     <!--    MobileNetTestActivity-->
     <string name="mobile_net_test_type">Network Type:</string>
     <string name="mobile_net_test_signal">Signal Strength:</string>
+    <string name="mobile_net_test_sim">SIM Card:</string>
+    <string name="mobile_net_test_insert">Inserted</string>
+    <string name="mobile_net_test_not_insert">Not Insert</string>
 
     <!--    NarTestActivity-->
     <string name="nar_test_prompt">Please speak into the microphone and observe whether the recording data of the following channels changes, and whether the sound playback is normal.</string>

@@ -40,6 +40,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="@string/mobile_net_test_sim"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_sim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mobile_net_test_not_insert"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/mobile_net_test_signal"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
@@ -48,7 +72,7 @@
             android:id="@+id/tv_signal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0db"
+            android:text="0 dBm"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/black"/>
 

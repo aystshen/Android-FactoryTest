@@ -123,6 +123,9 @@
     <!--    MobileNetTestActivity-->
     <string name="mobile_net_test_type">网络类型：</string>
     <string name="mobile_net_test_signal">信号强度：</string>
+    <string name="mobile_net_test_sim">SIM卡：</string>
+    <string name="mobile_net_test_insert">已插入</string>
+    <string name="mobile_net_test_not_insert">未插入</string>
 
     <!--    NarTestActivity-->
     <string name="nar_test_prompt">请对准麦克风说话，观察以下各通道录音数据是否变化，声音回放是否正常。</string>
