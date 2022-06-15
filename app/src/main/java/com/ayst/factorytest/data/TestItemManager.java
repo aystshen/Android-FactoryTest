@@ -66,13 +66,6 @@ public class TestItemManager {
     private TestItemManager(Context context) {
         sContext = context;
         bindTargets();
-        loadConfig();
-        if (mTestItems.isEmpty()) {
-            Log.i(TAG, "config does not exist, use default");
-            for (Map.Entry<String, TestItem> entry : mItemTargets.entrySet()) {
-                mTestItems.add(entry.getValue());
-            }
-        }
     }
 
     public static TestItemManager getInstance(Context context) {
@@ -82,7 +75,17 @@ public class TestItemManager {
         return sInstance;
     }
 
-    public ArrayList<TestItem> getTestItems() {
+    public ArrayList<TestItem> loadTestItems() {
+        mTestItems.clear();
+
+        loadConfig();
+
+        if (mTestItems.isEmpty()) {
+            Log.i(TAG, "config does not exist, use default");
+            for (Map.Entry<String, TestItem> entry : mItemTargets.entrySet()) {
+                mTestItems.add(entry.getValue());
+            }
+        }
         return mTestItems;
     }
 

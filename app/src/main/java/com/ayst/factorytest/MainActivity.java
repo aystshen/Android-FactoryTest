@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity {
             spanCount = 2;
         }
         WidgetUtils.initGridRecyclerView(mItemsRv, spanCount, 1, getResources().getColor(R.color.gray));
-        mTestItems = TestItemManager.getInstance(getApplicationContext()).getTestItems();
+        mTestItems = TestItemManager.getInstance(getApplicationContext()).loadTestItems();
         mTestItemAdapter = new TestItemAdapter();
         mTestItemAdapter.setList(mTestItems);
         mItemsRv.setAdapter(mTestItemAdapter);
@@ -140,6 +140,9 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 SPUtils.get(MainActivity.this).clear();
+                mTestItems = TestItemManager.getInstance(getApplicationContext()).loadTestItems();
+                mTestItemAdapter.setList(mTestItems);
+                mTestItemAdapter.notifyDataSetChanged();
             }
         });
     }
