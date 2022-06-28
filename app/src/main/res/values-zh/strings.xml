@@ -85,9 +85,8 @@
     <string name="gpio_test_prompt">各路GPIO将交替输出高低电平（间隔1秒），请查看各路GPIO输出电压是否正常。</string>
 
     <!--    HumanSensorActivity-->
-    <string name="human_test_prompt">请靠近设备，并观察下面圆点是否显示红色。</string>
-    <string name="human_test_prompt_far">请远离设备或保持静止(5秒)，并观察下面圆点是否显示绿色。</string>
-    <string name="human_test_prompt_near">请靠近设备并保持活动，并观察下面圆点是否显示黄色。</string>
+    <string name="human_test_prompt_far">请远离设备或保持静止(5秒)，并观察下面圆点是否显示红色。</string>
+    <string name="human_test_prompt_near">请靠近设备并保持活动，并观察下面圆点是否显示绿色。</string>
 
     <!--    InfoTestActivity-->
     <string name="info_test_model">设备型号：</string>

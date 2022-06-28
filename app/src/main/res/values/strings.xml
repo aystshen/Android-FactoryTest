@@ -84,9 +84,8 @@
     <string name="gpio_test_prompt">Each GPIO will output high and low levels alternately (1 second interval). Please check whether the output voltage of each GPIO is normal.</string>
 
     <!--    HumanSensorActivity-->
-    <string name="human_test_prompt">Move closer to the device and observe if the dot below is red.</string>
-    <string name="human_test_prompt_far">Move away from the device or remain still (5 seconds) and observe if the dot below is green.</string>
-    <string name="human_test_prompt_near">Stay close to the device, stay active, and watch the dots below turn yellow.</string>
+    <string name="human_test_prompt_far">Move away from the device or hold still (5 seconds) and observe whether the dots below show red.</string>
+    <string name="human_test_prompt_near">Please approach the device and remain active and observe whether the dots below show green.</string>
 
     <!--    InfoTestActivity-->
     <string name="info_test_model">Model:</string>

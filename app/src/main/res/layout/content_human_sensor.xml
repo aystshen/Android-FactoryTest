@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="@string/human_test_prompt"
+        android:text="@string/human_test_prompt_near"
         android:textColor="@color/black"
         android:textSize="@dimen/text_normal" />
 
