@@ -4,6 +4,7 @@ import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
@@ -11,7 +12,7 @@ import com.blankj.utilcode.util.VolumeUtils;
 
 import java.io.IOException;
 
-public class SpeakerTestActivity extends ChildTestActivity implements MediaPlayer.OnPreparedListener {
+public class SpeakerTestActivity extends ChildTestActivity implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private MediaPlayer mMediaPlayer;
 
@@ -52,6 +53,7 @@ public class SpeakerTestActivity extends ChildTestActivity implements MediaPlaye
         try {
             mMediaPlayer.setDataSource(file.getFileDescriptor(), file.getStartOffset(), file.getLength());
             mMediaPlayer.setOnPreparedListener(this);
+            mMediaPlayer.setOnCompletionListener(this);
             mMediaPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,6 +69,11 @@ public class SpeakerTestActivity extends ChildTestActivity implements MediaPlaye
     }
 
     public void onPrepared(MediaPlayer mp) {
+        mMediaPlayer.start();
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
         mMediaPlayer.start();
     }
 }
