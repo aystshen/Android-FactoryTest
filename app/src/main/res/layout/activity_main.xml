@@ -50,22 +50,30 @@
                     android:text="1.0.0"
                     android:textSize="@dimen/text_small" />
 
-                <Button
-                    android:id="@+id/btn_show_qrcode"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/main_show_qrcode"
-                    android:textColor="@drawable/btn_text_selector" />
+                    android:layout_marginStart="10dp">
 
-                <Button
-                    android:id="@+id/btn_clean_result"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/main_clean_result"
-                    android:textColor="@drawable/btn_text_selector" />
+                    <Button
+                        android:id="@+id/btn_clean_result"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="@string/main_clean_result"
+                        android:textColor="@drawable/btn_text_selector" />
+
+                    <Button
+                        android:id="@+id/btn_show_qrcode"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/main_show_qrcode"
+                        android:textColor="@drawable/btn_text_selector" />
+
+                </RelativeLayout>
 
             </LinearLayout>
 
