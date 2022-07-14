@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
+import com.ayst.factorytest.model.TestItem;
 
 import butterknife.BindView;
 
@@ -107,6 +109,10 @@ public class BatteryTestActivity extends ChildTestActivity {
                                 "'plugged':'%s', 'voltage':'%s', 'temperature':'%s'}",
                         mStatusTv.getText(), mHealthTv.getText(), mLevelTv.getText(), mScaleTv.getText(),
                         mPluggedTv.getText(), mVoltageTv.getText(), mTechnologyTv.getText()));
+
+                if (TextUtils.equals(mPluggedTv.getText().toString(), "AC")) {
+                    finish(TestItem.STATE_FAILURE);
+                }
             }
         }
     };
