@@ -4,6 +4,8 @@
     <string name="fail">FAIL</string>
     <string name="ignore">IGNORE</string>
     <string name="start">START</string>
+    <string name="note">NOTE</string>
+    <string name="ok">OK</string>
 
     <string name="test_item_info">Information</string>
     <string name="test_item_wifi">WiFi</string>
@@ -33,6 +35,7 @@
     <string name="test_item_nd01">Distance Sensor</string>
     <string name="test_item_pwm">PWM</string>
     <string name="test_item_led">LED</string>
+    <string name="test_item_wifi_transfer">WiFi Transfer</string>
 
     <!--MainActivity-->
     <string name="main_scan_qrcode_tips">Scan the QR code to export the test results.</string>
@@ -46,6 +49,7 @@
     <string name="wifi_test_disconnected">Disconnected</string>
     <string name="wifi_test_obtaining_ipaddr">Obtaining ip</string>
     <string name="wifi_test_toast">"The scanning SSID %1$s signal strength needs to be greater than %2$d db."</string>
+    <string name="wifi_test_prompt">Scanning WiFi hotspots...</string>
 
     <!--    AccSensorActivity-->
     <string name="acc_test_prompt">Put the device horizontally, horizontally, and vertically until X/Y/Z turn green.</string>
@@ -174,8 +178,16 @@
     <string name="wiegand_test_read">Wiegand Read</string>
     <string name="wiegand_test_read_prompt">Swipe the card (access control card, bus card, work card, etc.) to see if the card number can be read out correctly</string>
 
-    <!--    WiFiTestActivity-->
-    <string name="wifi_test_prompt">Scanning WiFi hotspots...</string>
+    <!--    WiFiTransferTestActivity-->
+    <string name="wifi_transfer_test_start">Start</string>
+    <string name="wifi_transfer_test_stop">Stop</string>
+    <string name="wifi_transfer_test_uplink">Uplink</string>
+    <string name="wifi_transfer_test_downlink">Downlink</string>
+    <string name="wifi_transfer_test_localip">Local IP:</string>
+    <string name="wifi_transfer_test_serverip">Server IP:</string>
+    <string name="wifi_transfer_test_prompt">The device will automatically connect to the WiFi hotspot named (%1$s). Please check uplink and downlink respectively and click the Start button to test.</string>
+    <string name="wifi_transfer_test_msg_downlink">Please run the \'iperf -c 192.168.31.138 -i 1 -t 60 -w 1m\' command and view the test result on the computer.</string>
+    <string name="wifi_transfer_test_msg_uplink">Please run the \'iperf -s\' command on the computer and view the test result on the device.</string>
 
     <!--    TestResultExport-->
     <string name="rest_result">"Test result (%1$s)\n\n"</string>

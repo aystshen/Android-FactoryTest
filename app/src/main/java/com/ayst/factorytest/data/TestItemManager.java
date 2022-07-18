@@ -31,6 +31,7 @@ import com.ayst.factorytest.items.TouchTestActivity;
 import com.ayst.factorytest.items.UartTestActivity;
 import com.ayst.factorytest.items.UsbTestActivity;
 import com.ayst.factorytest.items.WatchdogTestActivity;
+import com.ayst.factorytest.items.WiFiTransferTestActivity;
 import com.ayst.factorytest.items.WiegandTestActivity;
 import com.ayst.factorytest.items.WifiTestActivity;
 import com.ayst.factorytest.model.KeyItem;
@@ -124,6 +125,8 @@ public class TestItemManager {
         mItemTargets.put("nd01", new TestItem(sContext.getString(R.string.test_item_nd01), ND01TestActivity.class));
         mItemTargets.put("pwm", new TestItem(sContext.getString(R.string.test_item_pwm), PwmTestActivity.class));
         mItemTargets.put("led", new TestItem(sContext.getString(R.string.test_item_led), LedTestActivity.class));
+        mItemTargets.put("wifitransfer", new TestItem(sContext.getString(R.string.test_item_wifi_transfer),
+                WiFiTransferTestActivity.class));
     }
 
     private void loadConfig() {

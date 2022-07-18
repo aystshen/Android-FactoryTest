@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".items.WiFiTransferTestActivity">
+
+    <TextView
+        android:id="@+id/tv_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wifi_transfer_test_prompt"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/v_margin"
+        android:gravity="center_vertical">
+
+        <ToggleButton
+            android:id="@+id/btn_start"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="@string/wifi_transfer_test_stop"
+            android:textOff="@string/wifi_transfer_test_start"
+            android:textColor="@drawable/btn_text_selector" />
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rb_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_normal"
+                android:text="@string/wifi_transfer_test_uplink" />
+
+            <RadioButton
+                android:id="@+id/rb_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textSize="@dimen/text_normal"
+                android:text="@string/wifi_transfer_test_downlink" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/wifi_transfer_test_localip"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_local_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="192.168.0.100"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/wifi_transfer_test_serverip"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/edt_pc_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:text="192.168.0.200"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/black"
+            android:digits="0123456789."
+            android:background="@drawable/edt_line"
+            android:focusable="false"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/v_margin"
+        android:background="@drawable/bg_container"/>
+
+</LinearLayout>

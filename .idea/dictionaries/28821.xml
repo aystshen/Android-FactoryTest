@@ -3,6 +3,7 @@
     <words>
       <w>backlight</w>
       <w>gpio</w>
+      <w>iperf</w>
       <w>uart</w>
       <w>wiegand</w>
     </words>

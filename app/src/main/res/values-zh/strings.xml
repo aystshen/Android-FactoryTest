@@ -4,6 +4,8 @@
     <string name="fail">失败</string>
     <string name="ignore">忽略</string>
     <string name="start">开始</string>
+    <string name="note">注意</string>
+    <string name="ok">确认</string>
 
     <!--MainActivity-->
     <string name="main_scan_qrcode_tips">扫描二维码，导出测试结果</string>
@@ -39,6 +41,7 @@
     <string name="test_item_nd01">物距</string>
     <string name="test_item_pwm">PWM</string>
     <string name="test_item_led">LED</string>
+    <string name="test_item_wifi_transfer">WiFi吞吐量</string>
 
     <!--    WiFiTestActivity-->
     <string name="wifi_test_connected">已连接</string>
@@ -47,6 +50,7 @@
     <string name="wifi_test_disconnected">已断开</string>
     <string name="wifi_test_obtaining_ipaddr">正在获取IP</string>
     <string name="wifi_test_toast">"扫描热点 %1$s 信号强度需要大于 %2$d db"</string>
+    <string name="wifi_test_prompt">正在搜索附近WiFi热点...</string>
 
     <!--    AccSensorActivity-->
     <string name="acc_test_prompt">请依次将设备平放、横放、竖放，直到X/Y/Z三者均变为绿色。</string>
@@ -175,8 +179,16 @@
     <string name="wiegand_test_read">韦根读</string>
     <string name="wiegand_test_read_prompt">刷卡（门禁卡、公交卡、工牌等），观察是否能正确读出卡号</string>
 
-    <!--    WiFiTestActivity-->
-    <string name="wifi_test_prompt">正在搜索附近WiFi热点...</string>
+    <!--    WiFiTransferTestActivity-->
+    <string name="wifi_transfer_test_start">开始</string>
+    <string name="wifi_transfer_test_stop">停止</string>
+    <string name="wifi_transfer_test_uplink">上行</string>
+    <string name="wifi_transfer_test_downlink">下行</string>
+    <string name="wifi_transfer_test_localip">本机IP：</string>
+    <string name="wifi_transfer_test_serverip">电脑IP：</string>
+    <string name="wifi_transfer_test_prompt">设备将自动连接名为（%1$s）的WiFi热点，请分别勾选上行、下行后，点击开始按钮进行测试。</string>
+    <string name="wifi_transfer_test_msg_downlink">请在电脑上执行 ‘iperf -c 192.168.31.138 -i 1 -t 60 -w 1m’ 命令，并在电脑上查看测试结果。</string>
+    <string name="wifi_transfer_test_msg_uplink">请在电脑上执行 ‘iperf -s’ 命令，并在设备上查看测试结果。</string>
 
     <!--    TestResultExport-->
     <string name="rest_result">"测试结果（%1$s）\n\n"</string>
