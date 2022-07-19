@@ -17,6 +17,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
@@ -39,6 +40,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 
@@ -130,18 +133,25 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
                         dialog.show();
                         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
                     } else if (mUpRdoBtn.isChecked()) {
-                        AlertDialog dialog = new AlertDialog.Builder(WiFiTransferTestActivity.this)
-                                .setTitle(getString(R.string.note))
-                                .setMessage(getString(R.string.wifi_transfer_test_msg_uplink))
-                                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        start("/data/iperf -c " + mWiFiTransferParam.getServerip() + " -i 1 -t 60 -w 1m\n");
-                                        dialogInterface.dismiss();
-                                    }
-                                }).create();
-                        dialog.show();
-                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
+                        String serverip = mPcIpEdt.getText().toString();
+                        if (!TextUtils.isEmpty(serverip) && isCorrectIp(serverip)) {
+                            AlertDialog dialog = new AlertDialog.Builder(WiFiTransferTestActivity.this)
+                                    .setTitle(getString(R.string.note))
+                                    .setMessage(getString(R.string.wifi_transfer_test_msg_uplink))
+                                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            start("/data/iperf -c " + serverip + " -i 1 -t 60 -w 1m\n");
+                                            dialogInterface.dismiss();
+                                        }
+                                    }).create();
+                            dialog.show();
+                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
+                        } else {
+                            Toast.makeText(WiFiTransferTestActivity.this,
+                                    getString(R.string.wifi_transfer_test_serverip_invalid),
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } else {
                     stop();
@@ -236,6 +246,13 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
             }
         }
         return false;
+    }
+
+    private static boolean isCorrectIp(String ipAddress) {
+        String ip = "([1-9]|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])(\\.(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])){3}";
+        Pattern pattern = Pattern.compile(ip);
+        Matcher matcher = pattern.matcher(ipAddress);
+        return matcher.matches();
     }
 
     private class InfoHandler extends Handler {

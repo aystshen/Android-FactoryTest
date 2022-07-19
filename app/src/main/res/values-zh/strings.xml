@@ -189,6 +189,7 @@
     <string name="wifi_transfer_test_prompt">设备将自动连接名为（%1$s）的WiFi热点，请分别勾选上行、下行后，点击开始按钮进行测试。</string>
     <string name="wifi_transfer_test_msg_downlink">请在电脑上执行 ‘iperf -c 192.168.31.138 -i 1 -t 60 -w 1m’ 命令，并在电脑上查看测试结果。</string>
     <string name="wifi_transfer_test_msg_uplink">请在电脑上执行 ‘iperf -s’ 命令，并在设备上查看测试结果。</string>
+    <string name="wifi_transfer_test_serverip_invalid">无效的电脑IP</string>
 
     <!--    TestResultExport-->
     <string name="rest_result">"测试结果（%1$s）\n\n"</string>
