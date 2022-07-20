@@ -26,5 +26,6 @@
   {"key": "wiegand", "param": "{'write': {'format': 26, 'value': 7825015}, 'read': {'format': 26, 'value': 0}}"},
   {"key": "nd01", "param": "{'i2c': 1, 'calibrate': true}"},
   {"key": "pwm", "param": "[{'name': '红色LED', 'pwm': 0, 'period': 10000, 'duty': 1000, 'state': 0}, {'name': '绿色LED', 'pwm': 1, 'period': 10000, 'duty': 1000, 'state': 0}, {'name': '蓝色LED', 'pwm': 2, 'period': 10000, 'duty': 1000, 'state': 0}]"},
-  {"key": "led", "param": "[{'name': '红', 'device': 'led_r', 'brightness': 1000, 'state': 0}, {'name': '绿', 'device': 'led_g', 'brightness': 1000, 'state': 0}, {'name': '蓝', 'device': 'led_b', 'brightness': 1000, 'state': 0}]"}
+  {"key": "led", "param": "[{'name': '红', 'device': 'led_r', 'brightness': 1000, 'state': 0}, {'name': '绿', 'device': 'led_g', 'brightness': 1000, 'state': 0}, {'name': '蓝', 'device': 'led_b', 'brightness': 1000, 'state': 0}]"},
+  {"key": "wifitransfer", "param": "{'ssid': 'Redmi_2182', 'password': 'topband123', 'serverip': '192.168.31.218'}" }
 ]

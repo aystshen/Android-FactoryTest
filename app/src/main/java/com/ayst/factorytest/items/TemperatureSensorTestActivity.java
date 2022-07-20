@@ -162,20 +162,21 @@ public class TemperatureSensorTestActivity extends ChildTestActivity {
                             for (int i = 0; i < mScreenFactorArr.length; i++) {
                                 screenFactor += mScreenFactorArr[i];
                             }
-                            screenFactor = screenFactor / mScreenFactorArr.length / 283;
+                            screenFactor = screenFactor / mScreenFactorArr.length / 510;
 
                             // 计算CPU对温度影响系数
                             float cpuFactor = 0;
                             for (int i = 0; i < mCpuFactorArr.length; i++) {
                                 cpuFactor += mCpuFactorArr[i];
                             }
-                            cpuFactor = cpuFactor / mCpuFactorArr.length / 160;
+                            cpuFactor = cpuFactor / mCpuFactorArr.length / 240;
 
                             // 计算开机时间对温度影响系数
                             float timeFactor = Math.min((float) SystemClock.elapsedRealtime() / 1000 / 60 / 30, 1.0f);
 
                             // 实际温度 = (sensor温度 - 屏幕系数 - cpu系数 - 开机时间系数)
-                            float temperature = sensorTemp - screenFactor - cpuFactor - timeFactor;
+                            //float temperature = sensorTemp - screenFactor - cpuFactor - timeFactor;
+                            float temperature = sensorTemp - cpuFactor - timeFactor;
                             float humidity = sensorHumidity;
 
                             Log.i(TAG, "onSensorChanged, sensorTemp=" + String.format("%.1f", sensorTemp)
