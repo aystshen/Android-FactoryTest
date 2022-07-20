@@ -185,10 +185,12 @@
     <string name="wifi_transfer_test_downlink">Downlink</string>
     <string name="wifi_transfer_test_localip">Local IP:</string>
     <string name="wifi_transfer_test_serverip">Server IP:</string>
-    <string name="wifi_transfer_test_prompt">The device will automatically connect to the WiFi hotspot named (%1$s). Please check uplink and downlink respectively and click the Start button to test.</string>
+    <string name="wifi_transfer_test_prompt">The device will automatically connect to the WiFi access point named (%1$s). Please check uplink and downlink respectively and click the Start button to test.</string>
     <string name="wifi_transfer_test_msg_downlink">Please run the \'iperf -c 192.168.31.138 -i 1 -t 60 -w 1m\' command and view the test result on the computer.</string>
     <string name="wifi_transfer_test_msg_uplink">Please run the \'iperf -s\' command on the computer and view the test result on the device.</string>
     <string name="wifi_transfer_test_serverip_invalid">Invalid server ip</string>
+    <string name="wifi_transfer_test_connect_success">WiFi (%1$s) connected</string>
+    <string name="wifi_transfer_test_connect_fail">Connect WiFi (%1$s) failed</string>
 
     <!--    TestResultExport-->
     <string name="rest_result">"Test result (%1$s)\n\n"</string>

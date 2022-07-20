@@ -2,8 +2,15 @@ package com.ayst.factorytest.items;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.NetworkInfo;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.ayst.factorytest.R;
@@ -40,6 +48,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,10 +56,12 @@ import butterknife.BindView;
 
 @SuppressLint("LongLogTag")
 public class WiFiTransferTestActivity extends ChildTestActivity {
+    static final int SECURITY_NONE = 0;
+    static final int SECURITY_WEP = 1;
+    static final int SECURITY_PSK = 2;
+    static final int SECURITY_EAP = 3;
     private static final String TAG = "WiFiTransferTestActivity";
-
     private static final int COMMAND_UPDATE_INFO = 1;
-
     @BindView(R.id.tv_prompt)
     TextView mPromptTv;
     @BindView(R.id.btn_start)
@@ -61,21 +72,59 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
     RadioButton mDownRdoBtn;
     @BindView(R.id.tv_local_ip)
     TextView mLocalIpTv;
-    @BindView(R.id.edt_pc_ip)
-    EditText mPcIpEdt;
+    @BindView(R.id.edt_server_ip)
+    EditText mServerIpEdt;
     @BindView(R.id.tv_info)
     TextView mInfoTv;
 
+    private int mNetworkId;
     private String mLocalIp;
     private WifiManager mWiFiManager;
     private IperfThread mIperfThread;
     private InfoHandler mInfoHandler = new InfoHandler(Looper.getMainLooper());
     private Gson mGson = new Gson();
     private WiFiTransferParam mWiFiTransferParam;
+    private WifiReceiver mWifiReceiver;
+
+    private static boolean isCorrectIp(String ipAddress) {
+        String ip = "([1-9]|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])(\\.(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])){3}";
+        Pattern pattern = Pattern.compile(ip);
+        Matcher matcher = pattern.matcher(ipAddress);
+        return matcher.matches();
+    }
+
+    private static String convertToQuotedString(@NonNull String string) {
+        if (TextUtils.isEmpty(string)) {
+            return "";
+        }
+
+        int lastPos = string.length() - 1;
+        if (lastPos < 0 || (string.charAt(0) == '"' && string.charAt(lastPos) == '"')) {
+            return string;
+        }
+
+        return "\"" + string + "\"";
+    }
+
+    private static int getSecurity(ScanResult result) {
+        if (result.capabilities.contains("WEP")) {
+            return SECURITY_WEP;
+        } else if (result.capabilities.contains("PSK")) {
+            return SECURITY_PSK;
+        } else if (result.capabilities.contains("EAP")) {
+            return SECURITY_EAP;
+        }
+        return SECURITY_NONE;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mWifiReceiver = new WifiReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        registerReceiver(mWifiReceiver, filter);
     }
 
     @Override
@@ -101,19 +150,39 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
         mPromptTv.setText(String.format(getString(R.string.wifi_transfer_test_prompt), mWiFiTransferParam.getSsid()));
 
         mWiFiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        if (AppUtils.isWifiConnected(this)) {
-            mLocalIp = Formatter.formatIpAddress(mWiFiManager.getDhcpInfo().ipAddress);
-            if (!TextUtils.isEmpty(mLocalIp) && !TextUtils.isEmpty(mWiFiTransferParam.getServerip())) {
-                mStartBtn.setEnabled(true);
-            } else {
-                mStartBtn.setEnabled(false);
+        if (mWiFiManager.setWifiEnabled(true)) {
+            mWiFiManager.startScan();
+            WifiInfo wifiInfo = mWiFiManager.getConnectionInfo();
+
+            List<ScanResult> scanResults = mWiFiManager.getScanResults();
+            for (ScanResult result : scanResults) {
+                if (TextUtils.equals(result.SSID, mWiFiTransferParam.getSsid())) {
+                    boolean connected = false;
+                    String ssid = mWiFiTransferParam.getSsid();
+                    WifiConfiguration config = checkExist(ssid);
+
+                    if (config != null) {
+                        disconnectWifi(wifiInfo.getNetworkId());
+                        connected = reconnectWifi(config);
+                    } else {
+                        disconnectWifi(wifiInfo.getNetworkId());
+                        connected = connectWifi(createWifiInfo(ssid,
+                                mWiFiTransferParam.getPassword(),
+                                getSecurity(result)), ssid);
+                    }
+
+                    if (connected) {
+                        Toast.makeText(this, String.format(getString(R.string.wifi_transfer_test_connect_success),
+                                ssid), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, String.format(getString(R.string.wifi_transfer_test_connect_fail),
+                                ssid), Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
-        } else {
-            mStartBtn.setEnabled(false);
         }
 
-        mLocalIpTv.setText(mLocalIp);
-        mPcIpEdt.setText(mWiFiTransferParam.getServerip());
+        mServerIpEdt.setText(mWiFiTransferParam.getServerip());
 
         mStartBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -133,7 +202,7 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
                         dialog.show();
                         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.blue));
                     } else if (mUpRdoBtn.isChecked()) {
-                        String serverip = mPcIpEdt.getText().toString();
+                        String serverip = mServerIpEdt.getText().toString();
                         if (!TextUtils.isEmpty(serverip) && isCorrectIp(serverip)) {
                             AlertDialog dialog = new AlertDialog.Builder(WiFiTransferTestActivity.this)
                                     .setTitle(getString(R.string.note))
@@ -160,6 +229,8 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
         });
     }
 
+
+
     private WiFiTransferParam parseParam(String param) {
         Type type = new TypeToken<WiFiTransferParam>() {
         }.getType();
@@ -168,6 +239,7 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
 
     @Override
     protected void onDestroy() {
+        unregisterReceiver(mWifiReceiver);
         stop();
         super.onDestroy();
     }
@@ -248,11 +320,101 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
         return false;
     }
 
-    private static boolean isCorrectIp(String ipAddress) {
-        String ip = "([1-9]|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])(\\.(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])){3}";
-        Pattern pattern = Pattern.compile(ip);
-        Matcher matcher = pattern.matcher(ipAddress);
-        return matcher.matches();
+    private WifiConfiguration createWifiInfo(String ssid, String password, int type) {
+        WifiConfiguration config = new WifiConfiguration();
+        config.allowedAuthAlgorithms.clear();
+        config.allowedGroupCiphers.clear();
+        config.allowedKeyManagement.clear();
+        config.allowedPairwiseCiphers.clear();
+        config.allowedProtocols.clear();
+        config.SSID = "\"" + ssid + "\"";
+        switch (type) {
+            case SECURITY_NONE:
+                config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+                break;
+
+            case SECURITY_WEP:
+                config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+                config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
+                config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED);
+                // WEP-40, WEP-104, and 256-bit WEP (WEP-232?)
+                int length = password.length();
+                if ((length == 10 || length == 26 || length == 58) &&
+                        password.matches("[0-9A-Fa-f]*")) {
+                    config.wepKeys[0] = password;
+                } else {
+                    config.wepKeys[0] = '"' + password + '"';
+                }
+                break;
+
+            case SECURITY_PSK:
+                config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+                if (password.matches("[0-9A-Fa-f]{64}")) {
+                    config.preSharedKey = password;
+                } else {
+                    config.preSharedKey = '"' + password + '"';
+                }
+                break;
+
+            case SECURITY_EAP:
+                Log.e(TAG, "createWifiInfo, no support SECURITY_EAP");
+                break;
+
+            default:
+                return null;
+        }
+        return config;
+    }
+
+    private boolean connectWifi(WifiConfiguration config, String ssid) {
+        WifiConfiguration tempConfig = checkExist(ssid);
+        if (tempConfig != null) {
+            mWiFiManager.removeNetwork(tempConfig.networkId);
+        }
+
+        mNetworkId = mWiFiManager.addNetwork(config);
+        if (mNetworkId != -1) {
+            boolean enabled = mWiFiManager.enableNetwork(mNetworkId, true);
+            boolean connected = mWiFiManager.reconnect();
+            Log.d(TAG, "connectWifi, mNetworkId=" + mNetworkId + ", enabled=" + enabled + ", connected=" + connected);
+            return connected;
+        }
+
+        return false;
+    }
+
+    public boolean reconnectWifi(WifiConfiguration config) {
+        mNetworkId = mWiFiManager.updateNetwork(config);
+        if (mNetworkId != -1) {
+            boolean enabled = mWiFiManager.enableNetwork(mNetworkId, true);
+            boolean connected = mWiFiManager.reconnect();
+            Log.d(TAG, "reconnectWifi, mNetworkId=" + mNetworkId + ", enabled=" + enabled + ", connected=" + connected);
+            return connected;
+        }
+
+        return false;
+    }
+
+    public void disconnectWifi(int netId) {
+        mWiFiManager.disableNetwork(netId);
+        mWiFiManager.disconnect();
+    }
+
+    private void removeWifi(int netId) {
+        disconnectWifi(netId);
+        mWiFiManager.removeNetwork(netId);
+        mWiFiManager.saveConfiguration();
+    }
+
+    @SuppressLint("MissingPermission")
+    private WifiConfiguration checkExist(String ssid) {
+        List<WifiConfiguration> existingConfigs = mWiFiManager.getConfiguredNetworks();
+        for (WifiConfiguration existingConfig : existingConfigs) {
+            if (existingConfig.SSID.equals("\"" + ssid + "\"")) {
+                return existingConfig;
+            }
+        }
+        return null;
     }
 
     private class InfoHandler extends Handler {
@@ -318,6 +480,23 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
                     }
                 } catch (IOException e) {
                     Log.e(TAG, e.getMessage(), e);
+                }
+            }
+        }
+    }
+
+    class WifiReceiver extends BroadcastReceiver {
+        public void onReceive(Context context, Intent intent) {
+            if (WifiManager.NETWORK_STATE_CHANGED_ACTION.equals(intent.getAction())) {
+                NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
+                NetworkInfo.DetailedState state = info.getDetailedState();
+                Log.d(TAG, "WifiReceiver, state=" + state.toString());
+                if (state == NetworkInfo.DetailedState.CONNECTED) {
+                    mLocalIp = Formatter.formatIpAddress(mWiFiManager.getDhcpInfo().ipAddress);
+                    if (isCorrectIp(mLocalIp)) {
+                        mStartBtn.setEnabled(true);
+                        mLocalIpTv.setText(mLocalIp);
+                    }
                 }
             }
         }
