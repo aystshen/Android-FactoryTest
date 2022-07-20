@@ -192,7 +192,7 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
                         start("/data/iperf -s\n");
                         AlertDialog dialog = new AlertDialog.Builder(WiFiTransferTestActivity.this)
                                 .setTitle(getString(R.string.note))
-                                .setMessage(getString(R.string.wifi_transfer_test_msg_downlink))
+                                .setMessage(String.format(getString(R.string.wifi_transfer_test_msg_downlink), mLocalIp))
                                 .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
