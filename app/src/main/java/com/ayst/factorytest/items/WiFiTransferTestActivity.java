@@ -495,6 +495,8 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
                     mLocalIp = Formatter.formatIpAddress(mWiFiManager.getDhcpInfo().ipAddress);
                     if (isCorrectIp(mLocalIp)) {
                         mStartBtn.setEnabled(true);
+                        mDownRdoBtn.setChecked(true);
+                        mStartBtn.setChecked(true);
                         mLocalIpTv.setText(mLocalIp);
                     }
                 }
