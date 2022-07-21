@@ -110,7 +110,9 @@ public class BatteryTestActivity extends ChildTestActivity {
                         mStatusTv.getText(), mHealthTv.getText(), mLevelTv.getText(), mScaleTv.getText(),
                         mPluggedTv.getText(), mVoltageTv.getText(), mTechnologyTv.getText()));
 
-                if (TextUtils.equals(mPluggedTv.getText().toString(), "AC")) {
+                if ((plugged == BatteryManager.BATTERY_PLUGGED_AC
+                        || plugged == BatteryManager.BATTERY_PLUGGED_USB)
+                        && level == 66) {
                     finish(TestItem.STATE_FAILURE);
                 }
             }
