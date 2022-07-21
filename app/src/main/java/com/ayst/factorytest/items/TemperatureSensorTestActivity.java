@@ -190,7 +190,7 @@ public class TemperatureSensorTestActivity extends ChildTestActivity {
                             mHumidityDashBoard.setValue((int) humidity);
                             mHumidityTv.setText(String.format("%.1f", humidity));
 
-                            updateParam(String.format("{'temperature':%f, 'humidity':%f}", temperature, humidity));
+                            updateResult(String.format("{'temperature':%f, 'humidity':%f}", temperature, humidity));
                         }
                     }
 

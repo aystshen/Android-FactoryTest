@@ -61,7 +61,7 @@ public class BluetoothTestActivity extends ChildTestActivity {
                     mDeviceListAdapter.notifyDataSetChanged();
                     mDeviceLv.setVisibility(View.VISIBLE);
 
-                    updateParam(String.format("{'device':'%s', 'rssi':%d}", device.getAddress(), result.getRssi()));
+                    updateResult(String.format("{'device':'%s', 'rssi':%d}", device.getAddress(), result.getRssi()));
                     finish(TestItem.STATE_SUCCESS);
                 }
             });

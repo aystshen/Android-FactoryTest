@@ -191,8 +191,9 @@ public class TestResultExport {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (TestItem item : mItems) {
-            sb.append(mGson.toJson(item));
-            sb.append(",");
+            sb.append("{key:" + item.getKey()
+                    + ", result:" + item.getResult()
+                    + ", state:" + item.getState() + "},");
         }
         sb.append("}");
         String qr = sb.toString();

@@ -167,11 +167,11 @@ public class TestItemManager {
                         String history = SPUtils.get(sContext).getData(key, "");
                         if (!TextUtils.isEmpty(history)) {
                             TestItem item = mGson.fromJson(history, type);
-                            item.setActivity(mItemTargets.get(key).getActivity());
-                            mTestItems.add(item);
+                            mTestItems.add(new TestItem(key, mItemTargets.get(key).getName(), param,
+                                    item.getResult(), mItemTargets.get(key).getActivity(), item.getState()));
                         } else {
                             mTestItems.add(new TestItem(key, mItemTargets.get(key).getName(), param,
-                                    mItemTargets.get(key).getActivity(), TestItem.STATE_UNKNOWN));
+                                    "", mItemTargets.get(key).getActivity(), TestItem.STATE_UNKNOWN));
                         }
                     }
                 }

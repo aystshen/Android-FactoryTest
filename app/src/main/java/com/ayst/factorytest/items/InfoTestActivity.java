@@ -68,7 +68,7 @@ public class InfoTestActivity extends ChildTestActivity {
                 + "x" + App.getTBManager().getScreenHeight(this));
         mImeiTv.setText(AppUtils.getIMEI(this));
 
-        updateParam(String.format("{'model':'%s', 'android':'%s', 'firmware':'%s', 'wifi_mac':'%s', " +
+        updateResult(String.format("{'model':'%s', 'android':'%s', 'firmware':'%s', 'wifi_mac':'%s', " +
                 "'bt_mac':'%s', 'eth_mac':'%s', 'sn':'%s', 'rom':'%s', 'ram':'%s', 'resolution':'%s', 'imei':'%s'}",
                 mModelTv.getText(), mAndroidVersionTv.getText(), mFirmwareVersionTv.getText(),
                 mWifiMacTv.getText(), mBtMacTv.getText(), mEthMacTv.getText(), mSnTv.getText(),

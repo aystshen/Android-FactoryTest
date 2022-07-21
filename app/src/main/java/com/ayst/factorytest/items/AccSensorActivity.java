@@ -103,7 +103,7 @@ public class AccSensorActivity extends ChildTestActivity {
                         float z = event.values[2];
                         update(x, y, z);
 
-                        updateParam(String.format("{'x':%f, 'y':%f, 'z':%f}", x, y, z));
+                        updateResult(String.format("{'x':%f, 'y':%f, 'z':%f}", x, y, z));
                     }
 
                     @Override

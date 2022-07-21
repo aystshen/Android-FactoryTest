@@ -100,7 +100,7 @@ public class KeyTestActivity extends ChildTestActivity {
                     mKeyItemAdapter.notifyDataSetChanged();
                     mClicked.put(event.getKeyCode(), true);
 
-                    updateParam(mGson.toJson(mKeyItems));
+                    updateResult(mGson.toJson(mKeyItems));
                     if (mClicked.size() >= mKeyItems.size()) {
                         finish(TestItem.STATE_SUCCESS);
                     }

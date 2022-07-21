@@ -40,7 +40,7 @@ public class BacklightTestActivity extends ChildTestActivity {
     public void initViews() {
         super.initViews();
 
-        updateParam(String.format("{'brightness':%d}", getBrightness()));
+        updateResult(String.format("{'brightness':%d}", getBrightness()));
         mBacklightSeekBar.setProgress(getBrightness());
         mBacklightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

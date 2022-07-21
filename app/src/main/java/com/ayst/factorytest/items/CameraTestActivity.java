@@ -100,7 +100,7 @@ public class CameraTestActivity extends ChildTestActivity {
                     }
                 }
 
-                updateParam(String.format("{'num':%d}", cameraNumber));
+                updateResult(String.format("{'num':%d}", cameraNumber));
             }
         }, 1000);
     }

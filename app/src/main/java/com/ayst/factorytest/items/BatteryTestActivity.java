@@ -105,7 +105,7 @@ public class BatteryTestActivity extends ChildTestActivity {
                         mPluggedTv.setText("");
                 }
 
-                updateParam(String.format("{'status':'%s', 'health':'%s', 'level':'%s', 'scale':'%s', " +
+                updateResult(String.format("{'status':'%s', 'health':'%s', 'level':'%s', 'scale':'%s', " +
                                 "'plugged':'%s', 'voltage':'%s', 'temperature':'%s'}",
                         mStatusTv.getText(), mHealthTv.getText(), mLevelTv.getText(), mScaleTv.getText(),
                         mPluggedTv.getText(), mVoltageTv.getText(), mTechnologyTv.getText()));

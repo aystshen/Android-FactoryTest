@@ -17,13 +17,15 @@ public class TestItem implements Serializable {
     private String key;
     private String name;
     private String param;
+    private String result;
     private transient Class<? extends Activity> activity;
     private int state = STATE_UNKNOWN;
 
-    public TestItem(String key, String name, String param, Class<? extends Activity> activity, int state) {
+    public TestItem(String key, String name, String param, String result, Class<? extends Activity> activity, int state) {
         this.key = key;
         this.name = name;
         this.param = param;
+        this.result = result;
         this.activity = activity;
         this.state = state;
     }
@@ -32,6 +34,7 @@ public class TestItem implements Serializable {
         this.key = "";
         this.name = name;
         this.param = "";
+        this.result = "";
         this.activity = activity;
         this.state = STATE_UNKNOWN;
     }
@@ -58,6 +61,14 @@ public class TestItem implements Serializable {
 
     public void setParam(String param) {
         this.param = param;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public Class<? extends Activity> getActivity() {
@@ -94,6 +105,7 @@ public class TestItem implements Serializable {
                 "key='" + key + '\'' +
                 ", name='" + name + '\'' +
                 ", param='" + param + '\'' +
+                ", result='" + result + '\'' +
                 ", activity=" + activity +
                 ", state=" + state +
                 '}';

@@ -192,7 +192,7 @@ public class WifiTestActivity extends ChildTestActivity {
                 if (TextUtils.equals(result.SSID, mWiFiParam.getSsid())) {
                     Log.i(TAG, "updateAccessPoints, scan to ssid: " + result.SSID
                             + ", rssi: " + result.level);
-                    updateParam(String.format("{'ssid':'%s', 'rssi':%d}", result.SSID, result.level));
+                    updateResult(String.format("{'ssid':'%s', 'rssi':%d}", result.SSID, result.level));
                     if (result.level > mWiFiParam.getRssi()) {
                         finish(TestItem.STATE_SUCCESS);
                     } else {
@@ -202,7 +202,7 @@ public class WifiTestActivity extends ChildTestActivity {
             }
         } else if (!mWifiList.isEmpty()) {
             ScanResult result = mWifiList.get(0);
-            updateParam(String.format("{'ssid':'%s', 'rssi':%d}", result.SSID, result.level));
+            updateResult(String.format("{'ssid':'%s', 'rssi':%d}", result.SSID, result.level));
             finish(TestItem.STATE_SUCCESS);
         }
     }

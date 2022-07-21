@@ -120,8 +120,8 @@ public abstract class ChildTestActivity extends BaseActivity {
         }
     }
 
-    protected void updateParam(String param) {
-        mTestItem.setParam(param);
+    protected void updateResult(String result) {
+        mTestItem.setResult(result);
     }
 
     public abstract int getContentLayout();

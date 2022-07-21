@@ -9,7 +9,6 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
@@ -110,7 +109,7 @@ public class UsbTestActivity extends ChildTestActivity {
             mItems.add(device.getDeviceName());
             deviceNames.add(device.getDeviceName());
         }
-        updateParam(mGson.toJson(deviceNames));
+        updateResult(mGson.toJson(deviceNames));
 
         mStringItemAdapter.setList(mItems);
         mStringItemAdapter.notifyDataSetChanged();

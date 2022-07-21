@@ -106,7 +106,7 @@ public class MobileNetTestActivity extends ChildTestActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                updateParam(String.format("{'sim':%d, 'signal':%d, 'imei':'%s'}", hasSimCard ? 1 : 0, mLastSignal, imei));
+                updateResult(String.format("{'sim':%d, 'signal':%d, 'imei':'%s'}", hasSimCard ? 1 : 0, mLastSignal, imei));
 
                 if (!TextUtils.isEmpty(imei)
                         && hasSimCard

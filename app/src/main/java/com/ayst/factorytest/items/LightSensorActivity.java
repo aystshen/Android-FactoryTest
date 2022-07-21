@@ -66,7 +66,7 @@ public class LightSensorActivity extends ChildTestActivity {
                         float light = event.values[0];
                         mLightDashBoard.setValue((int)light);
 
-                        updateParam(String.format("{'light':%f}", light));
+                        updateResult(String.format("{'light':%f}", light));
                     }
 
                     @Override

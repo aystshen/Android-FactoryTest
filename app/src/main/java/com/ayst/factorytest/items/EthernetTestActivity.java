@@ -77,7 +77,7 @@ public class EthernetTestActivity extends ChildTestActivity {
         mDns2Tv.setText(dns2);
         mModeTv.setText(mode);
 
-        updateParam(String.format("{'mac':'%s', 'ip':'%s', 'netmask':'%s', 'gateway':'%s', 'dns1':'%s', 'dns2':'%s', 'mode':'%s'}",
+        updateResult(String.format("{'mac':'%s', 'ip':'%s', 'netmask':'%s', 'gateway':'%s', 'dns1':'%s', 'dns2':'%s', 'mode':'%s'}",
                 mac, ip, netmask, gateway, dns1, dns2, mode));
 
         if (!TextUtils.isEmpty(mac) && ipCheck(ip) && ipCheck(netmask) && ipCheck(gateway)

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.format.Formatter;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -108,7 +107,7 @@ public class SdcardTestActivity extends ChildTestActivity {
                     + "(共" + Formatter.formatFileSize(this, cardInfo.getTotalSize()) + ")");
             mItems.add(builder.toString());
         }
-        updateParam(mGson.toJson(cardInfos));
+        updateResult(mGson.toJson(cardInfos));
 
         mStringItemAdapter.setList(mItems);
         mStringItemAdapter.notifyDataSetChanged();

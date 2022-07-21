@@ -232,7 +232,7 @@ public class ND01TestActivity extends ChildTestActivity implements View.OnClickL
                         mDistanceTv.setText(Integer.toString(data.dist) + " mm");
 
                         mND01Param.setDistance((int) data.dist);
-                        updateParam(mGson.toJson(mND01Param));
+                        updateResult(mGson.toJson(mND01Param));
                     }
                 });
 
