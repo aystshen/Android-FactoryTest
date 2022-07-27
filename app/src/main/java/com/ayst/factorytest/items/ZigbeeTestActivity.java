@@ -183,9 +183,8 @@ public class ZigbeeTestActivity extends ChildTestActivity {
             matcher = patten.matcher(info);
             while (matcher.find()) {
                 mVersion = matcher.group();
-                zigbee_version.setText("zb_version: " + mVersion);
                 Log.i(TAG, "zigbee_version = " + mVersion);
-                String tmp = String.format("{'mac':%s, 'version':%s}", mMac, mVersion);
+                String tmp = String.format("{'zb_mac':%s, 'zb_version':%s}", mMac, mVersion);
                 Log.i(TAG, "updateResult  tmp = " + tmp);
                 updateResult(tmp);
             }
