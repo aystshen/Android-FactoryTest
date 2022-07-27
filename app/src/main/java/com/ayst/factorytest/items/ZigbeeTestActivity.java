@@ -27,24 +27,13 @@ import java.util.regex.Pattern;
 
 public class ZigbeeTestActivity extends ChildTestActivity {
     private static final String TAG = "ZigbeeTestActivity";
-    private static final String PARAM_DEFAULT = "[{'name': '红色LED', 'device': 'led_r', 'brightness': 1000, 'state': 0}, " +
-            "{'name': '绿色LED', 'device': 'led_g', 'brightness': 1000, 'state': 0}, " +
-            "{'name': '蓝色LED', 'device': 'led_b', 'brightness': 1000, 'state': 0}]";
-    ;
-
 
     private String LINE_SEP = System.getProperty("line.separator");
-    private Gson mGson = new Gson();
-    private ArrayList<UartItem> mUartItems;
-    private UartItem mUart = null;
-    private ReadInfoThread readInfoThread = null;
     private BufferedReader successResult;
     private BufferedReader errorResult;
     private StringBuilder successMsg = new StringBuilder();
-    ;
     private Process process = null;
     private DataOutputStream os = null;
-    private DataInputStream is = null;
     private String mMac = null;
     private String mVersion = null;
     private String[] command = {
@@ -85,11 +74,6 @@ public class ZigbeeTestActivity extends ChildTestActivity {
 
     }
 
-    private ArrayList<UartItem> parseParam(String param) {
-        Type collectionType = new TypeToken<Collection<UartItem>>() {
-        }.getType();
-        return mGson.fromJson(param, collectionType);
-    }
 
     @Override
     public int getContentLayout() {
@@ -114,7 +98,7 @@ public class ZigbeeTestActivity extends ChildTestActivity {
                     os.flush();
 
                     try {
-                        Thread.sleep(1500);
+                        Thread.sleep(50);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
