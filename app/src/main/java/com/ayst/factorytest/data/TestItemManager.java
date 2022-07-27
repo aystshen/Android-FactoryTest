@@ -34,6 +34,7 @@ import com.ayst.factorytest.items.WatchdogTestActivity;
 import com.ayst.factorytest.items.WiFiTransferTestActivity;
 import com.ayst.factorytest.items.WiegandTestActivity;
 import com.ayst.factorytest.items.WifiTestActivity;
+import com.ayst.factorytest.items.ZigbeeTestActivity;
 import com.ayst.factorytest.model.KeyItem;
 import com.ayst.factorytest.model.NarParam;
 import com.ayst.factorytest.model.TestItem;
@@ -127,6 +128,7 @@ public class TestItemManager {
         mItemTargets.put("led", new TestItem(sContext.getString(R.string.test_item_led), LedTestActivity.class));
         mItemTargets.put("wifitransfer", new TestItem(sContext.getString(R.string.test_item_wifi_transfer),
                 WiFiTransferTestActivity.class));
+        mItemTargets.put("zigbee", new TestItem(sContext.getString(R.string.test_item_zigbee), ZigbeeTestActivity.class));
     }
 
     private void loadConfig() {

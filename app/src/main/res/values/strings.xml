@@ -36,6 +36,7 @@
     <string name="test_item_pwm">PWM</string>
     <string name="test_item_led">LED</string>
     <string name="test_item_wifi_transfer">WiFi Transfer</string>
+    <string name="test_item_zigbee">Zigbee</string>
 
     <!--MainActivity-->
     <string name="main_scan_qrcode_tips">Scan the QR code to export the test results.</string>
@@ -165,6 +166,9 @@
 
     <!--    UartTestActivity-->
     <string name="uart_test_prompt">Please observe the following serial port test results (pass in green, fail in red).</string>
+
+    <!--    ZigbeeTestActivity-->
+    <string name="zigbee_test_prompt">Check Info</string>
 
     <!--    UsbTestActivity-->
     <string name="usb_test_prompt">Please insert any USB device (U disk, mouse, keyboard, etc.) into the USB port to be tested in turn, and check whether the following table can correctly display all device paths.</string>
