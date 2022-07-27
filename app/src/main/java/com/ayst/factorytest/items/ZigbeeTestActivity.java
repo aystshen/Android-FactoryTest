@@ -175,7 +175,7 @@ public class ZigbeeTestActivity extends ChildTestActivity {
                 String tt = matcher.group();
                 if (tt.length() == 21) {
                     mMac = tt.substring(4, 20);
-                    zigbee_mac.setText("zb_mac: [" + mMac + "]");
+                    zigbee_mac.setText("MAC: [" + mMac + "]");
                 }
                 Log.i(TAG, "zigbee_mac = " + tt);
             }
@@ -183,6 +183,7 @@ public class ZigbeeTestActivity extends ChildTestActivity {
             matcher = patten.matcher(info);
             while (matcher.find()) {
                 mVersion = matcher.group();
+                zigbee_version.setText("VER: " + mVersion);
                 Log.i(TAG, "zigbee_version = " + mVersion);
                 String tmp = String.format("{'zb_mac':%s, 'zb_version':%s}", mMac, mVersion);
                 Log.i(TAG, "updateResult  tmp = " + tmp);
