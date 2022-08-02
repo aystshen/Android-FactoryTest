@@ -8,20 +8,12 @@ import android.widget.TextView;
 
 import com.ayst.factorytest.R;
 import com.ayst.factorytest.base.ChildTestActivity;
-import com.ayst.factorytest.model.UartItem;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,10 +35,13 @@ public class ZigbeeTestActivity extends ChildTestActivity {
             "net leave",
             "plugin network-steering mask set 1 0x800",
             "plugin network-steering mask set 2 0x800",
-            "plugin network-steering start 1",
-            "reset"
+            "plugin network-steering start 1"
+//            "reset"
     };
 
+    private ReadInfoThread mStdoutThread;
+    private ReadInfoThread mStderrThread;
+    private WriteCommandThread writeCommandThread;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,13 +62,25 @@ public class ZigbeeTestActivity extends ChildTestActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+        os = new DataOutputStream(process.getOutputStream());
+        mStdoutThread = new ReadInfoThread(successResult);
+        mStderrThread = new ReadInfoThread(errorResult);
+        writeCommandThread = new WriteCommandThread();
+        mStdoutThread.start();
+        mStderrThread.start();
+        writeCommandThread.start();
 
-        new ReadInfoThread(successResult).start();
-        new ReadInfoThread(errorResult).start();
-        new WriteCommandThread().start();
 
     }
 
+    @Override
+    protected void onDestroy() {
+        writeCommandOnce(os,"reset");
+        process.destroy();
+        mStderrThread.interrupt();
+        mStdoutThread.interrupt();
+        super.onDestroy();
+    }
 
     @Override
     public int getContentLayout() {
@@ -85,10 +92,29 @@ public class ZigbeeTestActivity extends ChildTestActivity {
         return 0;
     }
 
+    private void writeCommandOnce(DataOutputStream os,String cmd){
+        try {
+            if (os == null)
+                return;
+            os.writeBytes(LINE_SEP);
+            os.write(cmd.getBytes());
+            os.writeBytes(LINE_SEP);
+            os.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
     private class WriteCommandThread extends Thread {
         @Override
         public void run() {
-            os = new DataOutputStream(process.getOutputStream());
+            if (os == null)
+                return;
             try {
                 for (String cmd :
                         command) {
@@ -103,8 +129,9 @@ public class ZigbeeTestActivity extends ChildTestActivity {
                         e.printStackTrace();
                     }
                 }
-
+                Log.i(TAG, "exit WriteCommandThread\n");
             } catch (IOException e) {
+                Log.i(TAG, "exit WriteCommandThread\n");
                 e.printStackTrace();
             }
 
@@ -122,19 +149,22 @@ public class ZigbeeTestActivity extends ChildTestActivity {
             tt = bfreadResult == errorResult ? "error_std" : tt;
         }
 
+
         @Override
         public void run() {
 
             try {
                 String line;
-                while (flag) {
+                while (!interrupted()) {
                     line = bfreadResult.readLine();
                     Log.i(TAG, tt + " +" + line);
                     ZigbeeInfoShow show1 = new ZigbeeInfoShow(line + LINE_SEP);
                     runOnUiThread(show1);
                 }
+                Log.i(TAG, "exit ReadInfoThread\n");
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.i(TAG, "exit ReadInfoThread\n");
+               // e.printStackTrace();
             }
 
         }
