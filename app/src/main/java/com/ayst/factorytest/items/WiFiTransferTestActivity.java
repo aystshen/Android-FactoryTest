@@ -189,7 +189,7 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     if (mDownRdoBtn.isChecked()) {
-                        start("/data/iperf -s\n");
+                        start("/system/bin/iperf3 -s\n");
                         AlertDialog dialog = new AlertDialog.Builder(WiFiTransferTestActivity.this)
                                 .setTitle(getString(R.string.note))
                                 .setMessage(String.format(getString(R.string.wifi_transfer_test_msg_downlink), mLocalIp))
@@ -210,7 +210,7 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
                                     .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                            start("/data/iperf -c " + serverip + " -i 1 -t 60 -w 1m\n");
+                                            start("/system/bin/iperf3 -c " + serverip + " -i 1 -t 60 -w 1m\n");
                                             dialogInterface.dismiss();
                                         }
                                     }).create();
@@ -245,12 +245,6 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
     }
 
     private void start(String cmd) {
-        if (!binExist("iperf")) {
-            if (!copyBin("iperf")) {
-                Log.e(TAG, "start, install iperf error");
-                return;
-            }
-        }
 
         mIperfThread = new IperfThread(cmd);
         mIperfThread.start();
@@ -440,28 +434,32 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
 
     private class IperfThread extends Thread {
         private String cmd;
-
+        private String LINE_SEP = System.getProperty("line.separator");
         public IperfThread(String cmd) {
             this.cmd = cmd;
         }
 
         @Override
         public void run() {
-            Log.i(TAG, "iperf run...");
+            Log.i(TAG, "iperf3 run..."+cmd);
 
             DataOutputStream dos = null;
             try {
                 Process process = Runtime.getRuntime().exec("sh");
                 dos = new DataOutputStream(process.getOutputStream());
 
-                dos.write(cmd.getBytes(Charset.forName("utf-8")));
+
+                dos.writeBytes(LINE_SEP);
+                dos.write("su".getBytes());
+                dos.writeBytes(LINE_SEP);
+                dos.write(cmd.getBytes());
                 dos.flush();
 
                 String line;
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(process.getInputStream()));
                 while (!this.isInterrupted() && (line = bufferedReader.readLine()) != null) {
-                    Log.i(TAG, "iperf: " + line);
+                    Log.i(TAG, "iperf3: " + line);
                     Message msg = new Message();
                     msg.what = COMMAND_UPDATE_INFO;
                     msg.obj = line;
@@ -470,7 +468,7 @@ public class WiFiTransferTestActivity extends ChildTestActivity {
 
                 dos.writeBytes("exit\n");
                 dos.flush();
-                Log.w(TAG, "iperf exit.");
+                Log.w(TAG, "iperf3 exit.");
             } catch (IOException e) {
                 Log.e(TAG, e.getMessage(), e);
             } finally {
