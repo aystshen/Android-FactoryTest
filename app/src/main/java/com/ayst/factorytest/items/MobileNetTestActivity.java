@@ -47,7 +47,8 @@ public class MobileNetTestActivity extends ChildTestActivity {
     @BindView(R.id.tv_imei)
     TextView mImeiTv;
 
-    private int mLastSignal = 0;
+    private String mImei = "";
+    private boolean mHasSimCard = false;
 
     private ConnectivityManager.NetworkCallback mNetworkCallback = new ConnectivityManager.NetworkCallback() {
         public void onCapabilitiesChanged(Network network, NetworkCapabilities networkCapabilities) {
@@ -90,33 +91,26 @@ public class MobileNetTestActivity extends ChildTestActivity {
 
         mSuccessBtn.setVisibility(View.GONE);
 
-        String imei = AppUtils.getIMEI(this);
-
-        mImeiTv.setText(imei);
-
-        boolean hasSimCard = hasSimCard(this);
-        if (hasSimCard) {
-            mSimTv.setText(getText(R.string.mobile_net_test_insert));
-            getMobileNetworkSignal(this);
+        mImei = AppUtils.getIMEI(this);
+        if (!TextUtils.isEmpty(mImei)) {
+            mImeiTv.setText(mImei);
+            mHasSimCard = hasSimCard(this);
+            if (mHasSimCard) {
+                mSimTv.setText(getText(R.string.mobile_net_test_insert));
+                getMobileNetworkSignal(this);
+            } else {
+                mSimTv.setText(getText(R.string.mobile_net_test_not_insert));
+                Log.e(TAG, "initViews, no sim cards");
+            }
         } else {
-            mSimTv.setText(getText(R.string.mobile_net_test_not_insert));
-            Log.e(TAG, "initViews, no sim cards");
+            mImeiTv.setText("");
+            Log.e(TAG, "initViews, imei is null");
         }
 
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                updateResult(String.format("{'sim':%d, 'signal':%d, 'imei':'%s'}", hasSimCard ? 1 : 0, mLastSignal, imei));
-
-                if (!TextUtils.isEmpty(imei)
-                        && hasSimCard
-                        && mLastSignal != 0) {
-                    finish(TestItem.STATE_SUCCESS);
-                } else {
-                    finish(TestItem.STATE_FAILURE);
-                }
-            }
-        }, 3000);
+        if (TextUtils.isEmpty(mImei) || !mHasSimCard) {
+            updateResult(String.format("{'sim':%d, 'signal':%d, 'imei':'%s'}", mHasSimCard ? 1 : 0, 0, mImei));
+            finish(TestItem.STATE_FAILURE);
+        }
     }
 
     @Override
@@ -322,9 +316,12 @@ public class MobileNetTestActivity extends ChildTestActivity {
                 public void onSignalStrengthsChanged(SignalStrength signalStrength) {
                     super.onSignalStrengthsChanged(signalStrength);
                     int asu = signalStrength.getGsmSignalStrength();
-                    mLastSignal = -113 + 2 * asu;
-                    mSignalTv.setText(mLastSignal + "dBm");
-                    Log.i(TAG, "getMobileNetworkSignal, signal: " + mLastSignal + " dBm");
+                    int signal = -113 + 2 * asu;
+                    mSignalTv.setText(signal + "dBm");
+                    Log.i(TAG, "getMobileNetworkSignal, signal: " + signal + " dBm");
+
+                    updateResult(String.format("{'sim':%d, 'signal':%d, 'imei':'%s'}", mHasSimCard ? 1 : 0, signal, mImei));
+                    finish(TestItem.STATE_SUCCESS);
                 }
             }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
         }
