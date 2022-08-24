@@ -80,8 +80,7 @@ public class EthernetTestActivity extends ChildTestActivity {
         updateResult(String.format("{'mac':'%s', 'ip':'%s', 'netmask':'%s', 'gateway':'%s', 'dns1':'%s', 'dns2':'%s', 'mode':'%s'}",
                 mac, ip, netmask, gateway, dns1, dns2, mode));
 
-        if (!TextUtils.isEmpty(mac) && ipCheck(ip) && ipCheck(netmask) && ipCheck(gateway)
-                && (TextUtils.equals(mode, "DHCP") || TextUtils.equals(mode, "STATIC"))) {
+        if (!TextUtils.isEmpty(mac) && ipCheck(ip) && ipCheck(netmask) && ipCheck(gateway)) {
             finish(TestItem.STATE_SUCCESS);
         } else {
             finish(TestItem.STATE_FAILURE);
